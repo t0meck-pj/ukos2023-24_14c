@@ -1,0 +1,54 @@
+Zadania wykonuje za pomocą virtualbox
+
+1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+ukos
+
+ |\ katalog
+
+ |   |\ katalog2
+
+ |    \ katalog3
+
+  \ klamka
+
+Komendy na stworzenie katalogów.
+
+cd Documents/
+mkdir ukos
+cd ukos 
+mkdir klamka katalog
+cd katalog
+mkdir katalog2 katalog3
+
+2.W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+touch zajecia2.txt zajecia2.log inny.txt nowy.txt
+
+-komendą touch możemy utworzyć pliki
+
+3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+
+-na początku użyłem komendy bez paramentru p i miałem eror cannot create, wszedłem do man mkdir i przestudiowałem czego mogę użyć
+
+mkdir -p ukos/to/jest/dluga/nazwa
+
+4.następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+touch ukos/to/jest/dluga/nazwa/dane.txt
+
+5.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+rm *.txt
+
+- * odpowiada za wszystkie możliwe nazwy, dlatego komenda usuwa wszystkie pliki z rozszerzeniem .txt
+
+6.Usuń katalog ukos/katalog/katalog2
+
+rmdir katalog2
+
+7.Usuń cały katalog klamka za pomocą jednego polecenia
+
+-nie mogłem usunąć pliku za pomocą rmdir ani rm bo nie był pusty, na internecie znalazłem że trzeba użyć parametru -rf
+
+rm -rf klamka

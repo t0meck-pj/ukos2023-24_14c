@@ -1,0 +1,11 @@
+2023-09-30
+ * Tego dnia nauczyłem się podstaw korzystania z terminala w linuxie.
+ * Nauczyłem się jak założyć konto na githubie. 
+ * Nauczyłem się zdalnego łączenia z serwerem linuxa za pomocą putty. 
+ * Poznałem podstawowe komendy, nauczyłem się poruszać po terminalu.
+ * Nauczyłem się do czego służą poszczególne katalogi w linuxie.
+ * Nauczyłem się co oznaczają kolory plików. 
+  Podobały mi się te ćwiczenia. Wszystko było prosto wytłumaczone. Na pewno 
+w przyszłości czy to na zajęciach czy to w pracy przyda mi się pozyskana
+wiedza. Na ćwiczeniach było dużo informacji. Na pewno będę musiał jeszcze 
+to wszystko powtórzyć aby dobrze wszystko zapamiętać. 

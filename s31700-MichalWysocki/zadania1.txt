@@ -1,0 +1,53 @@
+1. Uruchom terminal
+	Uruchamiam terminal skrótem klawiszowym ctrl+alt+t
+2. Wyświetl zawartość aktualnego katalogu.
+	ls
+3. Sprawdź gdzie aktualnie się znajdujesz.
+	pwd	
+4. Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+	cd ./Dekstop
+5. Sprawdź gdzie jesteś.
+	pwd
+6. Wyświetl zawartość bieżącego katalogu.
+	ls
+7. Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+	ls $HOME
+8. Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+	cd /home/osboxes/Pictures
+9. Sprawdź gdzie jesteś.
+	pwd
+10. Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+Co ta ścieżka oznacza/sobą reprezentuje?
+	. oznacza obecną lokalizację więc cały czas przechodzę do obecnej 
+	lokalizacji niezależnie od ilości "./"
+11. Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+	cd /home/osboxes
+12. Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
+	Odmówiło mi dostępu. 
+13. Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+	Zmieniło mi ekran na trzeci wirtualny terminal.
+14. A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+	Po Alt+F1 zmieni mi na pierwszy terminal, po Alt+F2 zmieni mi na drugi 
+	wirtualny terminal, a po Alt+F7 wróci mi do graficznego linuxa.
+
+  Te zadania pomogły mi utrwalić wiedzę pozyskaną na zajęciach oraz nauczyć się
+paru nowych rzeczy. Zadania od 1-9 i 11 były szybkie i proste. Używałem kiedyś 
+linuxa więc nie miałem z nimi żadnego problemu. Do zadania 10 musiałem wspomóc 
+się wiedzą z internetu. Z początku myślałem, że cofnie mnie do poprzednich 
+katalogów, ale jednak wynik był inny i w końcu zrozumiałem o co chodzi. Nie
+rozumiem jednak czego miało nas nauczyć to zadanie. Zadanie 12 polegało na 
+przejściu do folderu admina. Nie mogłem jednak przejść ze względu na to, że
+próbowałem tam wejść z poziomu zwykłego użytkownika a nie superusera. Do 
+zadania 13 i 14 również musiałem wspomóc się wiedzą z internetu. Po tym jak 
+poczytałem pare artykułów zrozumiałem o co chodzi i jest tak jak z początku 
+zakładałem. Nie rozumiem jednak, dlaczego na pierwszym terminalu nie mogę nic 
+napisać i nie widzę żadnych informacji, pola do logowania itp. Wykonanie tych
+zadań nie sprawiło mi problemu. Z pewnością będę używać tych komend w 
+przyszłości a te zadania na pewno pomogą mi w sprawnym poruszaniu się po 
+terminalu.

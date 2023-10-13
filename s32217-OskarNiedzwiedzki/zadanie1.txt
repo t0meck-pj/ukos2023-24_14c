@@ -51,7 +51,7 @@ Jest to ścieżka względna do katalogu w którym się aktualnie znajdujemy, a w
 
 11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
 	cd /home
-	cd ~cd
+	cd ~
 12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
 	Brak dostępu, do roota ma dostęp tylko profil root, jako zwykły śmiertelnik nie mam do niego dostępu
 

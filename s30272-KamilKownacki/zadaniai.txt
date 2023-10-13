@@ -1,0 +1,101 @@
+1.Uruchom terminal.
+	1.Uruchamiam maszynę wirtualną z infrastrukturą pulpitu Linux Lite 5.8 
+pobraną z osboxes.org
+	2.Po zalogowaniu wciskam kombinacje klawiszy CTRL+ALT+T , aby uruchomić 
+konsole
+a)Nauczyłem się, że terminal jest moim najlepszym przyjacielem w środowisku 
+Linux i nie tylko :-)
+b)Znajomość skrótów klawiszowych ułatwia obsługę systemów operacyjnych
+c)Konsola linux lite jest jakaś taka nieprzyjemna w obsłudze w porównaniu do 
+moich ulubionych dystrybucji np.
+nie mogę skopiować tekstu po wcisnięciu prawego przycisku myszy, muszę dodatkowo
+ wcisnąć copy
+
+2.Wyświetl zawartość aktualnego katalogu.
+	1.Uzywam komendy: ls
+	2.Wynik konsoli:
+ Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+a)Wyswietlanie zawartosci aktualnego katalogu odbywa sie za pomoca innej komendy
+ niz w srodowisku Windows
+
+3.Sprawdź gdzie aktualnie się znajdujesz.
+	1.Uzywam komendy: pwd
+	2.Wynik konsoli: /home/osboxes
+a)Domyslnie konsola otwiera sie w katalogu uzytkownika
+
+4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+	1.Uzywam komendy: cd oraz sciezki wzglednej katalogu Pulpit
+	2. cd ./Desktop
+a)Konsola linuxa jest case-sensitive (rozroznienie semantyczne wielkosci liter)
+
+5.Sprawdź gdzie jesteś.
+	1.Uzywam komendy pwd
+	2.Wynik konsoli: /home/osboxes/Desktop
+a)Dowiedzialem sie, ze katalog pulpit znajduje sie w folderze obecnego
+uzytkownika(kazdy uzytkownik ma swoj katalog pulpit?)
+
+6.Wyświetl zawartość bieżącego katalogu.
+	1.Uzywam komendy ls w katalogu Desktop
+	2.Wynik konsoli:
+	computer.desktop    network.desktop   userfiles.desktop
+	helpmanual.desktop  settings.desktop  zadania.txt
+a)Skroty na pulpicie maja rozszerzenie .desktop
+
+7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls
+ z odpowiednim parametrem).
+	1.Uzylem komendy ls ~
+	2.Wynik konsoli:
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+	3.Odpowiedz terminala zgadza sie z zawartoscia folderu domowego
+a)Nie wiedzialem ze tak mozna zrobic, wymyslilem to dzieki podpowiedzi 
+do zadania podanej w nawiasie, ciekawa lekcja
+	
+8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj 
+wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w 
+twoim katalogu domowym za pomocą ścieżki względnej.
+	1. Przechodze do katalog Obrazy
+	2. Komenda: cd ../Pictures
+a)Katalog Obrazy jest dostepny na mojej maszynie
+
+9.Sprawdź gdzie jesteś.
+	1.Sprawdzam aktualna lokacje komenda pwd
+	2.Wynik konsoli:
+/home/osboxes/Pictures
+a)Katalog Obrazy tak jak i katalog pulpitu znajduja sie w folderach
+plikach aktualnego uzytkownika
+
+10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+Co ta ścieżka oznacza/sobą reprezentuje?
+
+-Znajde sie w tym samym katalogu bo sciezka wzgledna zaczyna sie od obecnego 
+folderu, a sciezka bezwzgledna od roota . Dopoki na poczatku i na koncu  mam ./ 
+to nie jest wazne ile ich wpisze bo i tak przeniesie mnie do obecnego katalogu
+ 
+11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+
+cd /home/
+albo
+ cd ~
+
+12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, 
+zastanów się co się stało. Poszukaj w Internecie.
+
+Nie jestem zalogowany na konto administratora i nie mam dostepu do jego katalogu :( . 
+
+13.Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym 
+komputerze. Nie można go zrobić zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. 
+W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+
+Uruchomil sie linux bez GUI i moglem przelaczac sie pomiedzy konsolami tak jak 
+ctrl+alt+strzalka w prawo przelacza miedzy pulpitami z graficznym interfejsem.
+
+14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+
+ALT+f7 przywraca GUI , alt + f1 - f6 przelacza terminale

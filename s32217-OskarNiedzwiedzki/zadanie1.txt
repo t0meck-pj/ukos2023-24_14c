@@ -65,3 +65,39 @@ Odpalił mi się linux bez GUI
 14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
 
 alt + f7 przywróciło GUI, a alt f1 - f6 przełącza mi terminale
+
+
+<--------------------->
+
+1.
+[$Home]
+mkdir ukos
+cd ukos
+mkdir katalog
+mkdir klamka
+cd katalog
+mkdir katalog2
+cd katalog2
+mkdir katalog 3
+
+[Od tutaj juz praktycznie ciagle bede w ukos]
+
+2.
+cd $home
+cd ukos/klamka
+cat > zajecia2.txt
+[ctrl + D] zeby nic nie wpisywac
+cat > zajecia2.log
+cat > inny.txt
+cat > nowy.txt
+3.
+cd ..
+mkdir -p to/jest/dluga/nazwa
+4.
+cat > to/jest/dluga/nazwa/dane.txt
+5.
+rm klamka/*.txt
+6.
+rm -r katalog/katalog2
+7.
+rm -r klamka

@@ -1,0 +1,103 @@
+1. Uruchom terminal.
+	Zrobione
+	(Zalogowałem się na szuflandię przy użyciu putty)
+2. Wyświetl zawartość aktualnego katalogu.
+
+	ls -a
+	[.  ..  .bash_history  .bash_logout  .bashrc  .gitconfig  .lesshst  .profile]
+
+3. Sprawdź gdzie aktualnie się znajdujesz.
+
+	pwd
+	/home/PJWSTK/s32217
+
+4. Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+
+	Nie mam takiego, ale mogę przejść do katalogu home w taki sposób
+	[cd ../../]
+
+5. Sprawdź gdzie jesteś.
+
+	pwd
+	[/home]
+
+6. Wyświetl zawartość bieżącego katalogu.
+
+	ls
+	[antek  kamil  ladaml  lost+found  piotr  PJWSTK]
+
+7. Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+
+	ls $HOME -a
+	-a, zebym mial cokolwiek wkleic
+	[.  ..  .bash_history  .bash_logout  .bashrc  .gitconfig  .lesshst  .profil]
+
+8. Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+
+	mkdir Obrazy (musze stworzyc, bo nie ma nic w home narazie)
+	cd ./Obrazy
+
+9. Sprawdź gdzie jesteś.
+	pwd
+	[/home/PJWSTK/s32217/Obrazy]
+cd
+10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+Co ta ścieżka oznacza/sobą reprezentuje?
+
+Jest to ścieżka względna do katalogu w którym się aktualnie znajdujemy, a więc z naszego aktualnego katalogu ciągle przechodzimy do niego samego, więc nic się nie zmienia
+
+11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+	cd /home
+	cd ~
+12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
+	Brak dostępu, do roota ma dostęp tylko profil root, jako zwykły śmiertelnik nie mam do niego dostępu
+
+13.Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+
+Odpalił mi się linux bez GUI
+
+14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+
+alt + f7 przywróciło GUI, a alt f1 - f6 przełącza mi terminale
+
+
+<--------------------->
+
+1.
+[$Home]
+mkdir ukos
+cd ukos
+mkdir katalog
+mkdir klamka
+cd katalog
+mkdir katalog2
+cd katalog2
+mkdir katalog 3
+
+[Od tutaj juz praktycznie ciagle bede w ukos]
+
+2.
+cd $home
+cd ukos/klamka
+cat > zajecia2.txt
+[ctrl + D] zeby nic nie wpisywac
+cat > zajecia2.log
+cat > inny.txt
+cat > nowy.txt
+3.
+cd ..
+mkdir -p to/jest/dluga/nazwa
+4.
+cat > to/jest/dluga/nazwa/dane.txt
+5.
+rm klamka/*.txt
+6.
+rm -r katalog/katalog2
+7.
+rm -r klamka

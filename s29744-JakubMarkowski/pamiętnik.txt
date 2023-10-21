@@ -1,0 +1,9 @@
+30.09
+Na pierwszych zajęciach nauczyłem się podstaw linuxa.
+Omówiliśmy jak założyć konto na github i jak je skonfigurować.
+Nauczyłem się podstawowych komend w linux.
+Nauczyłem się w jaki sposób podłączyć się na szuflandie z mojego komputera w domu, za pomocą putty.
+Zajęcia są dla mnie mega ciekawe, bo nigdy nie miałem doświadczenia z linuxem i mogę się tu mega dużo nauczyć.
+Do nauki dla mnie jest dużo bo nie miałem z tym styczności, ale dzięki nagrywaniu można na spokojnie do wszystkiego wrócić.
+
+14.10

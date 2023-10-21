@@ -55,9 +55,8 @@ Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ście�
 Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
 Co ta ścieżka oznacza/sobą reprezentuje?
 
--u mnie po wpisaniu cd ././././././ nic się nie stało, jeżeli chodzi o same rozumienie polecenia to ./ traktuje
-jako nazwe pliku/katalogu, samo cd ./ lub cd . nic nie robi, ale jeżeli dodam nazwe katalogu to przeniesienie mnie do niego
-np. cd ././././Documents
+-u mnie po wpisaniu cd ././././././ nic się nie stało, ponieważ ./ jest moim obecnym katalogiem. Zauważyłem, że polecenie cd ././././home
+przeniesie mnie do home.
 
 11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
 

@@ -13,4 +13,4 @@ Przypomniała mi się pasta o informayku, chociaż ona nie byłą aż
 tak zaawansowana. W każdym razie, ciekawie patrzy się na różnicę
 między uprawnieniami na windowsie a linuksie. W bashu łatwiej
 jest też chyba nimi zarządzać niżw  windowsie - aczykolwiek aby 
-się upewnić muszę trochę więcej popracować w trybie tekstowym.
+się upewnić muszę trochę więcej popracować w trybie tekstowym

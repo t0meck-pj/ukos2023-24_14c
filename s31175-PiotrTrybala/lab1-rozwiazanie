@@ -1,0 +1,24 @@
+2. ls
+Pusty folder
+3. pwd
+Pojawila sie sciezka do mojego katalogu domowego
+4. $home
+Przenioslo mnie do tego samego katalogu
+5.pwd
+Jestem w tym samym miejscu
+6.ls
+Pusty folder
+7. ls /$home
+Pusty folder
+8. mkdir Obrazy
+cd ./Obrazy
+Nie mialem katalogu Obrazu w katalogu domowym
+9. pwd
+Jestem w katalogu domowym
+10. cd ././././././
+Jestem w tym samym katalogu, dodanie polejnych "./" nic nie zmieni
+11. cd /home/PJWSTK/s31175
+12. cd/root
+Nie mam dostępu do tego folderu
+13. Podane skroty otwieraja rownolegle sesje, bez zamykania poprzednich
+14. Podany skrot przechodzi do sesji "obok"

@@ -17,7 +17,7 @@ najgorszym moim zdaniem jest sposób z użyciem liczb oktalnych, trzeba mieć w 
 Wielkim błędem jest też chmod 777 [plik], zazwyczaj nie chcemy żeby każdy miał dostęp do plików i mógł sobie nimi manipulować,
 ktoś może nam psikusa zrobić w postaci kukułczego gniazda i będzie tak zwana lipa, nie mówiąc o potencjalnym uszkodzeniu danych,
 jeśli mamy jakieś wrażliwe dane, to ktoś może je nam nadpisać. Dodałem też na swoją szuflandię ładną stronkę, 
-którą każdy może odwiedzić pod adresem http://szuflandia.pjwstk.edu.pl/~s32217/strona.html.
+którą każdy może odwiedzić pod adresem http://szuflandia.pjwstk.edu.pl/~s32217/strona.html. [edit: nie dodalem jeszcze]
 Tak naprawdę to po prostu jest to strona z innego projektu który realizuję, może kiedyś nadam jej ładny wygląd, np. na wykładach z japonistyki.
 
 Streszczając zabezpieczajmy nasze pliki przed nieautoryzowanymi śmieszkami.

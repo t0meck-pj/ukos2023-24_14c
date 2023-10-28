@@ -1,0 +1,162 @@
+
+1. Uruchom terminal
+
+Używając skrótu Ctrl + Alt + T uruchamiam terminal.
+
+dzięki znalezionej w internecie komendzie cat/etc/issue
+wiem, że pracuję na komputerze z zainstalowanym systemem
+Ubuntu 22.04.3 LTS.
+
+2. Wyświetl zawartość aktualnego katalogu
+
+Używam polecenia: ls
+
+Wynik:
+Desktop    Downloads     Music     Public  Templates
+Documents  firsfile.txt  Pictures  snap    Videos
+
+używając polecenia ls --help dowiaduję się że polecenie to
+ma atrybut -a dzięki któremu mogę zobaczyć również ukryte pliki
+znajdujące się w mojeje obecnej lokalizacji. 
+
+Używam polecenia: ls -a 
+Otrzymuję nastęoujący wynik 
+
+.              .bashrc  Documents     Music     snap
+..             .cache   Downloads     Pictures  .sudo_as_admin_successful
+.bash_history  .config  firsfile.txt  .profile  Templates
+.bash_logout   Desktop  .local        Public    Videos
+
+Rzeczywiście tym razem zostały wyświetlone dodatkowe pliki, których nazwy
+zaczynają się od znaku kropki, co zgodnie z infromacjami przekazanymi przez 
+prowadzącego oznacza, że owe pliki są ukryte.
+
+3.Sprawdź gdzie aktualnie się znajdujesz
+
+Miałem włączony Caps lock -> po wpisaniu PWD dostaję informację, że nie ma takiej
+komendy. pwd != PWD, system jest wyczulony na wielkość liter w komendach.
+
+Używam polecenia: pwd
+
+pwd -akronim od print working directory
+
+wynik: /home/elear
+
+Tak więc domyślnie system zaczyna nawigację od folderu aktualnie zalogowanego
+użytkownika.
+
+4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+
+Różnica między ścieżką wzglęną i bezwzględną polega na tym podając tą pierwszą musimy 
+wiedzieć gdzie aktualnie się znajdujemy i podać ścieżkę względem naszego obecnego
+położenia.
+
+Używam polecenia: cd Desktop
+
+5.Sprawdź gdzie jesteś.
+
+Używam polecenia: pwd 
+Wynik: /home/elear/Desktop
+
+Zgodnie z oczekiwaniami polecenie cd pozwoliło mi zmienić lokalizację.
+
+6.Wyświetl zawartość bieżącego katalogu.
+
+Po wpisaniu polecenie ls brak wyników, nie mam żadnych plików na pulpicie
+
+7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+
+Używam polecenia ls ~ 
+Rzeczywiście mogę wyświetlić zawartość katalogu domowego, mimo że jestem w innej lokalizacji.
+
+8.Przejdź do katalogu Obrazy
+
+Używam polecenia: cd ../Pictures
+
+9.Sprawdź gdzie jesteś.
+
+pwd - jestem w pliku z obrazami
+
+home/elear/Pictures
+
+10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+
+Po wpisaniu polecenia cd ././././././ nic się nie wydarzyło, nadal jestem w katalogu obrazy.
+
+Sama kropka reprezentuje lokalizację, w której obecnie się znajduję, tak więc podając 
+powyższą ścieżkę pokazuję drogę do miejsca, w którym już jestem, ilość ./ nie ma znaczenia
+dopóki nie podam (między nimi, na końcu lub początku) innej lokalizacji.
+Na przykład cd ././././../././ spowodowało, że wróciłem do katalogu domowego.
+
+11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej
+
+Używam komendy: cd ~
+
+12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało.
+Poszukaj w Internecie
+
+bash: cd: /root: Permission denied
+
+odmowa dostępu, muszę uzyskać prawa administratora, żeby dostać się do tej lokalizacji.
+
+13.Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+
+Przełączyło mnie do innego terminala, brak interfejsu graficznego.
+Za pomocą polecenia tty mogę sprawdzić, którego terminala aktualnie używam.
+
+14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+Alt + F2 przełączyło mnie znowu na wersję z interfejsem graficznym.
+
+
+-----------------------------------------------------------------------------------------------
+
+
+1.Korzystając z komend cd oraz mkdir
+stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albobezpośrednio w ~):
+ukos
+|\ katalog
+| |\ katalog2
+| \ katalog3
+\ klamka
+
+mkdir ukos
+cd ukos
+mkdir katalog
+mkdir klamka
+cd katalog
+mkdir katalog2 katalog3
+
+
+2.W katalogu ukos/klamka stwórz pliki
+zajęcia2.txt, zajęcia2.log, inny.txt, nowy.txt
+
+touch zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog:
+ukos/to/jest/dluga/nazwa
+
+mkdir -p ukos/to/jest/dluga/nazwa
+
+znalezione w internecie.Tworzy powyższą śćieżkę katalogów ze standardowymi uprawnieniami.
+
+4.następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+touch ukos/to/jest/dluga/nazwa/dane.txt
+
+5.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+rm *.txt
+
+6.Usuń katalog ukos/katalog/katalog2
+rmdir ukos/katalog/katalog2
+
+7.Usuń cały katalog klamka za pomocą jednego polecenia
+rm -rf klamka
+
+
+
+
+
+
+
+

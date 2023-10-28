@@ -1,0 +1,12 @@
+0.
+ - [2 foldery mi wyswietlilo]
+ - ls -a | grep p [.profile, public_html]
+ - Co się stało? - Wyszukało mi wszystkie pliki zawierające w swojej nazwie literę p,
+   nie koniecznie na początku
+ - ls -a | grep p > litera_p.txt
+   [Uworzył się plik litera_p.txt zawierający wyniki mojego wyszukiwania]
+   | - przekierowało strumień [ls] stdout do grepa, który wykonał na nim operację wyszukiwania
+   > - strumień stdout grepa zostal przekierowany do pliku litera_p.txt, nie istnial
+       wiec stworzyl sie nowy i tam sie wszystko zapisalo z tego strumienia
+ -ls -a | grep p | tee litera_p_2.txt, plik się utworzył, ale jest w nim zapisany też on sam
+    tee kopiuje wejście do pliku, dodając akurat w naszym przypadku nazwę samego pliku też do niego samego

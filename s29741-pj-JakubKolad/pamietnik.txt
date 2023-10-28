@@ -1,0 +1,7 @@
+2023-09-30
+Na dzisiejszych zajeciach nauczylem sie:
+
+*	jak poruszac się po terminalu linuxowym
+*	jak sprawdzać działanie poleceń z poziomu terminala
+
+

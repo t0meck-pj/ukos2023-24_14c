@@ -1,0 +1,117 @@
+Zadanie 1
+
+moja struktura plików (s29741)
+.
+├── katalog
+│   ├── jajo.txt (podrzucony przez s30020)
+│   ├── katalog2
+│   │   ├── file_2.txt
+│   │   ├── file_3.txt
+│   │   └── katalog_2.1
+│   │       └── file_5.txt
+│   └── katalog3
+│       └── file_4.txt
+└── public_html
+    └── strona.html
+
+
+
+struktura kolegi (s30020)
+
+├── ukos
+│   ├── hehe.txt
+│   ├── hehe.txt.save
+│   ├── katalog
+│   │   ├── katalog3
+│   │   └── test.txt
+│   ├── mess.txt (podrzucony przeze mnie)
+│   └── to
+│       └── jest
+│           └── dluga
+│               └── nazwa
+│                   └── dane.txt
+
+
+W katalogu kolegi moje domyślne uprawnienia to r-x. Mogę przeglądać zawartość
+folderów (ls) oraz plików(vim). Nie posiadam jednak uprawnień do zmiany 
+zawartości plików tekstowych, nazw katalogów czy uprwnień do obiektów.
+Minimum uprawnień jakiego potrzebuję do podrzucenia "kukułczego jaja" to -wx.
+
+W przypadku "jaja" w mojej strukturze podrzucający może mi odebrać do niego
+uprawnienia.
+
+
+Zadanie 2
+
+
+W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
+Wyłącznie w przypadku posiadania uprawnienia x.
+
+W jakich przypadkach możemy wykonać polecenie chmod ? 
+Tylko jeżeli jesteśmy właścicielem obiektu lub superuserem.
+
+Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
+Nie.
+
+Czy możemy także wrócić korzystając z polecnia cd - ?
+Tak.
+
+
+Zadanie 3
+
+W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić 
+login osób z zespołu) wypróbować możliwość komunikacji przez współdzielony plik:
+ na jednym z kont w zespole utworzyć pusty plik i przydzielić odpowiednie
+  uprawnienia dostępu (do pliku i do katalogu domowego). Wpisywać i odczytywać
+   komunikaty przy użyciu poleceń:
+
+echo treść_komunikatu > plik
+
+cat plik
+
+Uprawnienia na pliku potrzebne do tego zadania to (rw-)
+
+Sprawdzić, jaki skutek powoduje zamiana operatora > na operator >> w poleceniu echo. Uruchom także drugi terminal i wykonaj w nim komendę tail -f plik i powtórz powyższe ćwiczenie w pierwszym terminalu (komunikacja za pomocą pliku).
+
+> powoduje nadpisanie dotychczasowej treści pliku przez treść wprowadzoną
+przeze  mnie
+
+>> nie nadpisuje dotychczasowej treści, dodaje do niej moje zmiany
+
+tail -f podgląd "live" na zmiany treści pliku
+
+Zadanie 4
+
+Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to
+ utworzyć; musi się on nazywać DOKŁADNIE tak jak podano, pisane małymi 
+ literami z podkreśleniem zamiast spacji pomiędzy słowami). Umieścić w nim 
+ plik o nazwie strona.html o następującej zawartości:
+
+Sprawdzić, jakie są minimalne uprawnienia dostępu, które trzeba przydzielić do:
+
+katalogu domowego;
+--x
+katalogu public_html;
+--x
+pliku strona.html;
+r--
+
+Zadanie 5
+
+Jaka operacja logiczna na bitach domyślnych uprawnień dostępu oraz maski jest 
+wykonywana ? 
+
+Przyznam się od razu że poza man umask musiałem temat zgłębić w Internecie.
+
+Operacja jest uzależniona wartości maski. Maska składa sie z 3 cyfr (system
+oktalny)
+określających modyfikację uprawnień właściela, grupy oraz innych (patrząc od
+lewej). 
+
+Jeżeli cyfry maski zamienimy na postać binarną, dokonamy ich negacji a następnie
+zestawimy z bitami opisującymi obecne uprawnienia do pliku to za
+pomocą koniunkcji logicznej otrzymamy przekształcone uprawnienia, które będą
+stosowane do tworzonych przez nas plików. 
+
+Maskę można wyzerować co spowoduje, że tworzone pliki będą miały przisany
+standardowyzestaw uprawnień.

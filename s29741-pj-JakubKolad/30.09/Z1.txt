@@ -1,50 +1,94 @@
-1.Uruchom terminal.ctrl+alt+t
+Poniższe ćwiczenia wykonałem na vitrualce z Linux Lite 5.8 postawionej
+wg.tutorialu dostępnego na Teams.
 
-2.Wyświetl zawartość aktualnego katalogu.ls
+Poleceniami poruszałem się po poniższej strukturze:
 
-3.Sprawdź gdzie aktualnie się znajdujesz.pwd
 
-4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej.cd Desktop/
+.
+├── Desktop
+│ ├── computer.desktop
+│ ├── helpmanual.desktop
+│ ├── network.desktop
+│ ├── Pictures
+│ ├── settings.desktop
+│ └── userfiles.desktop
+├── Documents
+│ └── test
+│     └── sample.txt
+├── Downloads
+├── Music
+├── Pictures
 
-5.Sprawdź gdzie jesteś.pwd
 
-6.Wyświetl zawartość bieżącego katalogu.ls
+1.Uruchom terminal.
+ctrl+alt+t
 
-7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).ls /home
+2.Wyświetl zawartość aktualnego katalogu.
+ls
 
-8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej. cd Pictures/
+3.Sprawdź gdzie aktualnie się znajdujesz.
+pwd
 
-9.Sprawdź gdzie jesteś.pwd
+4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej.
+cd Desktop/
 
-10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././. Katalog nie uległ zmianie.
+5.Sprawdź gdzie jesteś.
+pwd
 
-*	W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.	Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+6.Wyświetl zawartość bieżącego katalogu.
+ls
 
-Rozumiem to jako polecenie "zostań tu gdzie jesteś". Po doczytaniu w Internecie rozumiem, że "./" pozwala np. na edytowanie plików "w dole" ścieżki,
-w której się obecnie znajdujemy. Innymi słowy jeżeli plik znajduje się w podkatalogach mojej obecnej lokalizacji to za pomocą "./" nie muszę ręcznie
-do tych katalogów przechodzić żeby go edytować.
+7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego 
+(ls z odpowiednim parametrem).
+ls /home
 
-*	Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
-Nie.
+8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - 
+podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) 
+w twoim katalogu domowym za pomocą ścieżki względnej. 
+cd Pictures/
 
-*	Co ta ścieżka oznacza/sobą reprezentuje?
-Umożliwia wykonywanie poleceń bez potrzeby zmiany bieżącego katalogu.
+9.Sprawdź gdzie jesteś.
+pwd
+
+10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././. 
+Katalog nie uległ zmianie.
+
+	*	W opisie rozwiązania proszę umieścić również to jak rozumiesz
+		co się właściwie stało.	
+		Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+
+		Polecenie ./ oznacza, że wprowadzam ścieżkę względną rozpoczynającą się
+		w katalogu, w którym się obecnie znajduję (roboczym). W ćwiczeniu
+		"zapętliłem" ścieżkę do bieżącego katalogu więc system oczywiście musiał
+		polecenie wykonać ale katalog nie uległ zmianie.
+
+	*	Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+		Nie.
+
+	*	Co ta ścieżka oznacza/sobą reprezentuje?
+		Oznacza "user podał ścieżkę względną zaczynającą się w katalogu
+		roboczym".
 
 11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
-cd /home
-
-12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
+cd /home/osboxes
+	
+12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało.
+Poszukaj w Internecie.
 
 Pojawił się komunikat "bash: cd: /root: Permission denied". Oznacza to, że mój użytkownik nie ma uprawnień do katalogu /root.
 Katalog ten znajduje się na szczycie drzewa folderów i jest katalogiem domowym superusera (administratora systemu). Jeżeli 
 znam hasło su albo należę do userów wymienionych w pliku sudoers, mogę uzyskać dostęp do katalogu /root.
 
 13.Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
-Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. 
+W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
 Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
 
-Przełączyłem się z interfejsu graficznego na widok terminala, wszystkie polecenia mogę wykonywać jak wyżej. Za pomocą Ctrl+Alt+F7 mogę wrócić z powrotem do interfejsu graficznego.
+Przełączyłem się z interfejsu graficznego na widok terminala, wszystkie polecenia mogę wykonywać jak wyżej. 
+Za pomocą Ctrl+Alt+F7 mogę wrócić z powrotem do interfejsu graficznego.
 
 14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
 
-Przełączam się między terminalami, w każdym z nich poza 1 mogę pracować.
+Przełączam się między terminalami. Do pulpitu mogę wrócić za pomocą ALT + F7. 
+W trybie teksotwym pod F1 mam podgląd na procesy w systemie natomiast pod F2
+terminal, na którym mogę pracować.

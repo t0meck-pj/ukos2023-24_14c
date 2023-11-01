@@ -91,4 +91,4 @@ Za pomocą Ctrl+Alt+F7 mogę wrócić z powrotem do interfejsu graficznego.
 
 Przełączam się między terminalami. Do pulpitu mogę wrócić za pomocą ALT + F7. 
 W trybie teksotwym pod F1 mam podgląd na procesy w systemie natomiast pod F2
-terminal, na którym mogę pracować.
+terminal tekstowy, na którym mogę pracować.

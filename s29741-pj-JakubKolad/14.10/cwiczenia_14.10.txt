@@ -54,7 +54,9 @@ Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy upra
 Nie.
 
 Czy możemy także wrócić korzystając z polecnia cd - ?
-Nie, wcześniej byłem w /home/PJWSTK/s29741/UKOS/katalog po wpisaniu polecenia cd - pojawia się poniższy komunikat o komunikat o braku dostępu.
+Nie, wcześniej byłem w /home/PJWSTK/s29741/UKOS/katalog po wpisaniu polecenia cd - pojawia się komunikat o komunikat o braku dostępu.
+
+
 Zadanie 3
 
 W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić 
@@ -111,5 +113,5 @@ zestawimy z bitami opisującymi obecne uprawnienia do pliku to za
 pomocą koniunkcji logicznej otrzymamy przekształcone uprawnienia, które będą
 stosowane do tworzonych przez nas plików. 
 
-Maskę można wyzerować co spowoduje, że tworzone pliki będą miały przisany
-standardowyzestaw uprawnień.
+Maskę można wyzerować co spowoduje, że tworzone pliki będą miały przypisany
+standardowy zestaw uprawnień.

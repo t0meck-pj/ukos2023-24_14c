@@ -3,7 +3,7 @@ cd ukos
 mkdir katalog klamka
 cd katalog
 mkdir katalog2 katalog3
-(cd $home)
+(cd $HOME)
 
 2.touch ukos/klamka/{zajecia2.txt,zajecia2.log,inny.txt,nowy.txt}
 

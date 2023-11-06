@@ -6,7 +6,7 @@ touch ../s32217/"kukulcze gniazdo"
 //W folderze kolegi powstał plik
 rmdir 'kukulcze gniazdo'
 //Plik zostal usuniety
-//W przypadku mc wszystko rowniesz dziala
+//W przypadku mc wszystko rowniez dziala :)
 
 2. cd raz
 chmod 000 ./
@@ -52,6 +52,7 @@ t
 //004 dla strona.html (read dla "innych")
 //001 dla public_html (execute dla "innych")
 //001 dla glownego katalogu uzytkownika (execute dla "innych"
+
 5.
 man umask
 q
@@ -66,4 +67,7 @@ ls -l
 umask 643
 touch plik3
 ls -l
-//Wyczytalem ze wykonuje sie operacja AND, ale nie rozumiem czemu.
+//umask przeprowadza negacje "swojej liczby", a nastepnie wykunuje logiczne AND
+z nowo dodanymi plikami, takze kazde uprawnienie, ktore jest oznaczone w masce
+jako 1 (oczywiscie w domysle, poniewaz maska nie jest przedstawiona w trybie
+dwojkowym), zostanie odjete od domyslnej wartosci nowo utworzonego pliku

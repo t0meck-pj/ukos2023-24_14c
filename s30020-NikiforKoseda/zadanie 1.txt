@@ -2,31 +2,31 @@
 Konfiguracja PUTTY, logowanie na szuflandię i wszystko elegancko działa
 
 2.Wyświetl zawartość aktualnego katalogu.
-ls wpisane
+ls wpisane - wyświetla mi zawartość aktualnego katalogu
 
 3.Sprawdź gdzie aktualnie się znajdujesz.
-pwd wpisane
+pwd wpisane - wyświetla ścieżkę do aktualnego folderu
 
 4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej
 cd // wpisane
 
 5.Sprawdź gdzie jesteś.
-pwd ponownie wpisane
+pwd ponownie wpisane 
 
 6.Wyświetl zawartość bieżącego katalogu.
 ls ponownie wpisane
 
 7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z
  odpowiednim parametrem).
-ls $home wpisane
+ls $HOME wyświetla zawartość domowego, parametr koniecznie z dużych liter
 
 8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj 
 wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w 
 twoim katalogu domowym za pomocą ścieżki względnej.
-cd media wpisane
+cd UKOS - zmienia aktywny folder na UKOS
 
 9,Sprawdź gdzie jesteś.
-pwd ponownie wpisane
+pwd ponownie wpisane - jestem w katalogu UKOS w moim katalogu domowym
 
 10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
 W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie 
@@ -39,7 +39,7 @@ e większej ilości nic nie zmieni, nawzajem się kasują. Ta ścieżka zasadnic
 wskazuje na nasz aktualny folder
 
 11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
-ls /home/PJWSTK/s30020 wpisane
+cd /home/PJWSTK/s30020 wpisane
 
 12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, za
 stanów się co się stało. Poszukaj w Internecie.
@@ -54,12 +54,15 @@ Przełączy mnie na terminal tekstowy
 
 14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxac
 h)
-Przełącza między terminalami tekstowymi
+Przywraca mnie do GUI, Alt+F1 do ekranu logowania, a Alt+F2 do oryginalnej 
+sesji
 
 
 1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swo
 im katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~): 
-Kilka mkdirów i elegancko ogarnięte
+Można tworzyć katalogi w innych katalogach i nie trzeba się w nich znajdować - 
+jeżeli znamy ścieżkę do nich do na spokojnie można utworzyć w nich foldery.
+Da się również jednym poleceniem stworzyć kilka katalogów.
 
 2.W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.t
 xt 
@@ -67,14 +70,15 @@ Jeden touch i wszystko utworzone
 
 3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog:
 ukos/to/jest/dluga/nazwa 
-Całe szczęście że w tym długi mkdirze z pojedyńczymi nie popełniłem błędu z
-nazwami folderów - wszystko działa
+Należy tworzyć po kolei foldery korzystając ze ścieżki, bo nie da się utworzyć 
+folderu w katalogu który nie istnieje. Ale da się jednym poleceniem utworztć 
+całe drzewo
 
 4.Następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt 
 Plik utworzony mkdirem z długą ścieżką dostępu
 
 5.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
-rm ukos/klamka/*.txt i pozamiatane
+rm ukos/klamka/*.txt i usunięte.
 
 6.Usuń katalog ukos/katalog/katalog2
 rmdir usunął katalog
@@ -88,3 +92,6 @@ tego nie robiłem i dobrze było sobie wszystko przypomnieć.
 -Dobrze też było się dowiedzieć jak to wszystko pod maską działa - nie wiedział
 em np. że rm -r usuwa rekurencyjnie, zawsze myślałem że to po prostu mocniejsze 
 usunięcie
+-Ciężko trochę wyciągnąć mi bardziej skomplikowane wnioski. Zakładam że pod GUI 
+wszystko operuje na dokłądnie takich poleceniach. Klikanie tego wszystkiego w 
+windowsie zwyczajnie wykonuje te polecenia, lub ich odpowiedniki.

@@ -1,0 +1,55 @@
+3: Procesy i Strumienie - zadanie 1
+
+Poniższe ćwiczenia wykonałem na vitrualce z Linux Lite 5.8 postawionej
+wg.tutorialu dostępnego na Teams.
+
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+	ps
+
+	    PID TTY          TIME CMD
+	   2434 pts/0    00:00:00 bash
+	   2945 pts/0    00:00:00 ps
+
+	ps -a
+
+	 	PID TTY          TIME CMD
+	   3854 pts/0    00:00:00 ps
+
+	ps x
+
+
+	    PID TTY      STAT   TIME COMMAND
+	   2042 ?        Ss     0:00 /lib/systemd/systemd --user
+	   2044 ?        S      0:00 (sd-pam)
+	   ...
+	   <tu podaję tylko fragment dość długiego wyniku>
+
+	ps axu
+
+		USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+		root           1  0.0  0.2 102004 11276 ?        Ss   09:18   0:02 /sbin/init splash
+		root           2  0.0  0.0      0     0 ?        S    09:18   0:00 [kthreadd]
+		 ...
+		<tu także podaję tylko fragment dość długiego wyniku>
+
+
+	Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+
+		Po lekturze "man ps" i kilku artykułów w sieci myślę, że oznacza proces
+		niepodłączony do terminala, który dzieje się w tle np. procesy systemowe takie
+		jak daemony.
+
+	Nie wiesz? A gdzie może być wyjaśnienie?
+
+		Pierwsze źródło to "man ps" potem googlanie jako rozwinięcie.
+
+B: Jak wykonasz poniższe 2 zadania?
+
+	Wyświetl wszystkie procesy bash
+	ps -C bash
+
+
+	Wyświetl wszystkie procesy należące do użytkownika root
+	ps -u root

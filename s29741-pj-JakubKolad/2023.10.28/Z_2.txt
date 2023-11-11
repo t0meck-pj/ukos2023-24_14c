@@ -1,0 +1,69 @@
+3: Procesy i Strumienie - zadanie 2
+
+Poniższe ćwiczenia wykonałem na vitrualce z Linux Lite 5.8 postawionej
+wg.tutorialu dostępnego na Teams
+
+Zadanie:
+
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+
+2.Zobacz jaki ma on PID - przyda się do tego komenda ps
+	PID 	TTY    STAT   TIME COMMAND
+	19623 pts/0    Sl+    0:00 vim
+
+
+3.Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+
+	kill 19623
+
+UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować.
+Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+
+	Próbowałem z vimem i vscode oba zamknęły się na samo polecenie "kill <pid>"
+	natomiast zauważyłem, że vim po otrzymaniu zwykłego kill zamyka się z informacją
+	o otrzymaniu "deadly signal kill". W przypadku polecenia "kill -SIGKILL <pid>"
+	zamknięcie jest nagłe bez żadnych komunikatów.
+
+	Jak wysłać SIGKILL sprawdziłem oczywiście pod "man kill".
+
+4.Zobacz działanie komendy killall bash
+	
+	Polecenie "killall bash" wyłączyło wszystkie aktywne procesy basha
+	uruchomione w terminalach innych niż ten, z którego wysłałem polecenie -
+	zapis moich działań zamieszczam niżej.
+
+	Wnioskuję, że wynika to 2 rzeczy 
+
+	1. manual do killall pisze "killall process never kills itself";
+	2. gdybym wyłaczyl wszystkie aktywne procesy basha to przy założeniu, że nie
+	uruchomiłby się on automatycznie - bez restartu komputera dalsza praca nie
+	byłaby możliwa.
+
+	osboxes~ ps -C bash
+	    PID TTY          TIME CMD
+	  22791 pts/0    00:00:00 bash
+
+	osboxes~ ps -C bash
+	    PID TTY          TIME CMD
+	  22791 pts/0    00:00:00 bash
+	  23242 tty5     00:00:00 bash
+	  23336 tty4     00:00:00 bash
+
+	osboxes~tty
+	/dev/pts/0
+
+	osboxes~killall bash
+
+	osboxes~ ps -C bash
+	    PID TTY          TIME CMD
+	  22791 pts/0    00:00:00 bash
+
+
+5.Zobacz czy kill zadziała dla dowolnego procesu.
+
+	Nie, przy próbie "zabicia" poniższego procesu dostałem komunikat: 
+	"bash: kill: (1) - Operation not permitted"
+
+	  PID 	USER    TIME+ 	COMMAND 
+	   1 	root    0:02.92 systemd  

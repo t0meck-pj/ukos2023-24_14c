@@ -1,0 +1,47 @@
+3: Procesy i Strumienie - zadanie 3
+
+
+	1.Wydaj komendę cat > wynik3_1.txt
+
+	2.Wpisz tekst witaj bez wciskania klawisza Enter
+
+	3. Wciśnij CTRL+C
+
+	4. Zobacz co się znalazło w pliku wynik3_1.txt
+
+
+	1. Wydaj komendę cat > wynik3_2.txt
+
+	2.Wpisz tekst witaj bez wciskania klawisza Enter
+
+	3.Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+	4.Zobacz co się znalazło w pliku wynik3_2.txt
+
+W opisie rozwiązania zadania umieść:
+
+* jak rozumiesz co się stało?
+	
+	ctrl + c - skrót przerwał działanie programu, porównałbym to wyłączenia
+	komputera poprzez wyjęcie wtyczki z
+	gniazdka.
+
+	ctrl + d - do momentu wciśniecia tych 2 klawiszy cat "wdrukowało" na
+	standardowe wejście pliku słowo "witaj". Skrót klawiszowy spowodował
+	zapisanie w pliku dotychczas wprowadzonych danych i zakończenie programu.
+
+
+* czym oba te przykłady się różnią?
+
+	ctrl + c - zamknij
+
+	ctrl + d - zapisz i zamknij
+
+* DLACZEGO się różnią?
+
+	ctrl + c - wysyła sygnał SIGINT, sygnał przerwania po którym proces jest
+	zamykany a w pamieci nie zapisywane przetwarzane dane.
+
+	ctrl + d - wysyła sygnał SIGQUIT, sygnał zakończenia po którym proces jest
+	kończony wraz zapisem danych, które przetwarzał.
+

@@ -11,4 +11,4 @@ wiedza. Na ćwiczeniach było dużo informacji. Na pewno będę musiał jeszcze
 to wszystko powtórzyć aby dobrze wszystko zapamiętać. 
 -------------------------------------------------------------------------------
 2023-10-14
- * 
+ * Tego dnia nauczyłem się jak używać git push --force przez to że poprzednio dodałem pliki do repozytorium poprzez file upload 

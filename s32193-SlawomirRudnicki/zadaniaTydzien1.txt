@@ -1,0 +1,49 @@
+1: Wstep do konsoli zadania
+
+1. Uruchomilem terminale:
+	cmd - windowsa
+	szuflandie - przez putty
+	git bash
+2. uzylem komendy ls -la, ls -l oraz dir zeby zobaczyc co jest w katalogu w ktorym jestem
+3. uzylem komendy pwd na szuflandii zeby sprawdzic gdzie jestem
+4. uzylem sciezki wzglednej cd ../PPGR_LAB zeby cofnac sie o folder i przejsc do innego folderu
+	uzylem komendy ls ../../ aby sprawdzic gdzie znajduje sie folder do ktorego chce przejsc
+	zrobilem kilka dodatkowych katalogow, zmienilem folder sciezka wzgledna ../../PPGR_LAB aby cofnac sie 2 foldery i wejsc w PPGR_LAB
+5. uzylem komendy pwd aby sprawdzic gdzie sie znajduje
+6. uzylem komendy ls -la aby wyswietlic zawartosc
+7. uzylem komendy ls -la ../ aby wyswietlic zawartosc innego katalogu
+10. cd ././././././ przeniesie mnie do tego samego folderu w ktorym sie znajduje (./ - oznacza obecny katalog), dodanie lub odjecie "./" nic nie zmieni
+11. uzylem komendy cd /home/PJWSTK/s32193 aby przejsc do swojej glownego katalogu
+12. cd /root zglosi brak uprawnien zeby przejsc do katalogu root, ponadto nie da sie rowniez wyswietlic zawartosci tego folderu
+13. ctrl+alt+f3 przelacza miedzy konsolami, ctrl+alt+f1 przelaczy na konsole oryginalna, a ctrl+alt+f2 przelaczy mnie rowniez na inna konsole
+14 alt+f1,2,3,4,5,6 rowniez przelaczy miedzy konsolami
+
+///////////////////
+
+1. stworzylem katalog ukos za pomoca mkdir
+2. stworzylem katalog klamka za pomoca mkdir
+3. stworzylem drzewo katalogow katalog/katalog2/katalog3 oraz ukos/to/jest/dluga/nazwa za pomoca mkdir -p
+4. stworzylem plik dane.txt za pomoca touch
+5. stworzylem pliki za pomoca touch zajecia2.txt zajecia2.log inny.txt nowy.txt
+6. usunalem pliki za pomoca rm zajecia2.txt inny.txt nowy.txt
+7. usunalem katalog2 i 3 za pomoca rm -r katalog2
+7. usunalem klamka oraz zawartosc za pomoca rm -r klamka
+
+////////////////////
+
+1. wszedlem w gitbash 
+2. ustawilem uzytkownika oraz mail git config --global user.name (user.mail)
+3. zainicalizowalem folder git init
+4. sprawdzilem status git status
+5. git add --all
+6. git commit -m "wiadomosc"
+7,0. uzylem podpowiedzi komend w githubie 
+7,1. git remote add origin https://github.com/s32193-pj/mleko.git
+8.git branch -M main
+9.git push -u origin main
+10. zrobilem update pliku
+	git status
+	git add --all
+	git commit -m "update 1"
+	git push
+	git status

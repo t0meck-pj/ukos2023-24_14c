@@ -1,0 +1,87 @@
+3: Procesy i Strumienie - zadanie 0
+
+Poniższe ćwiczenia wykonałem na vitrualce z Linux Lite 5.8 postawionej
+wg.tutorialu dostępnego na Teams.
+
+Poleceniami poruszałem się po poniższej strukturze:
+
+.
+├── Desktop
+│ ├── computer.desktop
+│ ├── helpmanual.desktop
+│ ├── network.desktop
+│ ├── Pictures
+│ ├── settings.desktop
+│ └── userfiles.desktop
+├── Documents
+│ └── test
+│     └── sample.txt
+├── Downloads
+├── Music
+├── Pictures
+├── Public
+├── Templates
+├── ukos
+│ ├── klamka
+│ └── ukos
+│     └── to
+│         └── jest
+│             └── dluga
+│                 └── nazwa
+│                     └── dane.txt
+├── ukos1
+│ ├── katalog
+│ │ ├── katalog2
+│ │ └── katalog3
+│ └── klamka
+└── Videos
+
+
+1.Przejdź do swojego katalogu domowego
+	cd ~
+
+2.Wydaj komendę: ls -a. Zobacz ile plików wypisało.
+
+	Na konsolę zostały wypisane wszystkie pliki znajdujące się w katalogu
+	domowym łacznie z plikami ukrytymi.
+
+3.Teraz wydaj komendę: ls -a | grep D. Zobacz ile teraz jest wyników. Co się
+stało?
+
+	Na konsolę zostały wypisane wyłącznie katalogi, których nazwa zaczyna się na
+	literę "D".
+
+4.A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+Zobacz czy utworzył sie jakiś plik?
+
+	Tak, utworzył się plik lista_plikow_z_literka_d.txt
+
+6.Jaka jest jego treść?
+
+	Zawiera listę katalogów, których nazwa zaczyna się na literę "D".
+
+7.Co znaczy | oraz co znaczy > ?
+
+	| Przekierowanie standardowego wyjścia (stdout) programu A na standardowe
+	wejście (stdin) programu B. W przpadku ww. polecenia lista z polecenia ls
+	zamiast na konsolę trafiła do programu grep gdzie została przefiltrowana a wynik
+	został zapisany do pliku o podanej w poleceniu nazwie.
+
+	>  Przekierowanie standardowego wyjścia (stdout) do pliku (nadpisywanie). W
+	przypadku gdybym wykonał ww.polecenie jeszcze raz ale np. z grep M do dane w
+	pliku lista_plikow_z_literka_d.txt zostałyby nadpisane nowym filtrowaniem tym
+	razem po literze "M".
+
+8.A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+Zobacz czy plik się utworzył?
+
+	Tak, utworzył się plik o nazwie podanej w poleceniu.
+
+10.Jaka jest treść względem poprzedniej próby bez programu tee?
+
+	Jest taka sama.
+
+11.Co robi program tee?
+
+	Program tee wykonuje jednocześnie 2 zadania. Zapisuje dane ze standardowego
+	wejścia do wskazanych plików oraz przekazuje je do wypisania na konsoli.

@@ -3,33 +3,33 @@ Zadanie 1
 moja struktura plików (s29741)
 .
 ├── katalog
-│   ├── jajo.txt (podrzucony przez s30020)
-│   ├── katalog2
-│   │   ├── file_2.txt
-│   │   ├── file_3.txt
-│   │   └── katalog_2.1
-│   │       └── file_5.txt
-│   └── katalog3
-│       └── file_4.txt
+│ ├── jajo.txt (podrzucony przez s30020)
+│ ├── katalog2
+│ │ ├── file_2.txt
+│ │ ├── file_3.txt
+│ │ └── katalog_2.1
+│ │     └── file_5.txt
+│ └── katalog3
+│     └── file_4.txt
 └── public_html
     └── strona.html
 
 
 
 struktura kolegi (s30020)
-
+.
 ├── ukos
-│   ├── hehe.txt
-│   ├── hehe.txt.save
-│   ├── katalog
-│   │   ├── katalog3
-│   │   └── test.txt
-│   ├── mess.txt (podrzucony przeze mnie)
-│   └── to
-│       └── jest
-│           └── dluga
-│               └── nazwa
-│                   └── dane.txt
+│ ├── hehe.txt
+│ ├── hehe.txt.save
+│ ├── katalog
+│ │ ├── katalog3
+│ │ └── test.txt
+│ ├── mess.txt (podrzucony przeze mnie)
+│ └── to
+│     └── jest
+│         └── dluga
+│             └── nazwa
+│                 └── dane.txt
 
 
 W katalogu kolegi moje domyślne uprawnienia to r-x. Mogę przeglądać zawartość
@@ -45,7 +45,7 @@ Zadanie 2
 
 
 W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
-Wyłącznie w przypadku posiadania uprawnienia x.
+Wyłącznie w przypadku posiadania uprawnienia x w sekcji uprawnień właściciela.
 
 W jakich przypadkach możemy wykonać polecenie chmod ? 
 Tylko jeżeli jesteśmy właścicielem obiektu lub superuserem.
@@ -54,7 +54,7 @@ Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy upra
 Nie.
 
 Czy możemy także wrócić korzystając z polecnia cd - ?
-Tak.
+Nie, wcześniej byłem w /home/PJWSTK/s29741/UKOS/katalog po wpisaniu polecenia cd - pojawia się komunikat o komunikat o braku dostępu.
 
 
 Zadanie 3
@@ -113,5 +113,5 @@ zestawimy z bitami opisującymi obecne uprawnienia do pliku to za
 pomocą koniunkcji logicznej otrzymamy przekształcone uprawnienia, które będą
 stosowane do tworzonych przez nas plików. 
 
-Maskę można wyzerować co spowoduje, że tworzone pliki będą miały przisany
-standardowyzestaw uprawnień.
+Maskę można wyzerować co spowoduje, że tworzone pliki będą miały przypisany
+standardowy zestaw uprawnień.

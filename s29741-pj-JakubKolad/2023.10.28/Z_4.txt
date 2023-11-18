@@ -1,0 +1,23 @@
+3: Procesy i Strumienie - zadanie 4
+
+
+
+
+Wykonaj komendę nano &
+
+Wykonaj komendę vim &
+			
+Zobacz co się stało (domyślam się, że uruchomiły się 3 programy, a na terminalu ciągle można coś pisać.)
+
+	Dokładnie takie działanie jako opisane powyżej ma miejsce:
+
+	[1]-  Stopped                 vim
+	[2]+  Stopped                 nano
+
+
+
+
+Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni program) z tła na pierwszy plan. Skorzystaj z jobs aby dowiedzieć się jakie mają numery poszczególne zadania działające w tle.
+składnia: fg %(numer jobu)
+
+	vima przywróciłem poleceniem fg %1

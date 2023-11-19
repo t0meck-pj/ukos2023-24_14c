@@ -14,3 +14,24 @@ tak zaawansowana. W każdym razie, ciekawie patrzy się na różnicę
 między uprawnieniami na windowsie a linuksie. W bashu łatwiej
 jest też chyba nimi zarządzać niżw  windowsie - aczykolwiek aby 
 się upewnić muszę trochę więcej popracować w trybie tekstowym
+2023.10.28
+Mój kochany pamiętniczku, dzisiaj mieliśmy przekierowania.
+Podoba mi się bardzo ten koncept, działa jak w fabryce - input można przekazać
+na output, więc przy stworzeniu odpowiedniego skryptu można stworzyć naprawdę 
+fajną maszynę, wykonującą operacje w zasadzie samodzielnie. Bardzo duży
+potencjał ma to na optymalizację pracy. Bawiliśmy się też nieco procesami -
+wyglądało to jak menedżer zadań w windowsie, ale z nieco większymi opcjami
+konfiguracji.
+2023.11.18
+Mój kochany pamiętniczku, dzisiaj powtóreczka do kolosa.
+Przemieszczenia między folderami nie są zbyt skomplikowane, warto zapamiętać
+że względne przemieszczanie to na przykład cd ../.. cofa nas o 2 foldery.
+Ctrl + d odcina dopływ informacji do programu, przez co ten program
+prędzej bądź później się wyłączy
+Ctrl + c wysyła sygnał zakończenia, ale nie zawsze wyłączy, nie zawsze program
+reaguje
+ctrl + z wstrzymuje działanie programu
+Kill służy do wysłania dowolnego sygnału. Domyślnie wysyła sygnał 15 czyli TERM
+Domyślnie przerywa działanie procesu.
+ls wyświetla zawartość, grep na podstawie wymagań listuje linie. ls al* też 
+zadziała. 

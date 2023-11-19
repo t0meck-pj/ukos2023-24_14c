@@ -97,4 +97,4 @@ uprawnienia do odczytu, by móc wyświetlić plik w przeglądarce. Bardzo podoba
 mi się generalnie koncept zdalnego dostępu do plików i wyświetlania ich 
 zawartości, to niesamowicie praktyczna rzecz. Natomiast jest to prosta strona,
 domyślam się że dla bardziej zaawansowanych operacji będą potrzebne również 
-inne rodzaje uprawnień, na przykład do logowania na stronie.
+inne rodzaje uprawnień, na przykład do logowania na stronie. 

@@ -79,7 +79,7 @@ Zobacz czy plik się utworzył?
 
 10.Jaka jest treść względem poprzedniej próby bez programu tee?
 
-	Jest taka sama.
+	Na liście pojawiła się dodatkowo nazwa pliku, do którego polecenie tee zapisało wyniki wyszukiwania. Wyniki zostały też wyświetlone w terminalu.
 
 11.Co robi program tee?
 

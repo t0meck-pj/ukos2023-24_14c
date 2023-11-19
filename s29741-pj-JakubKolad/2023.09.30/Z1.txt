@@ -40,7 +40,7 @@ ls
 
 7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego 
 (ls z odpowiednim parametrem).
-ls /home
+ls ~
 
 8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - 
 podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) 
@@ -57,7 +57,7 @@ Katalog nie uległ zmianie.
 		co się właściwie stało.	
 		Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
 
-		Polecenie ./ oznacza, że wprowadzam ścieżkę względną rozpoczynającą się
+		Ścieżka ./ oznacza, że wprowadzam ścieżkę względną rozpoczynającą się
 		w katalogu, w którym się obecnie znajduję (roboczym). W ćwiczeniu
 		"zapętliłem" ścieżkę do bieżącego katalogu więc system oczywiście musiał
 		polecenie wykonać ale katalog nie uległ zmianie.
@@ -70,7 +70,8 @@ Katalog nie uległ zmianie.
 		roboczym".
 
 11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
-cd /home/osboxes
+cd /home/osboxes - na mojej prywatnej wirtualce
+cd /home/PJWSTK/s29741 na szuflandii
 	
 12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało.
 Poszukaj w Internecie.

@@ -37,22 +37,28 @@ Zadania:
 A: Zobacz co się stanie jeśli wpiszemy w terminalu:
 
 ps
+-wyświetla procesy mające to samo EUID co ja
 
 ps -a
+-wyświetla wszystkie procesy poza session leader (gdzie session id == process id), oraz procesami nie powiązanymi z terminalem
 
 ps x
+-wyświetla procesy nie posiadające tty, czyli bez przyporządkowanego terminalu
 
 ps axu
 INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+-Łączy parametry x(czyli bez terminalu), a(czyli wszystkich użytkowników) i u(czyli w dużo przyjemniejszym do czytania formacie) i faktycznie - lepiej czyta się axu niż ax, przynajniej mi
 
 Jak myślisz, co oznacza znak zapytania w kolumnie 2?
 Nie wiesz? A gdzie może być wyjaśnienie?
+-wyjaśnienie prawie na pewno zawsze i wszędzie będzie w instrukcji. W tym wypadku druga kolumna wyświetla terminal danego procesu - więc ? oznacza brak terminala
 
 B: Jak wykonasz poniższe 2 zadania?
 
 Wyświetl wszystkie procesy bash
 
 Wyświetl wszystkei procesy należące do użytkownika root
+-przekierowaniem na polecenie grep. wyświetlam jedynie linijki zawierające słowo root lub bash. W wypadku roota wpisuję ^root, dzięki czemu pojawiają się tylko linijki zaczynające od root
 
 
 2

@@ -88,6 +88,8 @@ W terminalu jest kilka przydatnych skrótów klawiszowych. Jednym z nich jest CT
 Uruchom komendę cat be parametrów
 
 Wciśnij CTRL+C i zobacz co się stanie
+-ctrl +c przerywa działanie programu
+
 
 Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego wejścia (stdin), ale w sposób możliwie bezpieczny.
 
@@ -117,6 +119,8 @@ jak rozumiesz co się stało?
 czym oba te przykłady się różnią?
 
 DLACZEGO się różnią?
+
+-Ciekawa sprawa - w obu przypadkach otrzymuję plik z pustą zawartością. Domyślam się, że jako że jeden z nich przerywa działanie programu, a drugi jedynie ucina stdin, to na drugim powinno pojawić się ,,witaj", jako, że odcięcie następuje po wprowadzeniu tego na stdin. Nie potrafię odnaleźć wytłumaczenia tego fenomenu. Szukając po internecie trafiłem na wskazówkę, że wciśnięce ctrl+d jeden raz powinno zachować zawartość - ale wciśnięcie raz nic nie robi w moim wypadku. Robocza teoria jest taka, że może mieć to związek z byciem połączonym na serwer - stdin jest lokalnie dopóki nie nacisnę klawisza Enter
 
 
 4

@@ -1,0 +1,116 @@
+Do wykonania zadań wykorzystałem szuflandie oraz ubuntu 23.10
+[linux 6.5.0-13-generic]
+
+To są zadania ze wstepu do konsoli cz.2
+
+ZADANIE 1
+*loguję się na szuflandia
+*znajduję się w ~ i uruchamiam polecenie:
+mkdir -p ukos/katalog/katalog2 && mkdir -p ukos/katalog/katalog3 && cd ukos && mkdir klamka
+oto drzewo które powstało:
+ukos
+
+ |\ katalog
+
+ |   |\ katalog2
+
+ |    \ katalog3
+
+  \ klamka
+
+Wniosek:
+bez mkdir -p tworzenie katalogów z podkatalogami jest uciążliwe
+
+ZADANIE 2
+*Po wykonaniu poprzedniego zadania znajduję się w katalogu ukos
+*Używam komendy:
+cd klamka && touch zajecia2.txt zajecia2.log inny.txt nowy.txt
+*Powstałe pliki w katalogu klamka:
+zajecia2.txt zajecia2.log inny.txt nowy.txt
+
+Wniosek:
+Dobrze, że możemy tworzyć wiele plików o różnych rozszerzeniach za pomocą
+jednego polecenia touch
+
+ZADANIE 3
+*Używam
+cd ..
+bo po poprzednim zadaniu bylem w folderze klamka
+*mkdir -p ukos/to/jest/dluga/nazwa
+
+Wniosek:
+Stworzylem katalog ukos w katalogu ukos, tak zrozumiałem treść zadania
+
+ZADANIE 4
+*dalej jestem w folderze ukos
+*obecny stan katalogu:
+ukos
+├── katalog
+│   └── katalog2
+│   └── katalog3
+├── klamka
+│   ├── inny.txt
+│   ├── nowy.txt
+│   ├── zajecia2.log
+│   └── zajecia2.txt
+└── ukos
+    └── to
+        └── jest
+            └── dluga
+                └── nazwa
+*Wpisuję do konsoli:
+touch ukos/to/jest/dluga/nazwa/dane.txt
+*Powstał plik dane.txt w katalogu nazwa
+
+Wniosek:
+Kiedyś zrobiłbym to 3 komendami zamiast 1
+
+ZADANIE 5
+*używam
+man rm
+bo nie wiem o co chodzi
+*nic tam nie ma, ewentualnie słowa przestaly miec znaczenie
+ale na cwiczeniach albo wykladach bylo cos o "*"
+*Próbuję wywołać komende:
+rm klamka/*txt
+*Sukces, w katalogu klamka znajduje się tylko plik zajecia2.log
+
+Wniosek:
+1.niektórych rzeczy nie znajdę w manualu tak łatwo jakbym chciał
+2.Wiedza z systemów operacyjnych się przydaje
+
+ZADANIE 6
+*Wyrzuciło mnie z szuflandii podczas wykonywania zadania
+dlatego znajduję się teraz w ~
+*Wpisuję polecenie
+rmdir ukos/katalog/katalog2
+*Katalog został poprawnie usunięty
+
+Wniosek:
+Rozumiem, że rm -r usuwa wszystkie katalogi jeden po drugim, ale nie rozumiem
+dlaczego istnieje rmdir skoro mamy rm -d, jedyne co mi przychodzi
+do głowy to dlatego, że rmdir ma jeszcze swoje dodatkowe parametry,
+ale nie mam pewności czy nie mogę zrobić takiej samej operacji używając
+rm z odpowiednim parametrem
+do przetestowania
+
+ZADANIE 7
+*Tutaj bedąc dalej w katalogu użytkownika ~
+używam polecenia:
+rm -r ukos/klamka
+*Katalog wraz z zawartością został usunięty
+Oto wynik po wykonaniu wszyskich zadań:
+ukos
+├── katalog
+│   └── katalog3
+└── to
+    └── jest
+        └── dluga
+            └── nazwa
+                └── dane.txt
+
+Mam nadzieję, że nie zgubiłem się w trakcie, pozdrawiam :-)
+
+
+
+

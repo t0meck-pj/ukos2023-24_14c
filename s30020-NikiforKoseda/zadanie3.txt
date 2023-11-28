@@ -80,6 +80,7 @@ UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokowa�
 Zobacz działanie komendy killall bash
 
 Zobacz czy kill zadziała dla dowolnego procesu.
+-Kill za pierwszym razem nie zadziałał na VSCode, lub zmienił numer procesu. DOpiero użycie drugi raz nagle go wyłączyło. Oznacza to, że nie zdecydował się ignorować TERMa. Killall bash nic w moim wypadku nie zrobił - według zebranych danych zabija wszystkie instancje basha. Kill nie działą na wszystkie procesy, chociażby do procesów roota nie mam dostępu
 
 
 3
@@ -131,12 +132,16 @@ CTRL+Z służy do wstrzymania bieżącego procesu i przeniesienia go do tła. To
 Zobacz co się stanie:
 
 Wpisz komendę gimp (lub np. edytor tekstowy gedit)
+-odpala się notatnik, korzystam z gedita, bo mniejszy rozmiar
 
 W terminalu w którym sie to uruchomiło wciśnij CTRL+Z
+-Program został wstrzymany, zastopowany
 
 Spróbuj coś wyklikać w gimpie / gedicie
+-Program jest zatrzymany, więc w GUI wyświetla się informacja że program nie odpowiada
 
 Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno gimpa / gedita i potem je odsuń by odsłonić w pełni okno gimpa / gedita
+-Miałem terminal na pełnym ekranie, gedit jest dość wyszarzony
 
 Co się stało? Wstrzymaliśmy program gimp/gedit. Program wstrzymany za pomocą kombinacji CTRL+Z jest przenoszony w tło (background). Efekt jest taki, że taki program przestaje odpowiadać na cokolwiek.
 
@@ -145,6 +150,7 @@ Komenda bg służy do wznowienia w tle wstrzymanego programu. Zobacz:
 Wpisz komendę: bg
 
 Jak widać gimp/gedit ożył (jeśli nie, to zapytaj prowadzącego)
+-Ożył zdecydowanie
 
 Komenda fg służy do wznowienia na pierwszym planie wstrzymanego wcześniej procesu. Zobacz co się stanie:
 
@@ -164,9 +170,11 @@ Wykonaj komendę gedit &
 Wykonaj komendę geany &
 
 Zobacz co się stało (domyślam się, że uruchomiły się 3 programy, a na terminalu ciągle można coś pisać.
+-tak dokłądnie jest, ale dodatkową praktyczną rzeczą jest to, że od razu wyświetla się PID - szkoda że nie wiedziałem tego wcześniej przy zadaniu z zabijaniem VScoda, to bym sobie oszczędził szukania
 
 
 Kolejna komenda to jobs. Służy ona do wyświetlania listy zadań (jobów; nie mylić z procesami) przeniesionych do tła.
 
 Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni program) z tła na pierwszy plan. Skorzystaj z jobs aby dowiedzieć się jakie mają numery poszczególne zadania działające w tle.
 składnia: fg %(numer jobu)
+-Czyli można wstrzymywać programy by nie pochłaniały mocy obliczeniowej. Praktyczna rzecz. 

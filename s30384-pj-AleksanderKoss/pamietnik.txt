@@ -1,0 +1,7 @@
+2023-09-30
+Na dzisiejszych zajęciach nauczyłem się podsawowych komend do terminala Linuxa takich jak?
+mkdir, touch, rm, cd, pwd
+Nauczyłem się jak poruszać sie między katalogami, oraz jak tworzyć i usuwać pliki oraz katalogi oraz wyświetlać ich zawartość. 
+
+2023-10-14
+Na zajęciach nauczyłem się nadawać i odbierać uprawnienia plików i katalogów oraz kilka metod na jakie można to zrobić, zmieniać domyślne uprawnienia nowo utworzonych plików i katalogów.

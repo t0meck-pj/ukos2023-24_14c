@@ -1,0 +1,39 @@
+1.
+mkdir test test/katalog1 test/katalog2
+touch test/katalog1/test.txt test/katalog1/test1.txt
+cd ..
+[Wchodze sobie do czyjegos folderu]
+[touch: nie można dotknąć 'trojan.exe': Brak dostępu], chyba ktos sie zabezpieczyl
+
+2.
+chmod a=- ./
+chmod a=- test
+  -możemy cofać się i wchodzić do katalogów nie objętych ograniczeniami
+  -tylko z katalogu podrzędnego
+  -nie możemy przeskoczyć do ABC/XYZ, jeśli nie mamy uprawnień do ABC
+  - Możemy wracać z folderu do ktorego nie mamy uprawnien przy uzyciu cd-
+
+3.
+
+Testowane z : s31175
+chmod o=rw ./
+cat text.txt < "Litwo, ojczyzno moja ty jestes jak zdrowie..."
+echo "O nowa linia sie doda teraz" << text.txt
+tail -f text.txt - teraz widzę aktualizujący ciągle się plik
+
+
+4.
+
+mkdir public_html
+cd public_html
+touch strona.html
+nano strona.html
+[Kopiuje i zapisuje]
+
+Minimalne ustawienia do folderu dla użytkownika (0): rx
+Minimalne ustawienia do pliku dla użytkownika (o): r
+
+5.
+
+Komenda umask nakłada maskę bitową, przy użyciu bitowego and (&), wpisane przez nas liczby są maskami bitowymi,
+które są aplikowane na poszczególne bity dostępu. W skrócie umask trochę działa na odwrót niż chmod.

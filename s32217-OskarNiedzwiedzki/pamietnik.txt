@@ -21,3 +21,13 @@ którą każdy może odwiedzić pod adresem http://szuflandia.pjwstk.edu.pl/~s32
 Tak naprawdę to po prostu jest to strona z innego projektu który realizuję, może kiedyś nadam jej ładny wygląd, np. na wykładach z japonistyki.
 
 Streszczając zabezpieczajmy nasze pliki przed nieautoryzowanymi śmieszkami.
+
+
+28.10.2023
+
+Drogi pamiętniczku na dzisiejszych zajęciach nauczyłem się kontroli strumieni danych. Zdobyłem wiedzę o strumieniach danych,
+sposobie ich działania oraz sposobach przekierowywania takich strumieni do innych programów. Nauczyłem się korzystać z polecenia grep, aby skutecznie
+filtrować dane wyrzucone przez inne polecenia. Nabyłem także wiedzę o procesach i sposobach ich kontroli. Poznałes komendę ps oraz jobs i fg,
+by sprawdzać oraz kontrolować który proces aktualnie mam odaplony w terminalu. Użyłem także komendy kill, aby wysyłać sygnały do programów.
+
+To była bardzo ciekawa lekcja

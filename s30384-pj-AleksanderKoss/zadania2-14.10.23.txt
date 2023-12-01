@@ -78,6 +78,42 @@ Wniosek:
 
 ZADANIE 4
 
+mkdir public_html && touch public_html/strona.html 
+echo "<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>" > strona.html 
+cat strona.html 
+
+Najpierw utworzylem katalog public.html a w nim plik strona.html 
+za pomocą komendy echo i > wrzuciłem do niego kod w HTML 
+Za pomocą cat wyświetlilem zawartość żeby sprawdzić czy wszystko ok 
+
+Po kolei sprawdzałem jakie uprawnienia nalezy nadac zebym mogl wyswietlic strone
+
+chmod 004 strona.html 
+
+uprawnienia odczytu dla other to minimalne jakie sa wymagane zeby wyswietlic strone
+
+chmod 001 public_html
+
+uprawnienia execute dla katalogu public_html to minimalne zeby otworzyc strone
+
+chmod 001 . 
+
+uprawnienia execute dla other to rowniez minimalne dla katalogu domowego żeby
+otworzyć stronę, oczywiście miałem problem żeby wrócić do swojego katalogu domowego :)
+
+
+ZADANIE 5
+
+Polecenie umask służy do ustawiania maski umask, która wpływa na domyślne 
+uprawnienia dostępu dla nowo utworzonych plików i katalogów. 
+Na bitach wykonywana jest operacja AND
+Jeśli oba bity są równe 1, wynikowa wartość bitu będzie 1
+Jeśli przynajmniej jeden z bitów jest równy 0, wartość bitu będzie 0
+
 
 
 

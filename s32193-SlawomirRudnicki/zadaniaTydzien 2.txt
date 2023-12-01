@@ -1,0 +1,19 @@
+Zadanie 1
+
+1. utworzylem strukture z katalogow
+2. pozmienialem uprawnienia uzywajac komendy chmod (przyklad: chmod 700 <folder>)
+3. druga osoba stworzyla w mojej strukturze katalog, oraz zabrala mi wszystkie uprawnienia
+4. uzywajac linii komend nie bylem w stanie ani usunac katalogu, ani w niego wejsc, ani zobaczyc co sie w srodku znajduje
+    -bash: cd : folder1 : Permission denied
+5. przy probie wejscia do katalogu uzywajac midnight commandera otrzymalem error: cannot change directory
+
+zadanie 2
+
+1. polecenie cd mozemy wykonac jesli w kategorii others znajduje sie bit x
+2. polecenie chmod zglaszalo 'operation not permitted' w kazdym wypadku
+3. nie mozemy przejsc do katalogu XYZ, jesli nie mamy uprawnienia do wejscia do katalogu ABC, permission denied
+4. mozemy cofnac sie, uzywajac polecenia cd -
+
+
+
+

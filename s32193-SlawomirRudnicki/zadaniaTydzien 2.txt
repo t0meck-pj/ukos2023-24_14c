@@ -21,6 +21,17 @@ zadanie 4
 2. public_html wymaga execute dla others 
 3. katalog domowy tak jak wyzej wymaga execute dla others
 
+zadanie 3
+
+(s31700 i s32193)
+1. stworzylismy uzywajac komendy echo "tresc" > komunikator.txt
+plik tekstowy 
+2. uzywajac echo z pojedyncznym > nadpisywalismy cala tresc
+jaka byla w pliku
+3. uzywajac >> dodalismy nowa linijke tekstu do pliku
+4. uzywajac polecenia tail -f komunikator.txt sledzilismy 
+na drugim terminalu jak sie plik zmienial
+
 
 
 

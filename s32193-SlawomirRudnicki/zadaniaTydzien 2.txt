@@ -14,6 +14,14 @@ zadanie 2
 3. nie mozemy przejsc do katalogu XYZ, jesli nie mamy uprawnienia do wejscia do katalogu ABC, permission denied
 4. mozemy cofnac sie, uzywajac polecenia cd -
 
+zadanie 4
+
+1. minimalne uprawnienia pliku strona.html wymagane do wyswietlenia go:
+	read dla others
+2. public_html wymaga execute dla others 
+3. katalog domowy tak jak wyzej wymaga execute dla others
+
+
 
 
 

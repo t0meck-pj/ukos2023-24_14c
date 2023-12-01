@@ -1,0 +1,39 @@
+Zadania w większości wykonywaliśmy na zajęciach. Nie widzę sensu robienia 1:1
+tego samego, także przejdę od razu do zadania 2. Jeśli jednak będzie potrzeba 
+aby wykonać te zadania, zrobię je.
+
+0. W całości zrobione na zajęciach
+
+1. W całości zrobione na zajęciach
+
+2. W większości zrobione na zajęciach, ale jest info żeby zrobić je na 
+maszynie wirtualnej, więc tak zrobiłem
+   1. Uruchomiłem Linuxa na maszynie wirtualnej i pobrałem gedit komendą 
+"sudo apt install gedit". Następnie odpaliłem go komendą gedit i napisałem 
+w nim "Test".
+   2. Komendą ps x wyszukałem jego proces. Jego PID to 31217.
+   3. Użyłem komendy kill 31217. Program normalnie się zamnął. Użyłem 
+      kill SIGKILL 31217 i program zamknął się, ale dodatkowo dostałem output
+      "bash: kill: SIGKILL: arguments must be process or job IDs".
+   4. Użyłem komendy killall bash. Zamknął mi sę terminal.
+   5. Nie, komendą kill mogę wysyłać sygnały tylko dla moich procesów, nie 
+      innych użytkowników.
+
+3. W całości zrobione na zajęciach
+
+4. 1. Uruchomiłem gimpa.
+   2. Nacisnąłem ctrl + z, dostałem output [1]+ Stopped 		gimp.
+   3. Spróbowałem coś poklikać. Nie da się
+   4. Zrobiłem to co w opisie zadania. Zadziałało tak jak powinno.
+   5. Wpisałem komendę bg. Gimp ożył
+   6. Wpisałem komendę fg. Dostałem output gimp i konsola dalej przeszła w tryb
+      obsługi gimpa (jeśli można to tak nazwać?).
+   7. Użyłem 3 komend które były w poleceniu. Dodatkowo poza otwartymi
+      programami od razu dostałem PID i job ID danego programu.
+   8. Użyłem komendy jobs, wyświetliły się dwa uruchomione programy i ich ID.
+   9. Przy pomocy fg $1 przywróciłem gedita na 1 plan.
+
+Te zadania które zrobiłem pomogły mi zwizualizować sobie jak wyglądają komendy
+któryuch używałem, ponieważ wykonywałem je na maszynie wirtualnej. Wszystko 
+działało tak jak się tego spodziewałem, ale te zadanka pomogą mi utrwalić 
+wiedzę pozyskaną podczas zajęć.

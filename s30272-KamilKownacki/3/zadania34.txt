@@ -1,0 +1,27 @@
+ubuntu 23
+
+terminal:
+$gimp
+gimp uruchomiony<
+ctrl+z
+W gimpie nic nie wklikam bo proces jest zatrzymany, ale jeżeli chodzi
+o przesuwanie okienek to u mnie na KDE plazma nic się nie dzieje
+z gimpem, ale chyba jestem w stanie sobie wyobrazic co to mialo
+mi zademonstrowac
+$bg
+dzieki poleceniu bg, gimp ozyl a dodatkowo zadzialalo to jak gimp & i teraz
+moge wpisywac polecenia dalej w tym samym terminalu
+$fg
+proces gimp wrocil jako glowny element terminala i teraz moge
+go zamknac np ctrl+c ale nie moge juz uruchamiac dodatkowych
+programow
+nastepnie uruchamiam 3 programy na tym samym terminaly poprzez:
+gimp &
+geany &
+gedit &
+jobs
+1 2 3
+fg %2
+
+znowu nie moge wpisywac nowych polecen ale moge zatrzymac program ctrl+z
+i nie tylko

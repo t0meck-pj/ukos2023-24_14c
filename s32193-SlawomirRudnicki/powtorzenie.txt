@@ -1,0 +1,31 @@
+1. 
+	cd ../../
+	cd /tmp/ukos/ala
+2.
+	mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
+	mkdir -p ../../../kot/ma/ale/jan/kowalski
+3. 
+	mv ../../../kot/ma/ale ../../i
+	mv /tmp/ukos/kot/ma/ale /tmp/ukos/ala/i
+4. 
+	kill -9 <id_programu>
+5.
+	
+
+6. 
+	chmod ugo+rwx,go-w,o-r ala
+	chmod 751 ala
+	chmod u=rwx,g=rx,o=x ala
+	
+6b.
+	example: chmod go= ala
+
+7.
+	ls -l | cat > lista_plikow.txt
+	ls > plik.txt
+	ls | tee plik.txt
+8.
+	tab
+
+9.
+	example: geany &

@@ -1,0 +1,68 @@
+Do wykonania zadań wykorzystałem szuflandie oraz ubuntu 23.10
+[linux 6.5.0-13-generic]
+
+To są zadania 2.Uprawnienia dostępu
+
+ZADANIE 1
+Zrobiłem to zadanie podczas zajęć, tylko stworzyłem wiele różnych katalogów
+którę później musiała usuwać administracja serwera, bo Pan nie miał
+wystarczająco dużo uprawnień, używałem do tego głownie trybu tekstowego
+oraz polecenia touch i echo, nie jestem pewien co do usuwania, nie mogłem
+usunąć osobiście plików w cudzym folderze, ale prawdopodobnie kolega zabrał
+uprawnienia dla innych do 001, bo mogłem tylko poruszać się miedzy katalogami
+Midnight Commander - mogę przełączać okienka tabulatorem i korzystać z poleceń bash
+nie mogę zamknąć wciskając q i enter, musiałem wpisać exit, nie umiem inaczej
+zamknąć mc.
+
+ZADANIE 2
+├── katalog
+│   └── katalog3
+└── to
+$cd katalog/katalog3 && chmod 000 .
+cd .. && chmod 000 .
+mogę zrobić cd do katalogu do którego mam dostęp jeżeli na drodzę do niego
+nie znajduję się katalog do którego nie mam uprawnień
+Jeżeli chodzi o to kiedy mogę użyć chmod, to z mojego doświadczenia wiem,
+że mogę go użyć w katalogu którego jestem właścicielem
+
+ZADANIE 3
+Grupa: s30272 , s30384
+Tworzę w katalogu /home/PJWSTK/s30272 :
+gniazdko/komunikator.txt
+Struktura katalogu:
+
+gniazdko
+└── komunikator.txt
+
+Na czas wykonywania zadania daję
+chmod a+rwx s30272
+oraz
+chmod 777 -R gniazdko
+
+*wymieniamy się wiadmościami na początku
+echo "tresc wiadmosci" > komunikator.txt
+i sprawdzamy ich treść za pomocą:
+cat komunikator.txt
+*Potem wymieniamy się wiadmościami za pomocą
+echo "tresc wiadmosci" >> komunikator.txt
+i odczytujemy ich treść za pomocą:
+cat komunikator.txt
+*uruchomienie dodatkowego terminala z funkcją tail -f komunikator.txt
+pozwoliła na śledzenie ostatnich 10 wierszy pliku w czasie rzeczywistym
+
+Wniosek:
+> nadpisywanie z wyjścia
+>> dopisywanie z wyjścia
+To lepsze niż irc
+
+ZADANIE 4
+do katalogu domowego wystarczyło chmod 001 i strona odpaliła
+do public_html także chmod 001 wystarczy do odpalenia strony
+plik strona.html potrzebuje 004 minimalnie
+Wniosek:
+aby strona działała potrzebujemy 001 do folderów, żeby dostać
+się do pliku oraz uprawnienia o+r do odczytu strona.html
+Wniosek2:
+możemy wejść do folderu mając tylko o+x
+
+

@@ -1,0 +1,122 @@
+ZADANIE 2
+
+Znajduję się w katalogu d, ścieżka: /home/PJWSTK/s30384/a/b/c/d
+
+chmod u-rwx . 
+
+- komenda odbiera mi wszystkie uprawnienia do aktualnego katalogu 
+
+chmod u+rwx .
+
+- Brak dostępu, nie mogę  nadać sobie ponownie uprawnień znajdując się w katalogu
+do którego odebrałem wcześniej uprawnienia
+
+cd .. 
+
+- komenda zadziałała, przechodzę do poprzedniego katalogu c
+
+chmod u+rwx d
+
+- komenda zadziałała, ponownie nadaję sobie uprawnienia do katalogu d
+
+chmod u-rwx .
+cd .. 
+cd c/d 
+
+- odbieram uprawnienia do katalogu c i przechodzę do katalogu nadrzędnego b, 
+następnie z katalogu b próbuję przejść do d, ale odebrałem sobie uprawnienia do
+katalogu c, więc nie mogę tego zrobić 
+
+cd b/c/d
+chmod u-rwx .. 
+cd .. 
+cd ../..
+cd $HOME
+
+przeszedłem do katalogu d a następnie odebrałem sobie uprawnienia do katalogu
+nadrzędnego c, komendy cd .. oraz cd../.. nie zadziałały, w ten sposób nie mogłem wrócić
+komenda cd $HOME, zadziałała, przeniosło mnie do katalogu domowego, ścieżka
+bezwzględna również działa 
+
+ZADANIE 3
+Tworzę w katalogu /home/PJWSTK/s30272 :
+
+gniazdko/komunikator.txt
+
+Struktura katalogu:
+
+gniazdko
+└── komunikator.txt
+
+Na czas wykonywania zadania daję
+
+chmod a+rwx s30272
+chmod 777 -r gniazdko
+
+- Wymieniamy się wiadmościami na początku
+
+echo tresc wiadmosci > komunikator.txt
+
+- i sprawdzamy ich treść za pomocą:
+
+cat komunikator.txt
+
+- Potem wymieniamy się wiadmościami za pomocą
+
+echo tresc wiadmosci >> komunikator.txt
+
+- i odczytujemy ich treść za pomocą:
+
+cat komunikator.txt
+
+- uruchomienie dodatkowego terminala z funkcją tail -f komunikator.txt
+pozwoliła na śledzenie ostatnich 10 wierszy pliku w czasie rzeczywistym
+
+Wniosek:
+- > nadpisywanie z wyjścia
+- >> dopisywanie z wyjścia
+
+ZADANIE 4
+
+mkdir public_html && touch public_html/strona.html 
+echo "<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>" > strona.html 
+cat strona.html 
+
+Najpierw utworzylem katalog public.html a w nim plik strona.html 
+za pomocą komendy echo i > wrzuciłem do niego kod w HTML 
+Za pomocą cat wyświetlilem zawartość żeby sprawdzić czy wszystko ok 
+
+Po kolei sprawdzałem jakie uprawnienia nalezy nadac zebym mogl wyswietlic strone
+
+chmod 004 strona.html 
+
+uprawnienia odczytu dla other to minimalne jakie sa wymagane zeby wyswietlic strone
+
+chmod 001 public_html
+
+uprawnienia execute dla katalogu public_html to minimalne zeby otworzyc strone
+
+chmod 001 . 
+
+uprawnienia execute dla other to rowniez minimalne dla katalogu domowego żeby
+otworzyć stronę, oczywiście miałem problem żeby wrócić do swojego katalogu domowego :)
+
+
+ZADANIE 5
+
+Polecenie umask służy do ustawiania maski umask, która wpływa na domyślne 
+uprawnienia dostępu dla nowo utworzonych plików i katalogów. 
+Na bitach wykonywana jest operacja AND
+Jeśli oba bity są równe 1, wynikowa wartość bitu będzie 1
+Jeśli przynajmniej jeden z bitów jest równy 0, wartość bitu będzie 0
+
+
+
+
+
+
+

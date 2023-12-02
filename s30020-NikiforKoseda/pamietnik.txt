@@ -1,0 +1,37 @@
+2023.09.30
+Mój kochany pamiętniczku, dziś przypomniałem sobie sporo rzeczy z technikum.
+Wszystko z zajęć z systemów operacyjnych do mnie powróciło, całe poruszanie się
+po systemie plików, tworzenie i usuwanie folderów, i tak dalej. Tylko zamiast 
+roku nauki zajęło to jedne zajęcia. Wykładowca jest bardzo w porządku - chce, abyśmy
+się jak najwięcej nauczyli. Przeszkadza mi odrobinę, chociaż jestem świadomy,
+że to mój subiektywny problem, że nie jest nieco bardziej ,,comprehensive".
+Przez tą chęć do tego byśmy nauczyli się jak najwięcej bardzo często odpływamy
+od tematu głównego, co mnie odrobinę rozprasza. Alepoza tym wszysto elegaaancko
+2023.10.14
+Mój kochany pamiętniczku, dzisiaj powtórzyłęm sobie uprawnienia.
+Przypomniała mi się pasta o informayku, chociaż ona nie byłą aż
+tak zaawansowana. W każdym razie, ciekawie patrzy się na różnicę
+między uprawnieniami na windowsie a linuksie. W bashu łatwiej
+jest też chyba nimi zarządzać niżw  windowsie - aczykolwiek aby 
+się upewnić muszę trochę więcej popracować w trybie tekstowym
+2023.10.28
+Mój kochany pamiętniczku, dzisiaj mieliśmy przekierowania.
+Podoba mi się bardzo ten koncept, działa jak w fabryce - input można przekazać
+na output, więc przy stworzeniu odpowiedniego skryptu można stworzyć naprawdę 
+fajną maszynę, wykonującą operacje w zasadzie samodzielnie. Bardzo duży
+potencjał ma to na optymalizację pracy. Bawiliśmy się też nieco procesami -
+wyglądało to jak menedżer zadań w windowsie, ale z nieco większymi opcjami
+konfiguracji.
+2023.11.18
+Mój kochany pamiętniczku, dzisiaj powtóreczka do kolosa.
+Przemieszczenia między folderami nie są zbyt skomplikowane, warto zapamiętać
+że względne przemieszczanie to na przykład cd ../.. cofa nas o 2 foldery.
+Ctrl + d odcina dopływ informacji do programu, przez co ten program
+prędzej bądź później się wyłączy
+Ctrl + c wysyła sygnał zakończenia, ale nie zawsze wyłączy, nie zawsze program
+reaguje
+ctrl + z wstrzymuje działanie programu
+Kill służy do wysłania dowolnego sygnału. Domyślnie wysyła sygnał 15 czyli TERM
+Domyślnie przerywa działanie procesu.
+ls wyświetla zawartość, grep na podstawie wymagań listuje linie. ls al* też 
+zadziała. 

@@ -1,0 +1,30 @@
+Czego sie nauczylem, albo mysle ze sie nauczylem?
+
+
+
+
+tydzien 1:
+	podstawowych komend basha
+	jak wyslac uzywajac linii komend projekt na gita
+	
+tydzien 2:
+	bity uprawnien 
+	wglad w dzialanie linuxa -> np odbierajac bit execute, sprawiamy ze nie mozna "uzyc" katalogu by do niego wejsc/przejsc
+	~ nie jest bezsensownym znakiem
+
+tydzien 3:
+	przesylanie wynikow jednego programu do drugiego by otrzymac bardziej uzyteczny wynik
+
+tydzien 4:
+	ctrl-d, co robi
+	podstawy pisania komend w bardziej uporzadkowany sposob
+
+
+
+nieuporzadkowana wersja:
+	podstaw uzywania gita
+	pierwszych polecen basha, z ktorego nigdy wczesniej nie korzystalem
+	wiekszosc rzeczy mozna znalezc w manualu
+	dowiedzialem sie ze jest wiecej niz jeden standard wpisywania komend w bashu
+	prawie wszystko mozna znalezc w manualu
+	zawsze patrzec na manual jesli tylko jest

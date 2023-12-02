@@ -1,0 +1,54 @@
+    Przejdź do swojego katalogu domowego
+
+    Wydaj komendę: ls -a
+
+    Zobacz ile plików wypisało.
+
+    Teraz wydaj komendę: ls -a | grep D
+    HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz inną
+    literkę, która już będzie w nazwie jakiegoś pliku czy katalogu.
+
+    Zobacz ile teraz jest wyników. Co się stało?
+    Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu
+    wejściowym, które pasują do wzorca. Tu podano wzorzec jako "D".
+
+    A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+    Zobacz czy utworzył sie jakiś plik?
+    Jaka jest jego treść?
+    Co znaczy | oraz co znaczy > ?
+
+A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+    Zobacz czy plik się utworzył?
+    Jaka jest treść względem poprzedniej próby bez programu tee?
+    Co robi program tee?
+
+Ubuntu 23.10 (linux 6.5.0-13-generic)
+
+cd ~
+/home/kamilk
+ls -a
+dużo plików
+ls -a | grep D
+
+Wypisało tylko pliki których nazwa zawiera wielką litere D
+ls -a | grep D > lista_plikow_z_literka_d.txt
+Utworzył się plik lista_plikow_z_litera_d.txt
+cat lista_plikow_z_litera_d.txt
+Wypisało tylko pliki których nazwa zawiera wielką litere D
+potok to | i sluzy do przekierowania standardowego strumienia wyjscia
+programu A do standardowego strumienia wejścia programu B
+> nadpisuje plik ze stdout
+ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+Utworzył się plik lista_plikow_z_literka_d_2.txt
+treść jest taka jak na bez tee, ale program tee przekazuje wyjście do pliku
+i do terminala lub czegoś z czego było wywołane, co ciekawe na pierwszej próbie
+na ubuntu mi się to zbugowało i wyrzuciło mi grep do konsoli, ale plik
+był pusty, nie spodziewałem się takiego wyniku więc zapoznałem się z manualem
+od tee i spróbowałem jeszcze raz
+
+
+
+
+

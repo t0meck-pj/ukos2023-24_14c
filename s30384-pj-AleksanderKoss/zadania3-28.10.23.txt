@@ -1,0 +1,133 @@
+ZADANIE 0 
+- Przechodzę do katalogu domowego:
+
+cd ~
+
+ls -a
+
+- Wypisało mi kilka plików i katalogów
+
+ls -a | grep k 
+
+- Wypisało mi tylko pliki i katalogi zawierające literę "k"
+
+ls -a | grep k > lista_plikow_z_literka_k.txt
+
+- utworzył się plik "lista_plikow_z_literka_k.txt"
+
+cat lista_plikow_z_literka_k.txt
+
+- jest w nim taka sam treść jak nazwa pliku "lista_plikow_z_literka_k.txt"
+
+| - to operator tzw. potok, który służy do przekierowania wynik wykonania 
+pierwszego polecenia do kolejnego polecenia, w przypadku ls -a | grep k 
+przekierowuje wynik ls-a do polecenia grep k, czyli wylistowuje pliki ale
+z przekierowaniem żeby wyrzucało tylko pliki zawierające "k"
+
+> - to operator przekierowania do pliku z nadpisaniem jego zawartości 
+
+ls -a | grep D | tee lista_plikow_z_literka_k_2.txt
+
+treść drugiego pliku zawiera w sobie również treść pierwszego pliku z literką "d".
+tee jest używana do przekazywania strumieni danych, a jednocześnie zapisywania 
+ich do pliku lub kilku plików. 
+
+ZADANIE 1
+
+ps 
+
+- wyświetla procesy związane z aktywna sesja terminala
+
+ps -a
+
+- wyświetla procesy oprócz lidera sesji 
+
+ps x
+
+- wyświetla procesy niezwiązane z aktualna sesją terminala 
+
+ps axu
+
+- wyświetla wszystkie procesy w systemie, wraz z informacjami 
+- znak ? iznacza, że proces nie jest związany z żadnym konkretnym terminalem. 
+To może dotyczyć na przykład procesów demonów, które działają w tle, 
+niezależnie od konkretnej sesji terminala.
+
+Wyświetl wszystkie procesy bash:
+
+ps axu | grep bash 
+
+- wyświetlam wszystkie procesy systemu a następnie przekierowuje wynik zeby wyrzucal tylko te linie, które zawierają "bash"
+
+Wyświetl wszystkei procesy należące do użytkownika root:
+
+ps -u root
+
+ewnetualnie do uzyskania wiecej informacji ps -uf root
+
+ZADANIE 2
+
+gimp &
+
+- uruchamiam program Gimp 
+
+ps axu | grep gimp 
+
+- sprawdzam PID programu Gimp
+
+kill 2851
+
+- program zamyka się, dostaję informację zwrotną> gimp: terminated: Terminated
+
+gimp &
+ps axu | grep gimp 
+kill -9 3003
+
+- ponownie otworzyłem program, sprawdzilem jego PID, a nastęnie użyłem komendy kill z  -9,
+który odpowiada syganłowi SIGKILL, program zamknął się dostałem informację Killed gimp
+ SIGKILL jest bardziej radykalne od SIGTERM, bo kończy natychmiastowo proces nie dając
+szansy na zareagowanie albo przechwycenie
+Zauwazylem ze po zamknieciu Gimpoa zwyklym killem, zapytal mnie po ponownym otwarciu, czy przywrócić 
+utracone dane (moje bazgroły), w przypadku -9, po pnoownym otwarciu nie był w stanie nic przywrócić 
+
+killall bash 
+
+- "nic się nie stało", sygnał SIGTERM prawdopodbnie został wysłany, ale został zignorowany przez bash
+- kill zadziała na dowolny proces, ale przez niektóre procesy sygnał może zostać przechwycony 
+
+
+ZADANIE 3 
+
+cat
+ctrl+c
+
+- komenda cat została przerwana a terminal wrócil do pustego wiersza poleceń 
+
+cat > wynik3_2.txt
+witaj
+ctrl+d 
+
+- "witaj" zostało zapisane do pliku wynik3_2.txt, ctrl+c wysyła sygnał SIGINT do procesu co kńczy jego działanie, 
+ctrl+d informuje program że nie ma wiecej danych wejściowych, ale zapisuje to co juz zostalo napisane
+
+ZADANIE 4
+
+gimp
+ctrl+z
+
+program gimp zostal wstrzymany, terminal wyswietlil mi "gimp", ale  nie miałem już wiersza poleceń żeby dalej wpisywać komendy, ctrl+c zadziałało i zakończyło gimpa
+
+firefox &
+vlc &
+gimp &
+
+- uruchomiły się 3 programy, a na terminalu ciągle można coś pisać
+
+jobs 
+fg %3 
+
+- przywróciło program vlc na pierwszy plan
+
+
+
+

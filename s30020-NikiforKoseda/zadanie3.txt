@@ -1,0 +1,180 @@
+Przejdź do swojego katalogu domowego
+
+Wydaj komendę: ls -a
+-wypisuje z automatu wszystkie pliki, parametr a oznacza all
+
+Zobacz ile plików wypisało.
+-pojawiły się dodatkowe pliki z kropkami na początku. normalnie ls pomija pliki zaczynające się od kropki. kropka oznacza ukryty plik
+
+Teraz wydaj komendę: ls -a | grep D
+HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz inną literkę, która już będzie w nazwie jakiegoś pliku czy katalogu.
+-przekierowanie wyjścia ls na wejście gre	pa. grep wypisuje linijki zaczynające się od określonego wzoru - w moim wypadku na przykład P
+
+Zobacz ile teraz jest wyników. Co się stało?
+-Tylko PPRG, albowiem ograniczyłem grepem wyświetlane linijki do tych zaczynających się od P
+
+A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+Zobacz czy utworzył sie jakiś plik?
+Jaka jest jego treść?
+Co znaczy | oraz co znaczy > ?
+
+Utworzył się. Jego zawartością jest wynik komendy grep P - czyli PPRG w moim wypadku. | to przekierowanie wyjścia jednego programu na wejście drugiego. > to wyjście, przekierowuje wyjście z polecenia do pliku
+
+A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+Zobacz czy plik się utworzył?
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+-Plik utworzył się. Nie widzę różnicy w treści. Program tee według instrukcji czyta stinput i przekazuje go na stoutput lub do pliku
+
+
+1
+Program ps służy do wyświetlania listy procesów. 
+
+Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+ps
+-wyświetla procesy mające to samo EUID co ja
+
+ps -a
+-wyświetla wszystkie procesy poza session leader (gdzie session id == process id), oraz procesami nie powiązanymi z terminalem
+
+ps x
+-wyświetla procesy nie posiadające tty, czyli bez przyporządkowanego terminalu
+
+ps axu
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+-Łączy parametry x(czyli bez terminalu), a(czyli wszystkich użytkowników) i u(czyli w dużo przyjemniejszym do czytania formacie) i faktycznie - lepiej czyta się axu niż ax, przynajniej mi
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+Nie wiesz? A gdzie może być wyjaśnienie?
+-wyjaśnienie prawie na pewno zawsze i wszędzie będzie w instrukcji. W tym wypadku druga kolumna wyświetla terminal danego procesu - więc ? oznacza brak terminala
+
+B: Jak wykonasz poniższe 2 zadania?
+
+Wyświetl wszystkie procesy bash
+
+Wyświetl wszystkei procesy należące do użytkownika root
+-przekierowaniem na polecenie grep. wyświetlam jedynie linijki zawierające słowo root lub bash. W wypadku roota wpisuję ^root, dzięki czemu pojawiają się tylko linijki zaczynające od root
+
+
+2
+INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+
+PID jest to indentyfikator procesu ([P]rocess [ID]entificator). Za jego pomocą możesz odwołać się do danego procesu za pomocą różnych mechanizmów systemu. Jednym z takich mechanizmów jest wysłanie sygnału (na przykład zakończenia) do procesu. Do tego można użyć komendy kill (może brzmi ona dość brutalnie, ale cóż, informatyka nie jest dla mięczaków). Komenda ta domyślnie wysyła sygnał zakończenia procesu do zadanego procesu.
+
+Zadanie:
+
+Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+
+Zobacz jaki ma on PID - przyda się do tego komenda ps
+
+Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować.
+			Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+			Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+
+Zobacz działanie komendy killall bash
+
+Zobacz czy kill zadziała dla dowolnego procesu.
+-Kill za pierwszym razem nie zadziałał na VSCode, lub zmienił numer procesu. DOpiero użycie drugi raz nagle go wyłączyło. Oznacza to, że nie zdecydował się ignorować TERMa. Killall bash nic w moim wypadku nie zrobił - według zebranych danych zabija wszystkie instancje basha. Kill nie działą na wszystkie procesy, chociażby do procesów roota nie mam dostępu
+
+
+3
+W terminalu jest kilka przydatnych skrótów klawiszowych. Jednym z nich jest CTRL+C lub jak to jest często podawane C-c lub ^C. Niektórzy z Państwa już go mieli okazję przetestować. Jest to sposób na wyłączenie aktywnego programu w terminalu. Proszę go przetestować w taki sposób, że:
+
+Uruchom komendę cat be parametrów
+
+Wciśnij CTRL+C i zobacz co się stanie
+-ctrl +c przerywa działanie programu
+
+
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego wejścia (stdin), ale w sposób możliwie bezpieczny.
+
+Zobacz co się stanie:
+
+Wydaj komendę cat > wynik3_1.txt
+
+Wpisz tekst witaj bez wciskania klawisza Enter
+
+Wciśnij CTRL+C
+
+Zobacz co się znalazło w pliku wynik3_1.txt
+
+
+Wydaj komendę cat > wynik3_2.txt
+
+Wpisz tekst witaj bez wciskania klawisza Enter
+
+Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+Zobacz co się znalazło w pliku wynik3_2.txt
+
+W opisie rozwiązania zadania umieść:
+
+jak rozumiesz co się stało?
+
+czym oba te przykłady się różnią?
+
+DLACZEGO się różnią?
+
+-Ciekawa sprawa - w obu przypadkach otrzymuję plik z pustą zawartością. Domyślam się, że jako że jeden z nich przerywa działanie programu, a drugi jedynie ucina stdin, to na drugim powinno pojawić się ,,witaj", jako, że odcięcie następuje po wprowadzeniu tego na stdin. Nie potrafię odnaleźć wytłumaczenia tego fenomenu. Szukając po internecie trafiłem na wskazówkę, że wciśnięce ctrl+d jeden raz powinno zachować zawartość - ale wciśnięcie raz nic nie robi w moim wypadku. Robocza teoria jest taka, że może mieć to związek z byciem połączonym na serwer - stdin jest lokalnie dopóki nie nacisnę klawisza Enter
+
+
+4
+INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+
+CTRL+Z służy do wstrzymania bieżącego procesu i przeniesienia go do tła. To znaczy, że program jest w pamięci, ale nie wykonuje żadnych operacji. Jest wstrzymany.
+
+Zobacz co się stanie:
+
+Wpisz komendę gimp (lub np. edytor tekstowy gedit)
+-odpala się notatnik, korzystam z gedita, bo mniejszy rozmiar
+
+W terminalu w którym sie to uruchomiło wciśnij CTRL+Z
+-Program został wstrzymany, zastopowany
+
+Spróbuj coś wyklikać w gimpie / gedicie
+-Program jest zatrzymany, więc w GUI wyświetla się informacja że program nie odpowiada
+
+Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno gimpa / gedita i potem je odsuń by odsłonić w pełni okno gimpa / gedita
+-Miałem terminal na pełnym ekranie, gedit jest dość wyszarzony
+
+Co się stało? Wstrzymaliśmy program gimp/gedit. Program wstrzymany za pomocą kombinacji CTRL+Z jest przenoszony w tło (background). Efekt jest taki, że taki program przestaje odpowiadać na cokolwiek.
+
+Komenda bg służy do wznowienia w tle wstrzymanego programu. Zobacz:
+
+Wpisz komendę: bg
+
+Jak widać gimp/gedit ożył (jeśli nie, to zapytaj prowadzącego)
+-Ożył zdecydowanie
+
+Komenda fg służy do wznowienia na pierwszym planie wstrzymanego wcześniej procesu. Zobacz co się stanie:
+
+Wpisz komendę: fg
+
+Jak widać proces wrócił i można wcisnąć na przykład CTRL+C aby go zakończyć.
+
+W momencie uruchamiania programu, możemy od razu nakazać wykonanie go w tle. Służy do tego znak & umieszczony na końcu instrukcji.
+
+Zobacz:
+INFO: Jeśli jakiegoś programu nie ma to zastąp go innym, który znasz.
+
+Wykonaj komendę gimp &
+
+Wykonaj komendę gedit &
+
+Wykonaj komendę geany &
+
+Zobacz co się stało (domyślam się, że uruchomiły się 3 programy, a na terminalu ciągle można coś pisać.
+-tak dokłądnie jest, ale dodatkową praktyczną rzeczą jest to, że od razu wyświetla się PID - szkoda że nie wiedziałem tego wcześniej przy zadaniu z zabijaniem VScoda, to bym sobie oszczędził szukania
+
+
+Kolejna komenda to jobs. Służy ona do wyświetlania listy zadań (jobów; nie mylić z procesami) przeniesionych do tła.
+
+Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni program) z tła na pierwszy plan. Skorzystaj z jobs aby dowiedzieć się jakie mają numery poszczególne zadania działające w tle.
+składnia: fg %(numer jobu)
+-Czyli można wstrzymywać programy by nie pochłaniały mocy obliczeniowej. Praktyczna rzecz. 

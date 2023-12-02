@@ -71,9 +71,9 @@ Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ście�
 Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
 Co ta ścieżka oznacza/sobą reprezentuje?
 
--Znajde sie w tym samym katalogu bo sciezka wzgledna zaczyna sie od obecnego 
-folderu, a sciezka bezwzgledna od roota . Dopoki na poczatku i na koncu  mam ./ 
-to nie jest wazne ile ich wpisze bo i tak przeniesie mnie do obecnego katalogu
+Przejdę do bieżącego katalogu bo znak "." oznacza dla konsoli bieżący katalog
+tylko, że przechodzę tam kilka razy dla każdej kropki, im więcej kropek,
+tym więcej razy wczytam bieżący katalog
  
 11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
 

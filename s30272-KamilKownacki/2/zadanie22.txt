@@ -1,0 +1,25 @@
+W opisie bash-a (man) przeczytać opis polecenia wewnętrznego umask i wypróbować
+jego działanie sprawdzając, a następnie zmieniając swoją maskę trybu pliku i
+tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik), 
+a później sprawdzając uzyskane uprawnienia dostępu do nich (polecenie ls -l).
+Jaka operacja logiczna na bitach domyślnych uprawnień dostępu oraz maski
+jest wykonywana ? 
+
+W ubuntu nie ma man umask, ale poszukałem w necie
+domyślna maska na moim systemie to 002 czyli domyślne ustawienia dla pliku
+powinny być 664 dla pliku lub 775 dla folderu(dodaje wykonywanie)
+$Jestem w katalogu home/kamilk
+$Touch milan.txt
+$Uprawnienia wyszły rw-rw-r-- czyli 664
+$umask 005
+$touch kamil && touch foo
+$ls -l
+$prawnienia dla kamil i foo to rw-rw--w- czyli 662
+$umask 024 && touch kaka
+$Uprawnienia dla kaka to rw-r---w- czyli 642
+Wniosek:
+Przy podnoszeniu maski użytkownika zmniejszają się domyślne uprawnienia
+przy tworzeniu pliku, więc na bitach następuje negacja
+
+
+

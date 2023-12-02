@@ -21,3 +21,13 @@ którą każdy może odwiedzić pod adresem http://szuflandia.pjwstk.edu.pl/~s32
 Tak naprawdę to po prostu jest to strona z innego projektu który realizuję, może kiedyś nadam jej ładny wygląd, np. na wykładach z japonistyki.
 
 Streszczając zabezpieczajmy nasze pliki przed nieautoryzowanymi śmieszkami.
+
+28.10.2023
+
+Drogi pamiętniczku w dzisiejszym dniu nauczyłem się jak korzystać ze strumieni danych oraz procesów. Poznałem strumienie danych
+ich typy oraz narzędzia do ich kontroli oraz przekierowywania do innych programów. Nauczyłem się filtrowania danych ze strumieni przy użyciu komendy grep.
+Poznałem także procesy i sposoby ich sprawdzania kontroli. Pomogła mi w tym komenda ps. Przy użyciu jobs i fg byłem w stanie przenieść się do procesów
+działających w tle. Zwieńczeniem dzisiejszych zajęć była komenda kill, która pozwala wysyłać różne sygnały do programów, w tym sygnał SIGKILL,
+który bezzwłocznie wyłączał program.
+
+Mam nadzieję, że dzięki tym wszystkim narzędziom będę mógł jeszcze efektywniej korzystać z linuxa

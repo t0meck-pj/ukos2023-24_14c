@@ -31,7 +31,7 @@ w nim "Test".
    7. Użyłem 3 komend które były w poleceniu. Dodatkowo poza otwartymi
       programami od razu dostałem PID i job ID danego programu.
    8. Użyłem komendy jobs, wyświetliły się dwa uruchomione programy i ich ID.
-   9. Przy pomocy fg $1 przywróciłem gedita na 1 plan.
+   9. Za pomocą fg $1 przywróciłem gedita na 1 plan.
 
 Te zadania które zrobiłem pomogły mi zwizualizować sobie jak wyglądają komendy
 któryuch używałem, ponieważ wykonywałem je na maszynie wirtualnej. Wszystko 

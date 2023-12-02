@@ -1,4 +1,4 @@
-1. * Przy pomocy mkdir stworzyłem foldery, przy pomocy touch plik i edytowałem
+1. * Za pomocą mkdir stworzyłem foldery, przy pomocy touch plik i edytowałem
 go przy pomocy nano. Struktura wygląda następująco:
 
 ├── katalog
@@ -7,7 +7,7 @@ go przy pomocy nano. Struktura wygląda następująco:
 │   └── tajne
 │       └── ultra_tajne_informacje.txt
 
-Przy pomocy chmod 755 ustawiłem, że do katalogu i podkatalogu może wejść
+Za pomocą chmod 755 ustawiłem, że do katalogu i podkatalogu może wejść
 i wyświetlić zawartość każdy. Do pliku lista, dałem uprawnienia 740, czyli
 osoby spoza grupy nie mogą go odczytać, edytować i wykonać, a osoby z grupy
 mogą go tylko odczytać. Do "tajne" ustawiłem uprawnienia 550, więc właściciel
@@ -27,7 +27,7 @@ Kiedy próbowałem je usunąć normalnie z poziomu terminala udało się to, ale
 zostałem zapytany czy usunąć plik zabezpieczony przed zapisem (miał nadane
 uprawnienia przez innego użytkownika przy komendzie chmod 000). Po wciśnięciu 
 przycisku Y udało się. Plik został usunięty. Następnie kolega stworzył mi 
-takie same kukułcze jajko i spróbowałem usunąć je przy pomocy Midnight
+takie same kukułcze jajko i spróbowałem usunąć je za pomocą Midnight
 Commandera. Tu poszło jeszcze prościej, po prostu zaznaczyłem kukułcze jajko i 
 kliknąłem przycisk usuń. Zostało ono usunięte bez żadnych pytań.
 
@@ -39,17 +39,17 @@ kliknąłem przycisk usuń. Zostało ono usunięte bez żadnych pytań.
 │   └── tajne
 │       └── ultra_tajne_informacje.txt
 
-usunąłem wszystkie uprawnienia do katalogu "katalog" przy pomocy komendy
+usunąłem wszystkie uprawnienia do katalogu "katalog" za pomocą komendy
 "chmod 000 katalog" (znajduję się w swoim folderze domowym). Następnie, 
 zgodnie z poleceniem zadania chciałem usunąć uprawnienia podkatalogów w
-katalogu "katalog" przy pomocy komendy "chmod 000 .katalog/podkatalog", ale 
+katalogu "katalog" za pomocą komendy "chmod 000 .katalog/podkatalog", ale 
 spotkałem się z odmową dostępu. W tej sytuacji nie mogę przejść do katalogu
 "katalog", ani nigdzie wyżej. Nie mogę też użyć opcji chmod na żadnym pliku ani
 katalogu w folderze "katalog". Żeby dostać się do podkatalogu, musiałbym mieć
-minimum pozwolenie na wykonanie katalogu "katalog". Tak więc przy pomocy
+minimum pozwolenie na wykonanie katalogu "katalog". Tak więc za pomocą
 komendy "chmod u+x katalog" nadałem sobie uprawnienie do przejścia do katalogu.
 Będąc w podkatalogu "podkatalog' mogę zabrać sobie uprawnienia do poprzedniego
-katalogu przy pomocy komendy "chmod u-x ..". Po wykonaniu tej komendy, nie mogę
+katalogu za pomocą komendy "chmod u-x ..". Po wykonaniu tej komendy, nie mogę
 wrócić do katalogu "katalog" przy użyciu komendy "cd -" ani "cd ..". Mogę za to
 wrócić do katalogu domowego, czyli folderu jeszcze przed katalogiem "katalog"
 za pomocą komendy "cd --".
@@ -63,9 +63,9 @@ zamiast nadpisywania poprzednich. Komenda tail -f "komunikator" otwarta na
 drugim terminalu na bierząco pokazywała nam jak plik jest edytowany. Coś jakby
 po każdym echo automatycznie uruchamiał się cat.
 
-4. Utworzyłem podkatalog "public_html" w swoim folderze domowym przy pomocy
+4. Utworzyłem podkatalog "public_html" w swoim folderze domowym za pomocą
 komendy "mkdir public_html". Nastepnie wszedłem do niego przez "cd public_html"
-i przy pomocy komendy "touch strona.html" stworzyłem plik. Edytowałem go za 
+i za pomocą komendy "touch strona.html" stworzyłem plik. Edytowałem go za 
 pomocą "nano strona.html" i wkleiłem do niego zawartość z zadania:
 
 <HTML>

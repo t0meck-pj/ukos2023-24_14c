@@ -33,7 +33,8 @@ $6b
 chmod a=- zasob
 $7
 ls|dd of=pliki.txt
-find . -type f | dd of=lista.txt
+find . -type f | dd of=lista.txt (tutaj jeszcze nie wiem czego brakuje)
+ls *.txt > listaplikow.txt
 $8
 tab
 $9

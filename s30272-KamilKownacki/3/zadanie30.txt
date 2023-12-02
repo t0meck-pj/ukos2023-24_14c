@@ -39,12 +39,13 @@ u(Dodaje dodatkowe szczegóły procesów)
 x(Wypisuje procesy które nie należą do żadnego terminala)
 Ja mam znaki zapytania w 5 kolumnie na ubuntu w kolumnie TTY
 oznacza to identyfikator terminala w którym jest uruchomiony proces
-sprawdzamy oznaczenie terminala poleceniem tty, a co to oznacza przez
-man tty
+sprawdzamy oznaczenie terminala poleceniem tty
 
 Zadanie B:
 1.używam
-ps aux | grep bash
+tty | ps -ft
+sprawdzam oznaczenie basha i przesyłam potok do polecenia które wypisze procesy
+powłoki
 terminal wyrzuca wszystkie procesy które pasują do wzorca bash
 2.używam 
 ps -U root

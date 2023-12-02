@@ -1,0 +1,2 @@
+2023-12-02
+Nauczyłem się poprawnie forkować repo na gicie i wysyłać do nich dane. :)

@@ -22,3 +22,11 @@ Na dzisiejszych zajeciach nauczyłem się:
 	złożonych poleceń,
 *	jak przyglądać listę procesów,
 *	komenda kill wysyła sygnały, domyślnie do zakończenia procesów ale są też inne,
+
+2023-11-18
+Na dzisiejszych zajeciach nauczyłem się:
+
+*	przypomniałem sobie dotychczas poznane komendy
+*	przynajmniej wg. obecnego stanu wiedzy, widzę że komendy są w jakimś stopniu
+	zastępowalne, tzn. jeżeli nie mogę skorzystać z polecenia A to cel mogę
+	osiągnąć poleceniem B i C. 

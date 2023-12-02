@@ -33,13 +33,6 @@ Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
 	uruchomione w terminalach innych niż ten, z którego wysłałem polecenie -
 	zapis moich działań zamieszczam niżej.
 
-	Wnioskuję, że wynika to 2 rzeczy 
-
-	1. manual do killall pisze "killall process never kills itself";
-	2. gdybym wyłaczyl wszystkie aktywne procesy basha to przy założeniu, że nie
-	uruchomiłby się on automatycznie - bez restartu komputera dalsza praca nie
-	byłaby możliwa.
-
 	osboxes~ ps -C bash
 	    PID TTY          TIME CMD
 	  22791 pts/0    00:00:00 bash

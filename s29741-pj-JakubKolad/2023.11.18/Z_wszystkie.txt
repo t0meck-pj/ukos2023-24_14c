@@ -15,23 +15,14 @@ Zakładamy, że możesz zalogować się w konsoli i nie masz zaległości w opł
 	4. błąd wyjścia/wejścia (np.niemożność odczytu danych spowodowana awarią dysku)
 
 1.Jest dane takie drzewo katalogów:
-
 .
-
 ├── ala
-
 │   ├── i
-
 │   │   └── as
-
 │   └── ma
-
 │       └── kota
-
 └── kot
-
     └── ma
-
         └── ale
 
 Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos. Jak
@@ -76,9 +67,9 @@ przenieść katalog ale do katalogu i używając:
 5. Jak wypisać wszystkie pliki w bieżącym katalogu, których nazwa zaczyna się od
 al?
 	
-	ls -a | grep al*
+	ls -p | grep -v / | grep "al*"
 
-	find . -name "k*" - zwraca ścieżki do tych plików
+	find . -maxdepth 1 -type f -name "al*" | cut -c 3-
 
 6a. Nadaj uprawnienia do katalogu ala tak aby:
 
@@ -90,7 +81,14 @@ al?
 
 HINT: Jakie są uprawnienia początkowe?
 
-	u=rwx g=r-x o=r-x
+	sprawdziłem je za pomocą polecenia ls -l
+	dla pewności zresetowałem maskę uprawnień (po poprzednich testach)
+	uprawnienia dla folderów i plików mam następujące
+	
+	drwxrwxr-x 2 osboxes osboxes 4096 Dec  4 16:57 umaskDef
+	
+	-rw-rw-r-- 1 osboxes osboxes    0 Dec  4 16:57 umaskDef.txt
+
 
 Podpowiedź: powyższe 3 punkty opisu to jedno zadanie. Nie 3 osobne. Przygotuj 3
 		

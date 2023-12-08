@@ -1,0 +1,89 @@
+Zadanie 0
+- brak uprawnień
+- zabrakło miejsca na dysku 
+- quota
+
+Zadanie 1
+
+cd ../.. 
+
+- przechodzę do katalogu ala, znajdując się w katalogu kota
+
+cd ~/tmp/ukos/ala
+
+- przechodzę do katalogu ala używając ścieżki bezwględnej 
+
+Zadanie 2
+
+mkdir -p ../../../kot/ma/ale/jan/kowalski
+
+tworzę katalog jan i ktalog kowalski za pomocą ścieżki relatywnej 
+używając parametru -p, ktory tworzy brakujące nadrzędne katalogi 
+
+mkdir -p ~/tmp/ukos/kot/ma/ale/jan/kowalski
+
+w tym wypadku użyłem ścieżki bezwzględnej 
+
+Zadanie 3
+ścieżka względna:
+mv ../../../kot/ma/ale ../../i 
+
+ścieżka bezwzględna:
+mv ~/tmp/ukos/kot/ma/ale ~/tmp/ukos/ala/i 
+
+
+Zadanie 4
+
+jeśli program nie reaguje na ctrl+c mogę użyć ctrl+z, zatrzymać
+proces i przenieść go do tła a następnie użyć komendy kill -9 %1
+Mogę też sprawdzić PID procesu i użyć komendy kill -9 PID
+Jest to ostateczność gdyż program nie ma czasu na zareagowanie, najpierw
+warto spróbować kill -15 PID - jest to sygnał SIGTERM, daje programowi szansę
+na zakończenie się
+
+Zadanie 5
+
+ls -p | grep '^al' | grep -v /
+
+ls -p - listuje pliki, parametr -p w tym wypadku dodaje / na koncu nazwy katalogu
+grep '^al' - filtruje wyniki zwracając tylko te linie które zaczynają się od "al".
+grep -v / - eliminuje wyniki, które są katalogami usuwając linie z ukośnikiem /
+na końcu
+
+Zadanie 6a
+
+chmod 711 ala
+chmod u=rwx,g=rx,o=x ala
+chmod u+rwx,g+rx,o+x ala
+
+- nadalem wymagane uprawnienia, używając każdej z dostępnych notacji 
+
+Zadanie 6b
+
+chmod u=,g=,o= ala
+
+- odebralem wszystkie uprawnienia używając notacji z =
+
+Zadanie 7 
+
+tutaj wyprobowalem dwa sposoby i obydwa zadzialaly
+
+ls -1 > lista_plikow.txt
+
+echo * > lista_plikow.txt
+
+Zadanie 8 
+
+Zeby przyspieszyc uzywamy tabulatora, po tym jak wpisalismy część komendy
+strzałek używamy żeby przegladac historie komend
+
+Zadanie 9
+-Po dodaniu znaku & na końcu polecenia program zostanie uruchomiony w tle
+a terminal pozostanie aktywny
+
+-komenda nohup (no hang up) pozwala uruchomić program niezależnie od terminala
+a nawet po zamknięciu sesji terminala, program będzie dalej działał
+
+nohup nazwa_programu
+
+

@@ -31,3 +31,10 @@ działających w tle. Zwieńczeniem dzisiejszych zajęć była komenda kill, kt�
 który bezzwłocznie wyłączał program.
 
 Mam nadzieję, że dzięki tym wszystkim narzędziom będę mógł jeszcze efektywniej korzystać z linuxa
+
+09.12.2023
+Drogi pamiętniczku. To chyba już koniec. Ostatnim tematem było powtórzenie do kolokwium. Omówione zostały wszystkie dotychczasowe tematy.
+Prawda - piszę to już po zdaniu kolokwium. Ogólnie było łatwe, myślałem że będzie trudniejsze, ba nawet bałem się, że mogę nie podołać. 
+Kolosa by mi się udało zdać nawet bez rąk prawdopodobnie, dla utrudnienia i większych emocji rozważyłbym rozwiązanie tego kolosa z wyłączonym monitorem z nadzieją, że
+trafiłem w odpowiednią odpowiedź. No a tak to niestety było bez emocji, ale najważniejsze, że jest zdane
+

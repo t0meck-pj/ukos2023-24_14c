@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Rozgrzeweczka:
 - ls -a
   -[Wypisało 16 plików/katalogów]
@@ -15,7 +14,7 @@ Rozgrzeweczka:
  - plik się utworzył, nie zawiera on jedynie samego siebie
  - tee czyta ze standardowego wejścia i zapisuje na standardowe wyjście oraz do pliku
 
-1.
+Zadanie 1:
 - ps - wypisuje aktualne procesy
 - ps -a -wypisuje wszystkie procesy, oprócz 2 procesów sesji (bash, ps w moim przypadku)
 - ps x - wypisuje wszystkie procesy aktualnego użytkownika
@@ -23,10 +22,10 @@ Rozgrzeweczka:
 - man ps, potem /tty
   - ? - proces nie ma przypisanego terminala, czyli pewnie jest procesem działającym po stronie serwera
 
-- ps axu | grep bash
+- ps ax | grep bash
 - ps -u root u [u, żeby ładniej wypisało]
 
-2.
+Zadanie 2:
 - nano test.txt
 - wciskam ctrl + z
 - ps x
@@ -39,7 +38,7 @@ Rozgrzeweczka:
   - Operacja niedozwolona
 - nie działa dla każdego procesu, np. nie mogę wysyłać sygnałów do procesów roota
 
-3.
+Zadanie 3:
 - cat
  - Ctrl + C [przerwało program]
 - cat > wynik3_1.txt
@@ -54,7 +53,7 @@ Rozgrzeweczka:
   W drugim przypadu przy ctrl + d przerwaliśmy strumień wyjściowy, a dane z niego zostały zapisane do pliku
  [Tutaj chyba odpowiedziałem na wszystkie 3 pytania tak przez przypadek]
 
-4.
+Zadanie 4:
 - nano
 - ctrl + z
 - w konsolce bg wyświetla jedynie "[1]+ nano &", tak samo bg 1
@@ -69,18 +68,3 @@ Rozgrzeweczka:
 - Przechodzi mi do 1 edytora nano *coś sobie tam pisze i zapisuje*
 - killall nano - wyłącza wszystkie moje nano, daje komunikat że operacja niedozwolona, ktoś miał włączone nano też na innym koncie
 
-
-=======
-0.
- - [2 foldery mi wyswietlilo]
- - ls -a | grep p [.profile, public_html]
- - Co się stało? - Wyszukało mi wszystkie pliki zawierające w swojej nazwie literę p,
-   nie koniecznie na początku
- - ls -a | grep p > litera_p.txt
-   [Uworzył się plik litera_p.txt zawierający wyniki mojego wyszukiwania]
-   | - przekierowało strumień [ls] stdout do grepa, który wykonał na nim operację wyszukiwania
-   > - strumień stdout grepa zostal przekierowany do pliku litera_p.txt, nie istnial
-       wiec stworzyl sie nowy i tam sie wszystko zapisalo z tego strumienia
- -ls -a | grep p | tee litera_p_2.txt, plik się utworzył, ale jest w nim zapisany też on sam
-    tee kopiuje wejście do pliku, dodając akurat w naszym przypadku nazwę samego pliku też do niego samego
->>>>>>> 7dd12cab0a152d99cc5c32fdb2d933f116aee3fc

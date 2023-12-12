@@ -40,7 +40,8 @@ ls
 
 7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego 
 (ls z odpowiednim parametrem).
-ls ~
+ls ~ gdzie ~ to katalog domowy aktualnie zalogowanego użytkownika
+katalog /home zawiera katalogi domowe innych użytkowników systemu, jeżeli takich utworzyliśmy
 
 8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - 
 podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) 

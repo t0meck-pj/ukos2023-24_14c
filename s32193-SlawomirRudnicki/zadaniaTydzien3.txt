@@ -30,6 +30,10 @@ zadanie 1
 2. komenda ps -a wyswietlila 1 proces, ps
 komenda ps x wyswietlila cala grupe procesow
 komenda ps -axu wyswietlila duza liste procesow
+	ADNOTACJA: cytujac " t0meck-pj Dec 2, 2023
+	z czy bez minusa? "
+	nie wiem do ktorej komendy to sie odnosi, ale kazda z nich wpisalem dokladnie tak jak
+	zapisalem powyzej
 znak zapytania oznacza proces nie nalezacy do grupy posiadajacej TTY, 
 "x" sciaga restrykcje "must have a tty" -> man ps
 grupa procesow posiadajacych tty to procesy ktore sa powiazane z terminalem na ktorym jest uzyta komenda ps
@@ -38,9 +42,14 @@ zrodlo -> manual
 
 3. wyswietlilem procesy bash:
 	ps -axu | grep bash
+	POPRAWIENIE:
+	ps -axu | grep -w bash -> powinno znalezc tylko linie w ktorych jest zawarty string "bash" jako calosc, a nie "bash" rowniez jako czesc stringu, 
+	dzieki czemu login taki jak np barabash, nie zostanie zmatchowany
 4. wyswietlilem procesy roota:
 	ps -axu | grep root
 		adnotacja: rowniez pokazuje sie grep root
+	POPRAWIENIE:
+	ps -U root -u root u
 zadanie 3
 
 1. uzylem komendy cat, bez parametrow, moglem wpisywac co program bedzie wyswietlal
@@ -66,6 +75,9 @@ zadanie 2
 6. killall bash nie zglosil zadnego bledu, ale nie zaobserwowalem zadnej zmiany
 	przypuszczenie: nic sie nie stalo poniewaz killall nie moze zabic samego siebie
 7. nie zaobserwowalem procesu ktorego nie moglbym zabic uzywajac komendy kill -9
+	POPRAWIENIE: nie, nie bede w stanie zabic procesu innego uzytkownika
+	polaczylem sie z laptopem z maszyny wirtualnej przez SSH, i odpalilem proces timeout, nie moglem go zabic z laptopa 
+	uzywajac kill -9 <PID-procesu> -> Oparation not permitted
 
 zadanie 4
 1. otworzylem gimpa
@@ -73,6 +85,7 @@ zadanie 4
 3. program "zamarzl", wszelkie proby interakcji koncza sie informacja od systemu ze program nie odpowiada
 4. nie wiem co mialo sie stac, nic wartego adnotacji sie nie wydarzylo
 	okno gimpa moge nadal "przesuwac" mimo ze sam program nie odpowiada
+	ADNOTACJA: zle sformulowalem odpowiedz, po najechaniu innym oknem na wspomnianego gimpa, rowniez nic sie nie wydarzylo
 5. po wpisaniu komendy bg program ozyl
 6. po wpisaniu komendy fg (po wczesniejszym uzyciu ctrl-z aby zatrzymac znowu gimpa), 
 program ozyl, ale konsola oczekiwala dalszych polecen, dopiero po uzyciu ctrl-c / ctrl-z konsola zaczela przyjmowac kolejne 

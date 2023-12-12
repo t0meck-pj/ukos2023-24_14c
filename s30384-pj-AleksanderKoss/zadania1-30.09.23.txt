@@ -61,7 +61,8 @@ ls ~
 
 cd ../Pictures
 
-- użyłem komendy cd ../Pictures, ".." przenoszą mnie do katalogu nadrzędnego dla Desktop, a następnie przechodzę do katalogu "Pictures" 
+- użyłem komendy cd ../Pictures, ".." przenoszą mnie do katalogu nadrzędnego dla Desktop, 
+a następnie przechodzę do katalogu "Pictures" 
 
 -------------------------------
 
@@ -79,14 +80,30 @@ Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ście�
 Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
 Co ta ścieżka oznacza/sobą reprezentuje?
 
-- Wpisując ././././././ nic się nie wydarzyło, założyłem więc, że chodzi tu o ścieżkę ../../../../../ - przeniosła mnie ona do katalogu głównego "/".
+- Wpisując ././././././ nic się nie wydarzyło, założyłem więc, że chodzi tu o ścieżkę ../../../../../ 
+- przeniosła mnie ona do katalogu głównego "/".
 - Użyłem komendy ls żeby sprawdzić co znajduje się w tym katalogu. 
 - Są tam inne katalogi, które, jak się dowiedziałem, mają swoje określone funkcje np.:
 - katalog "boot" -	zawiera pliki niezbędne do uruchomienia systemu
 - katalog "etc" - 	pliki konfiguracyjne, ustawienia systemowe
-- katalog "bin" - 	wykonywalne pliki najbardziej podstawowych narzędzi systemowych
-- znajduje się tam również katalog "home", w którym znajdują się pliki określające ustawienia każdego użytkownika, w tym wypadku moje
-- dodanie kilku ../../../../../ w środku ścieżki nic tu nie zmienia, nie ma już nadrzędnego katalogu nad katalogiem "/" 
+- katalog "bin" - 	wykonywalne pliki najbardziej podstawowych
+ narzędzi systemowych
+- znajduje się tam również katalog "home", w którym znajdują się pliki
+ określające ustawienia każdego 
+użytkownika, w tym wypadku moje
+- dodanie kilku ../../../../../ w środku ścieżki nic tu nie zmienia, nie ma 
+już nadrzędnego katalogu nad katalogiem "/" 
+
+POPRAWKA:
+
+./././././ jest równoznaczne z ./ ponieważ wielokropki ./ oznaczają aktualny
+ katalog a dodatkowe wielokropki nie mają wpływu na wynik.
+
+
+
+. oznacza aktualny katalog.
+./ to skrócony zapis dla aktualnego katalogu.
+./././././ to po prostu kilka powtórzeń ./, ale rezultat będzie identyczny z pojedynczym ./.
 
 -------------------------------
 
@@ -100,16 +117,24 @@ cd /home/PJWSTK/s30384
 
 12. Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
 
-- wpisując komendę cd /root otrzymałem komunikat: "Permission denied". Po zastanowieniu wydaje mi się, że nie mam uprawnień żeby przejść do tego katalogu.
-- poczytałem w internecie "root" - to konto administratora "root user" albo "superuser", katalog "/" to tak naprawdę katalog root, "/root" znajdujący się w katalogu "/" to katalog domowy superusera i nie mam do niego uprawnień 
+- wpisując komendę cd /root otrzymałem komunikat: "Permission denied". 
+Po zastanowieniu wydaje mi się, że nie mam uprawnień żeby przejść do tego katalogu.
+- poczytałem w internecie "root" - to konto administratora "root user" albo
+ "superuser", katalog "/" to tak naprawdę katalog root, "/root" znajdujący się w katalogu
+ "/" to katalog domowy superusera i nie mam do niego uprawnień 
 
 -------------------------------
 
 13. Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
-Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie 
+mogą pojawić się wersje z F1-F6. To de facto to samo.
 Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
 
-- wciskając kombinację klawiszy Ctrl+Alt+F3 otworzyło mi "nową" konsolę. Jest to tak zwana wirtualna konsola "TTY". TTY to podsystem w Linuksie, który umożliwia zarządzanie systemem na poziomie jądra systemu. Ctrl+Alt+F7 wraca do GUI - mojego podstawowego terminala i środowiska graficznego wirtualnej maszyny
+- wciskając kombinację klawiszy Ctrl+Alt+F3 otworzyło mi "nową" konsolę. 
+Jest to tak zwana wirtualna konsola "TTY". TTY to podsystem w Linuksie, 
+który umożliwia zarządzanie systemem na poziomie jądra systemu. 
+Ctrl+Alt+F7 wraca do GUI - mojego podstawowego terminala i 
+środowiska graficznego wirtualnej maszyny
 
 -------------------------------
 
@@ -133,9 +158,11 @@ mkdir katalog2 katalog3
 cd ~
 tree
 
-- nauczyłem się jak używać komendy "cd" do poruszania się między katalogami oraz, że komenda "mkdir" tworzy nowy katalog w katalogu w którym aktuanie się znajduję. 
-- Następnie użyłem komendy  cd ~, aby przenieść się do katalogu domowego, a następnie komendy tree, aby wyświetlić drzewo katalogów w "home", 
-  żeby sprawdzić czy dobrze wykonałem strukturę katalogów
+- nauczyłem się jak używać komendy "cd" do poruszania się między katalogami oraz, 
+że komenda "mkdir" tworzy nowy katalog w katalogu w którym aktuanie się znajduję. 
+- Następnie użyłem komendy  cd ~, aby przenieść się do katalogu domowego,
+ a następnie komendy tree, aby wyświetlić drzewo katalogów w "home", 
+ żeby sprawdzić czy dobrze wykonałem strukturę katalogów
 
 -------------------------------
 
@@ -145,15 +172,19 @@ cd ukos/klamka
 touch zajecia2.txt zajecia2.log inny.txt nowy.txt
 cd $HOME
 
-- najpierw przeszedłem do katalogu "klamka" za pomocą komendy "cd". Następnie użyłem komendy "touch" aby stworzyć wymagane pliki. Użyłem komendy $HOME, aby wrócić do katalogu domowego.
+- najpierw przeszedłem do katalogu "klamka" za pomocą komendy "cd". 
+Następnie użyłem komendy "touch" aby stworzyć wymagane pliki. 
+Użyłem parametru $HOME, aby wrócić do katalogu domowego.
 
 -------------------------------
 
-3. Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+3. Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: 
+ukos/to/jest/dluga/nazwa
 
 mkdir -p ukos/to/jest/dluga/nazwa
 
-- użyłem komendy "mkdir" z paramterem "-p" a następnie podałem ścieżkę ukos/to/jest/dluga/nazwa, żeby stworzyć brakujące katalogi nadrzędne nad katalogiem "nazwa"
+- użyłem komendy "mkdir" z paramterem "-p" a następnie podałem ścieżkę ukos/to/jest/dluga/nazwa, 
+żeby stworzyć brakujące katalogi nadrzędne nad katalogiem "nazwa"
 
 -------------------------------
 
@@ -161,7 +192,8 @@ mkdir -p ukos/to/jest/dluga/nazwa
 
 touch ukos/to/jest/dluga/nazwa/dane.txt
 
-- użyłem komendy touch, podając ścieżke gdzie ma zostać utworzony nowy plik, na końcu dodając nazwę tego pliku
+- użyłem komendy touch, podając ścieżke gdzie ma zostać utworzony nowy plik,
+ na końcu dodając nazwę tego pliku
 
 -------------------------------
 
@@ -169,7 +201,10 @@ touch ukos/to/jest/dluga/nazwa/dane.txt
 
 rm -r ukos/klamka/*.txt
 
-- użyłem komendy rm do usuwania plików z parametrem "-r" do usuwania zbioru plików następnie podałem ścieżkę do katalogu "klamka", z którego chciałem usunąć wszystkie pliki tekstowe, posłużyłem się do tego *.txt - pozwoliło mi to na usunięcie wszystkich plików z rozszerzeniem txt.
+- użyłem komendy rm do usuwania plików z parametrem "-r" do usuwania zbioru plików
+ następnie podałem ścieżkę do katalogu "klamka", z którego chciałem usunąć wszystkie
+ pliki tekstowe, posłużyłem się do tego *.txt - pozwoliło mi to na usunięcie wszystkich
+ plików z rozszerzeniem txt.
 
 -------------------------------
 
@@ -177,7 +212,8 @@ rm -r ukos/klamka/*.txt
 
 rmdir ukos/katalog/katalog2 
 
-- użyłem komendy rmdir do usuwania katalogów, mogłem tutaj użyć komendy rmdir, ponieważ "katalog2" był pusty
+- użyłem komendy rmdir do usuwania katalogów, mogłem tutaj użyć komendy rmdir, ponieważ
+ "katalog2" był pusty
 
 -------------------------------
 
@@ -185,7 +221,8 @@ rmdir ukos/katalog/katalog2
 
 rm -r ukos/klamka
 
-- w katalogu "klamka" znajdował się plik tekstowy, musiałem tutaj więc ponownie użyć polecenia "rm" z parametrem "-r" a następnie podać ścieżkę do "klamka" 
+- w katalogu "klamka" znajdował się plik tekstowy, musiałem tutaj więc ponownie użyć polecenia
+ "rm" z parametrem "-r" a następnie podać ścieżkę do "klamka" 
 
 
 

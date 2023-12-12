@@ -1,0 +1,199 @@
+1. Utworzyć we własnym katalogu domowym niedużą strukturę podkatalogów i plików tekstowych.
+ Przydzielić różne uprawnienia dostępu, następnie spróbować wejść do katalogów domowych innych uczestników zajęć i 
+sprawdzić, które z obiektów są tam dla nas dostępne (i w jakim sensie). 
+Spróbować utworzyć własny plik w cudzym katalogu ("kukułcze jajko") oraz spróbować
+ usunąć cudzy plik we własnym katalogu (co można zaobserwować ?). 
+
+mkdir -p druzyny/{PremierLeague/{Arsenal,United,City,Brighton,Chelsea},LaLiga/{Barcelona,Real,Atletico}}
+
+dzięki parametrowi -p mogę tworzyć zagnieżdżone struktury katalogów, tworzyć katalogi w katalogach,
+które nie istnieją przed wykonaniem komendy.
+
+ls -l
+komenda wypisuje w konsoli listę plików i katalogów w moim folderze domowym, domyślnie przypisane uprawnienia
+dla utworzonego przeze mnie katalogu druzyny to rwxrwxr-x, tak więc użytkownik i grupa mają uprawnienia do
+zapoznania się z zawartością, do zmiany zawartości, uprawnienia do wejścia do katalogu, inni nie mają uprawnienia 
+w - zmiany zawartosci katalogu.
+
+cd druzyny
+chmod u-x PremierLeague/Arsenal 
+
+zabieram uzytkownikowi uprawnienie do wejscia do katalogu Arsenal. Teraz kiedy próbuje dostać się do pliku 
+Arsenal przez polecenie cd Arsenal konsola zwraca informację o odmowie dostępu "bash: cd: Arsenal: Permission denied"
+Kiedy próbuję dostać się do pliku klikając folder wyskakuje okno authentication required, w którym wymagane jest ode
+mnie haslo. Nie wymaga ode mnie hasla do konta, na którym obecnie się znajduję ale do pierwszego założonego konta.
+Zgodnie z tym co znalałem w internecie pierwszy użytkownik ma uprawnienia sudo, należy do grupy adminów.
+
+Dowiedziałem się również, że można nadać uprawnienia bezpośrednio przy tworzeniu nowego katalogu:
+
+mkdir -m u=rx Brighton
+
+utworzyłem nowy katalog pozbawiając użytkownika uprawnienia do zmiany jego zawartości. W interfejsie 
+grafinczym objawia się to występującą przy ikonie danego folderu kłódką. Bez problemu mogę teraz dostać się do
+wnętrza katalogu Brighton, ale kiedy próbuję utworzyć w nim plik poleceniem touch file.txt ponownie konsola zwraca
+odmowę dostępu "touch: cannot touch 'file.txt' Permission denied. 
+
+chmod u=rwx . albo chmod u+w . 
+Nadaje użytkownikowi uprawnienie zmiany zawartości i teraz komenda touch file.txt działa - utworzyłem plik tekstowy. 
+
+chmod o=rwx . Wpisując to polecenie znajduję się w moim katalogu domowym, dzięki czemu nadaje innym uprawnienia,
+które pozwolą się im do niego dostać. Przelogowuję się na konto innego użytkownika i teraz bez problemu mogę dostać 
+się do katalogu domowego pierwszego użytkownika( Dla uproszczenia w dalszej części użytkownik 1- użytkownik udostępniający
+pliki i foldery, 2- użytkownik "poruszający się" po katalogach i plikach użytkownika 1.
+
+Użytkownik 2 wykonując polecenie cd Desktop dostaję się z katalogu domowego użytkownika 1 na pulpit gdzie wcześniej
+utworzył on strukturę podkatalogów i plików.
+
+ls -l - sprawdzam uprawnienia, dla katalogu druzyny są one nastęujące rwxrwxr-x, tak więc powinienem 
+mieć możliwość dostania się do tego katalogu i przeglądania zawartości. 
+cd druzyny działą i jestem w katalogu druzyny. 
+ls -l wyświetla mi wszystkie oczekiwane informacje o plikach znajdujących się w tym katalogu - uprawnienie do odczytu.
+Polecenia mkdir, i touch nie działają - brak uprawnienie w(do zapisu)
+
+ls -l dla katalogu PremierLeague inni mają nadane uprawnienia rwx
+cd PremierLeague
+touch Iwashere.txt działa - utworzyłem plik w katalogu innego użytkownika 
+mkdir Elear również działa, utworzyłem katalog o nazwie elear
+
+ls -l widnieje jako właściciel w obu powyższych przypadkach 
+
+Jako użytkownik 2 tworzę kilka katalogów z różnymi uprawnieniami dla grupy inni, w katalogu PremierLeague.
+mkdir -m o=- test2
+mkdir -m o=x test3
+mkdir -m o=w test4
+mkdir -m o=r test1
+
+mkdir -m o=rwx test5
+mkdir -m o =rwx test6
+mkdir test6/test7
+
+Jako użytkownik 2 tworzę kilka plików i przypisuje im różne uprawnienia dla grupy inni, w katalogu PremierLeague.
+chmod o=r file.txt
+chmod o=w file2.txt
+chmod o=x file3.txt
+chmod o=rwx file4.txt
+chmod o=rw  file5.txt
+chmod o=wx file6.txt
+
+cd Arsenal wchodzę do katalogu Arsenal.
+Przelogowuję się na konto użytkownika 1. Wchodzę do katalogu druzyny/PremierLeague. W katalogu znajdują się
+pliki i katalogi utworzone przez użytkownika 2. W interfejsie graficzny przy niektórych widzę kłódki, 
+krzyżyki.
+
+rmdir test5 - mogę usunąć katalog test5 (rwx i jest pusty)
+rmdir test6 - nie mogę usunąć (rwx, ale w środku jest inny katalog)
+rm -r test6 - katalog usunięty, razem z potkatalogiem 
+test1,2,3,4 również zostały pomyślnie usunięte
+
+Wszystkie pliki również mogę usunąć, w niektórych przypadkach prosi o potwierdzenie
+"rm: remove write-protected regular file 'file3.txt'?"(file,6,3)
+
+chmod o=rw .   (czyli PremierLeague)
+chmod o=rw Arsenal - w którym obecnie znajduje się drugi użytkownik
+
+Przełączam się na konto 2 użytkownika.
+ls - nie mogę wyświetlić zawartości (permission denied)
+cd . i cd .. zwracają ten sam komunikat 
+Nie mogę wydostać się z pliku za pomocą ścieżki względnej, w której wykorzystywane są katalogi do których nie mam 
+uprawnienia x- do przejścia przez katalog
+
+cd /home/myuser/Desktop -dostałem się na pulpit użytkownika 1
+Przywracam uprawnienia dla Katalogów PremierLeague i Arsenal z konta użytkownika 1
+Z konta użytkownika 2 zakładam katalogi mkdir dir1/dir2 
+z tym, że tym razem odbieram innym możliwość wejścia do katalogu dir1. 
+chmod o=rw dir1. Tym razem po zalogowaniu na konto użytkownika 1 nie mogę usunąć katalogu dir1.
+Zgodnie z tym co było mówione na zajęciach nie można usunąć niepustego katalogu. Do tej pory radziłęm
+ sobie w takich sytuacjach
+poleceniem rm -r, które rekurencyjnie usuwało zawartość katalogów począwszy od katalogu najbardziej podrzędnego. 
+Ponieważ w tej sytuacji nie mam możliwości wejścia do katalogu dir1(brak x) i usunięcia jego zawartości nie mogę też 
+usunąć samego katalogu dir1.  
+
+2.W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić eksperymenty:
+
+- usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
+
+chmod 000 ..
+chmod 000 . 
+- nie mogę wylistować zawartości katalogu(ls), cd.. po opuszczeniu pliku
+nie mogę już do niego wrócić za pomocą komendy cd, nie mogę też wyświetlić jego zawartości z katalogu nadrzędnego
+Permission denied
+
+- usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
+- W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
+
+cd .. nie mogę wrócić do katalogu nadrzędnego. Polecenie cd dla danegokatalogu możemy wykonać jedyni jeżeli
+mamy przydzielone dla tego katalogu uprawnienie wejścia do niego -x. Więc polecenie cd mogę wykonać podając ścieżkę 
+bezwzględną do katalogu do  którego mam uprawnienie x (i do wszystkich katalogów w ścieżce do niego).
+
+
+-W jakich przypadkach możemy wykonać polecenie chmod ? polecenie chmod możemy zastosować względem danego
+katalogu lub pliku jeżeli jesteśmy jego właścicielem lub rootem
+
+-Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
+nie, żeby przedostać się do katalogu XYZ musimy przejść przez ABC ponieważ ABC jest katalogiem nadrzędnym
+
+-Czy możemy także wrócić korzystając z polecnia cd - ?
+Zależy, jeżeli naszą wcześniejszą lokalizacją był katalog nadrzedny względem .. to możemy tam wrócić. Lub jeżeli
+dostaliśmy się do obecnej lokalizacji z innego katalogu podając ścieżkę bezwzględną, w której skład nie wchodzą 
+te dwa katalogi (obecny i nadrzędny)cd 
+
+3- W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić login osób z zespołu) wypróbować
+ możliwość komunikacji przez współdzielony plik: na jednym z kont w zespole utworzyć pusty plik i 
+przydzielić odpowiednie uprawnienia dostępu (do pliku i do katalogu domowego). 
+Wpisywać i odczytywać komunikaty przy użyciu poleceń:
+
+Robione na dwóch kontach na tym samym komputerze
+Na obu kontach za pomocą cd dostałem się do katalogu domowego pierwszego użytkownika, każdy z dwóch użytkowników może
+utworzyć plik ponieważ użytkownik 2 otrzymał uprawnienia rwx do domowego. Ten który utworzy musi nadać drugiemu uprawnienia
+do odczytu i zapisu rw.
+
+echo "tekst lalala" > plik.txt nadpisuje istniejący plik - usuwa zawartość i wpisuje nową
+echo "tekst lalala" >> plik.txt dopisuje do istniejącej zawartości nową
+
+cat plik.txt - wypisuje zawartosc pliku w konsoli
+
+tail -f plik.txt -w miarę jak do pliku dodawane są kolejne linie, treść się zmienia, aktualizuje się kiedy dodane są 
+nowe linie ponieważ tail wyświetla ostatnie 10 linijek pliku
+
+4.Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to utworzyć; musi się on nazywać DOKŁADNIE tak jak podano, pisane małymi literami z podkreśleniem zamiast spacji pomiędzy słowami). Umieścić w nim plik o nazwie strona.html o następującej zawartości:
+przełączam się na szuflandię
+dla katalogu domowego uprawnienie do wejścia --x wystarczy
+
+dla katalogu public_html  --x
+
+pliku strona.html  r--
+
+5.W opisie bash-a (man) przeczytać 
+opis polecenia wewnętrznego umask i wypróbować jego działanie sprawdzając, 
+a następnie zmieniając swoją maskę trybu pliku i tworząc
+ za każdym razem nowe pliki (przy użyciu polecenia touch plik), a później sprawdzając
+ uzyskane uprawnienia dostępu do nich (polecenie ls -l). Jaka operacja logiczna na bitach 
+domyślnych uprawnień dostępu oraz maski jest wykonywana ? 
+
+umask jest odpowiedzialne za ograniczenie praw dostępu. Pozwala nam określić jakkie
+domyślnie chcemy nadawać uprawnienia podczas tworzenianowcyh plików.
+W Linuxie standardowo tworzony plik ma uprawnienia 
+rw-rw-r--. Natomiast katalog rwxrwxrwx. U mnie ma wartość 0002. 
+zmieniam umask 022: rw-r--r--
+zmieniam umask 777: ---------
+Przyznawane uprawnienia przechodzą logiczną koniunkcję z zanegowaną wartością maski.
+Przykładowo rw-rw-r-- 
+
+każde uprawnienie możemy przedstawić za pomocą jedynki (jeżeli jest nadane) lub 0(jeżeli nie jest)
+tak więc:
+ 
+110 110 100 
+
+teraz jeżeli chcemy pozbyć się jakiegoś uprawnienia nadawanego domyślnie przy tworzeniu nowego pliku musimy w 
+odpowiadającym miejscu wstawić jedynkę a tam gdzie uprawnienie ma pozostać 0.
+
+odbieramy więc uprawnienia do zapisu(w) dla usera i grupy
+
+010 010 100 zamieniamy każdą wartość z tych trzech na system ósemkowy i mamy 224 
+Umask 0224 i otrzymujemy rzeczywiście
+
+r--r---w-
+
+
+
+

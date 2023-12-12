@@ -1,0 +1,109 @@
+1.Przejdź do swojego katalogu domowego
+ cd ~
+
+2.Wydaj komendę: ls -a listuje pliki i katalogi w moim katalogu domowym
+
+3.Zobacz ile plików wypisało. - 21 plików i katalogów łącznie
+
+4.Teraz wydaj komendę: ls -a | grep D - zwraca 3 katalogi zaczyające się literą D 
+
+5.Zobacz ile teraz jest wyników. Co się stało? - zwraca 3 katalogi zaczyające się literą D 
+
+6.A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+Potok przekazuje stdout z polecenie ls do grep a > przekazuje to do pliku.
+Tak więc w pliku zostaną zapisane Nazwy plików i katalogów z mojego katalogu domowego 
+które zawierają literkę D w nazwie
+7.Zobacz czy utworzył sie jakiś plik? JW
+8.A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+Robi mniej więcej to co polecenie 6, jednak w pierwszej wersji polecenie nie drukuje co jest zapisywane do pliku.
+Tee wyświetla nazwy plików zapisywane do pliku tekstowego również w konsoli
+
+9.Zobacz czy plik się utworzył?
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+
+Zapisuje do pliku i na ekran równocześnie
+
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+1.ps wyświetli listę procesów
+2.ps -a - wyświeli listę procesów poza liderami sesji i procesami nie
+                podłączonymi do żadnego terminala.  liderem sesji jest dowolny proces z PID zgodnym z jego SID
+3.ps x - opcja powoduje wylistowanie wszystkich procesów, których jesteś
+                właścicielem (EUID taki sam jak procesu ps), lub wylistowanie wszystkich
+                procesów, jeśli użyta łącznie z opcją a.
+
+u - w pierwszej kolumnie wyświetlana bd nazwa użytkownika danego procesu
+
+4.ps axu - wyświetla wszystkie procesy w sposób zorientowany na użytkownika(pierwza kolumna nazwa użytkownika)
+
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2? brak terminala
+
+
+Wyświetl wszystkie procesy bash -ps T
+
+Wyświetl wszystkei procesy należące do użytkownika root - ps -U root -u root u
+------------------------------------------------------------------------------------------
+
+2. 
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+
+gedit file.txt
+
+2.Zobacz jaki ma on PID - przyda się do tego komenda ps
+24307
+
+3.Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa. - Tak zadziałało program się wyłączył. kill wysyłą sygnał do procesu. Domyślny sygnał to TERM. Wysyłając 
+syganł -KILL -9 SIGKILL - zabija proces
+
+4.Zobacz działanie komendy killall bash zwykłemu użytkownikowi nie można zabić nie swoich procesów, do procesu basha został wysłany standardowy sygnał
+TERM ale bash obsługuję ten sygnał ignorując go ponieważ jest liderem mojej sesji. killall -KILL bash- sygnał wyłączył proces basha, konsole.
+
+5.Zobacz czy kill zadziała dla dowolnego procesu - z parametrem -KILL,-9,-SIGKILL, w innym przypadku nie zadziała, program może np. nadpisać domyślną reakcje na zadany sygnał.
+-------------------------------------------------------------------------------
+3
+1.Uruchom komendę cat bez parametrów
+
+2.Wciśnij CTRL+C i zobacz co się stanie
+
+1.Wydaj komendę cat > wynik3_1.txt
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+
+3.Wciśnij CTRL+C
+
+4.Zobacz co się znalazło w pliku wynik3_1.txt
+plik się utworzył ale jest pusty, program został zamknięty i program nie zapisał tego do pliku. Proces został "zabity". 
+
+
+1.Wydaj komendę cat > wynik3_2.txt
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+
+3.Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+4.Zobacz co się znalazło w pliku wynik3_2.txt
+
+W  pliku znalazł się podany w konsoli tekst bez znaku nowego wiersza. ctrl+d wysyła sygnał o końcu danych wejściowych, cat domyślnie czeka na enter i po nim zapisuje do pliku
+teraz odebrał pewne dane i dostał sygnał o tym że więcej danych nie będzie, zapisał więc te które otrzymał i zakończył proces.
+
+-----------------------------------------------------------------------------------------
+
+4
+
+1.Wpisz komendę gimp (lub np. edytor tekstowy gedit)
+
+2.W terminalu w którym sie to uruchomiło wciśnij CTRL+Z Stopped gedit lala.txt, nie jestem w stanie nic wpisać text editor is not responding
+
+Spróbuj coś wyklikać w gimpie / gedicie
+
+Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno gimpa / gedita i potem je odsuń by odsłonić w pełni okno gimpa / gedita-
+Wstrzymaliśmy program gimp/gedit. Program wstrzymany za pomocą kombinacji CTRL+Z jest przenoszony w tło (background). 
+Efekt jest taki, że taki program przestaje odpowiadać na cokolwiek a jego okno nie jest przerysowywane i robi się mozaika.
+
+1.bg - tak ożył
+2.fg - proces wznowiony, mogę pisać w edytorze

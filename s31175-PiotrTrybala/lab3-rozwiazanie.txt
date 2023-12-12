@@ -1,0 +1,261 @@
+0 (rozgrzewkowe)
+1. Przejdź do swojego katalogu domowego
+
+	cd $HOME
+
+2. Wydaj komendę: ls -a
+
+3. Zobacz ile plików wypisało.
+
+	Wypisało 22 pliki
+
+4. Teraz wydaj komendę: ls -a | grep D
+HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz inną literkę,
+która już będzie w nazwie jakiegoś pliku czy katalogu.
+
+	ls -a | grep l
+
+5. Zobacz ile teraz jest wyników. Co się stało?
+
+	Wypisane zostało 11 plików, każdy z nich zawiera w nazwie literę "l"
+
+Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu wejściowym,
+które pasują do wzorca. Tu podano wzorzec jako "D".
+
+6. A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+	ls -a | grep l > lista_plikow_z_literka_l.txt
+
+7. Zobacz czy utworzył sie jakiś plik?
+
+	Powstał plik "lista_plikow_z_literka_l.txt"
+
+Jaka jest jego treść?
+
+	Zawiera on wcześniej wypisaną listę
+
+Co znaczy | oraz co znaczy > ?
+
+	| to potok, przekierowuje on standardowe wyjście poprzedzającej go komendy
+	jako wejście komendy, która po nim następuje
+	> znak większości przekierowuje standardowe wyjście do pliku
+
+8. A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+	ls -a | grep l | tee lista_plikow_z_literka_l_2.txt
+
+9. Zobacz czy plik się utworzył?
+
+	Tak, powstał nowy plik
+
+Jaka jest treść względem poprzedniej próby bez programu tee?
+
+	Treść pliku zapisanego przy pomocy programu "tee" nie zawiera pliku,
+	w którym została zapisana
+
+Co robi program tee?
+
+	Program tee jednocześnie wypisuje do konsoli oraz zapisuje do pliku standardowe wyjście programu
+
+1 Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+ps
+
+	Wyświetlona została lista procesów
+
+ps -a
+
+	Wyświetlona została lista wszystkich procesów poza 2-ma procesami sesji
+
+ps x
+
+	Wyświetlona została lista wszystkich procesów aktualnego użytkownika
+
+ps axu
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane.
+Dowolna kolejność powinna dać ten sam wynik.
+
+	Wyświetlona została lista wszystkich procesów w formie "przyjaznej" dla użytkownika
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+
+	Znak zapytanie w kolumnie "TTY" oznacza brak przypisanego do procesu terminala,
+	najprawdopodobniej są to procesy uruchomione na serwerze
+
+Nie wiesz? A gdzie może być wyjaśnienie?
+
+	man ps
+
+B: Jak wykonasz poniższe 2 zadania?
+
+Wyświetl wszystkie procesy bash
+
+	ps ax | grep bash
+
+Wyświetl wszystkie procesy należące do użytkownika root
+
+	ps -u root
+
+2 Zadanie:
+
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim,
+Visual Studio Code, atom, itd...)
+
+	gedit
+
+2.Zobacz jaki ma on PID - przyda się do tego komenda ps
+
+	ps axu
+	PID procesu gedit to 2387
+
+3.Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+
+	kill 2387
+	Zadziałało
+
+UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować.
+Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+
+	man kill
+	oraz
+	kill -l
+
+4.Zobacz działanie komendy killall bash
+
+	killall bash
+	Wynik to "operacja niedozwolona"
+
+5.Zobacz czy kill zadziała dla dowolnego procesu.
+
+	Nie mogę użyć komendy np na procesach innych użytkowników
+
+3
+
+1.Uruchom komendę cat bez parametrów
+
+	cat
+
+2.Wciśnij CTRL+C i zobacz co się stanie
+
+	Skrót CTRL-C wysyła sygnał przerwania programu
+
+Zobacz co się stanie:
+
+1.Wydaj komendę cat > wynik3_1.txt
+
+	cat > wynik3_1.txt
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+
+	witaj
+
+3.Wciśnij CTRL+C
+
+4.Zobacz co się znalazło w pliku wynik3_1.txt
+
+	Plik jest pusty
+
+1.Wydaj komendę cat > wynik3_2.txt
+
+	cat > wynik3_2.txt
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+
+	witaj
+
+3.Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+	Trzeba było
+
+4.Zobacz co się znalazło w pliku wynik3_2.txt
+
+	Plik zawiera tekst "witaj" bez znaku nowej linii
+
+W opisie rozwiązania zadania umieść:
+
+jak rozumiesz co się stało?
+
+	skrót CTRL-C przerwał działanie programu cat przed zapisaniem jego zawartości
+	skrót DTRL-D przerwał działanie po zapisaniu do pliku wprowadzonych danych
+
+czym oba te przykłady się różnią?
+
+	Różnią się wynikiem
+
+DLACZEGO się różnią?
+
+	Różnią się ponieważ wykonywane są w innym celu, czasem potrzebujemy szybko zapisać plik i wyjść,
+	innym razem wręcz nie chcemy zachować jego zawartości lub po prostu musimy jak
+	najszybciej przerwać proces
+
+
+4
+1.Wpisz komendę gimp (lub np. edytor tekstowy gedit)
+
+	gimp
+
+2.W terminalu w którym sie to uruchomiło wciśnij CTRL+Z
+
+3.Spróbuj coś wyklikać w gimpie / gedicie
+
+	Nie da się, jest "zamrożony"
+
+4.Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno gimpa
+/ gedita i potem je odsuń by odsłonić w pełni okno gimpa / gedita
+
+Co się stało? Wstrzymaliśmy program gimp/gedit. Program wstrzymany za pomocą kombinacji CTRL+Z jest
+przenoszony w tło (background). Efekt jest taki, że taki program przestaje odpowiadać na cokolwiek.
+
+Komenda bg służy do wznowienia w tle wstrzymanego programu. Zobacz:
+
+1.Wpisz komendę: bg
+
+	bg
+
+Jak widać gimp/gedit ożył (jeśli nie, to zapytaj prowadzącego)
+
+	Ożył
+
+Komenda fg służy do wznowienia na pierwszym planie wstrzymanego wcześniej procesu. Zobacz co się stanie:
+
+1.Wpisz komendę: fg
+
+	fg
+
+Jak widać proces wrócił i można wcisnąć na przykład CTRL+C aby go zakończyć.
+
+W momencie uruchamiania programu, możemy od razu nakazać wykonanie go w tle.
+Służy do tego znak & umieszczony na końcu instrukcji.
+
+Zobacz:
+INFO: Jeśli jakiegoś programu nie ma to zastąp go innym, który znasz.
+
+1.Wykonaj komendę gimp &
+
+	gimp &
+
+2.Wykonaj komendę gedit &
+
+	gedit &
+
+3.Wykonaj komendę geany &
+
+	geany &
+
+Zobacz co się stało (domyślam się, że uruchomiły się 3 programy, a na terminalu ciągle można coś pisać.
+
+	Zgadza się
+
+Kolejna komenda to jobs. Służy ona do wyświetlania listy zadań (jobów; nie mylić z procesami) przeniesionych do tła.
+
+1.Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni program) z tła na pierwszy plan. Skorzystaj z jobs aby dowiedzieć się jakie mają numery poszczególne zadania działające w tle.
+składnia: fg %(numer jobu)
+
+	jobs
+	Wyświetliły się 3 zadania
+
+	fg %2
+	Program gedit został przywrócony na "pierwszy plan" konsoli

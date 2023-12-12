@@ -17,7 +17,11 @@ mv ../../../kot/ma/ale/tmp/ukos/ala/i
 $4
 kill -9 <PID>
 $5
-find . -type f -name "al*"
+find ./ -type f -name "al*"
+w ten sposób wyświetla te w bieżącym katalogu i subkatalogach
+dlatego lepiej jest wykorzystać
+ls -p | grep al | grep -v /
+bo grep -v / odejmuje katalogi od wzorca
 nie umiem w regex :(
 $6a
 żeby każdy mógł tylko wejść do katalogu
@@ -33,7 +37,8 @@ $6b
 chmod a=- zasob
 $7
 ls|dd of=pliki.txt
-find . -type f | dd of=lista.txt
+find ./ -type f | dd of=lista.txt
+ls *.txt > listaplikow.txt
 $8
 tab
 $9

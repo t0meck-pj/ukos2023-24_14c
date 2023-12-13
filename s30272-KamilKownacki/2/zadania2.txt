@@ -34,10 +34,6 @@ Struktura katalogu:
 gniazdko
 └── komunikator.txt
 
-Na czas wykonywania zadania daję
-chmod a+rwx s30272
-oraz
-chmod 777 -R gniazdko
 
 *wymieniamy się wiadmościami na początku
 echo "tresc wiadmosci" > komunikator.txt

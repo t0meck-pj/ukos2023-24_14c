@@ -94,10 +94,12 @@ tab
 $9
 Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
 
-program &&
+program &
 
 program
+ctrl + z
 bg
+
 
 Jak nie znalem bg to uzywalem program & i myślałem że jest 1 sposób
 

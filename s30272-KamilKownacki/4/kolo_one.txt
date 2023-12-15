@@ -1,52 +1,105 @@
-Przypuśćmy, że nie możesz utworzyć żadnego pliku na swoim koncie uczelnianym np. na szuflandii.
+Przypuśćmy, że nie możesz utworzyć żadnego pliku na swoim koncie uczelnianym
+np. na szuflandii.
 Co się mogło stać? (wymień co najmniej 3 opcje)
 
 -brak miejsca
 -brak uprawnien
 -quota(ograniczone miejsce)
 -błąd wyjścia/wejścia
+
 $1
+Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos.
+Jak przejść do katalogu ala za pomocą:
+
+    ścieżki względnej (relatywnej)
+
+    ścieżki bezwzględnej (absolutnej)
+
+Rozwiązanie:
 cd ../..
 cd /tmp/ukos/ala
+
 #2
-cd /tmp/ukos/kot/ma/ale && mkdir -p jan/kowalski
+Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu 
+kota. Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu
+ale za pomocą jednej komendy?
+
+Rozwiązanie:
+Podaj rozwiązania używając ścieżek absolutnych i relatywnych.
+mkdir -p  /tmp/ukos/kot/ma/ale/jan/kowalski
 mkdir -p ../../../kot/ma/ale/jan/kowalski
+
 $3
-mv /tmp/ukos/kot/ma/ale/tmp/ukos/ala/i
-mv ../../../kot/ma/ale/tmp/ukos/ala/i
+Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu i używając:
+
+źródło (ścieżka względna), miejsce docelowe (ścieżka absolutna)
+źródło (ścieżka absolutna), miejsce docelowe (ścieżka względna)
+
+Rozwiązanie:
+mv ../../../kot/ma/ale /tmp/ukos/ala/i
+mv /tmp/ukos/kot/ma/ale ../../i
+
 $4
+Jak zamknąć program, który nie reaguje na ctrl+c ?
+
+Rozwiązanie:
 kill -9 <PID>
+
 $5
-find ./ -type f -name "al*"
-w ten sposób wyświetla te w bieżącym katalogu i subkatalogach
-dlatego lepiej jest wykorzystać
+Jak wypisać wszystkie pliki (i tylko pliki bez katalogów) w bieżącym katalogu, których nazwa zaczyna się od al?
+
+Rozwiązanie:
+find . -maxdepth 1 -type f -name "al*"
+albo:
 ls -p | grep al | grep -v /
 bo grep -v / odejmuje katalogi od wzorca
 nie umiem w regex :(
+
 $6a
+Nadaj uprawnienia do katalogu ala tak aby:
+każdy mógł do niego wejść
+tylko grupa mogła wyświetlić co w nim jest
+właściciel ma pełne uprawnienia
+
+Rozwiązanie:
 żeby każdy mógł tylko wejść do katalogu
-chmod 111 ala
-chmod a=x ala
-chmod a+x ala
 tylko grupa moze wyswietlic co w nim jest
-chmod 050 ala
-chmod a=- ala && chmod g=rx ala
-chmod a-rwx ala && chmod g+rx ala
 wlasciciel ma pelne uprawnienia
+
+chmod 751 ala
+chmod u=rwx,g=rx,o=x ala
+chmod u+rwx,g+rx,o+x ala
+
 $6b
+Jak korzystając z notacji ze znakiem równości odebrać wszystkie uprawnienia 
+dla danego zasobu?
 chmod a=- zasob
+
 $7
+Jak utworzyć plik z listą plików w bieżącym katalogu?
+
 ls|dd of=pliki.txt
-find ./ -type f | dd of=lista.txt
+find ./ -maxdepth 1 -type f | dd of=lista.txt
 ls *.txt > listaplikow.txt
+
+ja to w sumie dd to używałem raczej do robienia kopii boot sektora i niczego wiecej
+
 $8
+Jak przyspieszyć wpisywanie komend w terminalu? Jaki klawisz pozwala na 
+uzupełnianie komend?
+
 tab
+
+
 $9
+Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
+
 program &
 
 program
+ctrl + z
 bg
 
 
-
+Jak nie znalem bg to uzywalem program & i myślałem że jest 1 sposób
 

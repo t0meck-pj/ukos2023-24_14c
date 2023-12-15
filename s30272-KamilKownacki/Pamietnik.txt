@@ -1,0 +1,34 @@
+$1 lab
+Lekcja mi się podobala, korzystalem kiedys z kali linuxa dla zabawy,
+ale miałem problem z jego obsługą, nawet 2 razy w 1 tygodniu usunalem
+katalog boot i musialem system od poczatku stawiac, ale mozna powiedziec,
+ze zaczynalem od jednego z trudnych
+Na cwiczeniach siedzialem z kolega to nie moglismy sciagnac plikow z szuflandii
+bo jestesmy tacy adepci ze nie korzystamy z winscp czy czegos
+$2 lab
+Lekcja mi sie podobala probowalem rozwiazywac zadania ze strony, wlamalem sie
+na folder kolegi ktorego ekran byl wyswietlony na teams i utworzylem mu
+mnostwo folderow i plikow o losowych nazwach i zawartosciach i w ktoryms
+momencie on zmienil uprawnienia i nie moglem ich usunac i potem byl problem
+bo nikt z obecnych w sali nie mial odpowiednich poswiadczen w tamtym momencie
+zeby to naprawic
+Dowiedzialem sie co to jest system 8, bo wczesniej to znalem tylko system 2
+albo system 16, ale system 8 to nie, i na poczatku nie zrozumialem chyba
+dlaczego to jest system 8, chociaz znalem szesnastkowy ze jest abcdef
+razem 16 wliczajac 0
+$3 lab
+Linux is User Friendly Just Very Picky Who It's Friends Are
+$4 lab
+Teraz to ja 1 komenda w cmd przesylam pliki z windowsa na linuxa(z predkoscia
+16 mb/s na debian12 oraz 8 mb/s na ubuntu 23 chyba nie wiem z czego to wynikalo
+przez scp jak mam putty zainstalowane albo na linuxie openssh i scp lataja
+pliki przesylam z drugiego konca domu teraz,
+z telewizora zrobilem linuxa i jeszcze rasberry pi bym kupil palete najlepiej
+takich 512 mb ram i zainstalowal tam debiana 7, ja ten system odpalalem
+na takich magazynowych PDA i hulalo to duzo lepiej niz windows 6(nie pamietam
+jak sie nazywa ten system) Dowiedzialem sie ze mac tez ma basha ale dalej boje
+sie to obslugiwac moim zdaniem linux lepszy bo ja lubie otwarte oprogramowanie,
+ale systemy unixopodobne ogolnie sa spoko ja nie wiem o czym oni mysleli
+jak tworzyli windowsa, ale na powershella to tez czekam, z niecierpliwoscia
+bo mi sie w pracy przyda oni tam maja windowsy i macintosh. Ja to bym chcial
+pracowac tam gdzie ludzie z linuxa korzystaja

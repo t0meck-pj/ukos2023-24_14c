@@ -1,55 +1,107 @@
 1. Uruchom terminal.
- - no uruchamiam, jako terminal uruchomiłem sobie PowerShell. A co! i łąduję się na szuflandię, ssh s32351@szuflandia.pjwstk.edu.pl
+ - no uruchamiam, jako terminal uruchomiłem sobie PowerShell. A co! i łąduję się
+   na szuflandię, ssh s32351@szuflandia.pjwstk.edu.pl
 
 2. Wyświetl zawartość aktualnego katalogu.
- - A włączyłem midnight commander, skrót mc. Acha, ćwiczymy CLI, no to exit (żeby wyjść z MC) i potem na przykład: ls -lA. Duże A, żeby nie było kropeczek.
+ - A włączyłem midnight commander, skrót mc. Acha, ćwiczymy CLI, no to exit
+   (żeby wyjść z MC) i potem na przykład: ls -lA. Duże A, żeby nie było
+   kropeczek.
 
 3. Sprawdź gdzie aktualnie się znajdujesz.
- - no sprawdzam, pwd. odpowiedź: /home/PJWSTK/s32351, no nie dziwne, to mój katalog domowy na Szuflandii. Hejkum-Kejkum!
+ - no sprawdzam, pwd. odpowiedź: /home/PJWSTK/s32351, no nie dziwne, to mój
+   katalog domowy na Szuflandii. Hejkum-Kejkum!
 
 4. Przejdź do katalogu Pulpit za pomocą ścieżki względnej
- - dochodzę do wniosku, że na szuflandii nie ma katalogu Pulpit. sprawdzam na wszelki upadek, a nuż ktoś dla zabawy wrzucił. MC. a nie, wychodzę z MC, wpisuję find Pulpit. nie wiem jaki param dla ignorowania rozmiaru liter, zatem man find. no dobra, nie znalazłem czegos jak ignore capitals. Ale jest regex. zatem find -regextype perl regex `(?i)pulpit` ... nie podoba mu się 'perl', będzie AWK, podobne. po kilku próbach i błędach związanych ze składnią, dochodzę do: find -regextype awk -regex "(?i)pulpit". Co nie zadowala mnie, bo wykonuje, nic się nie pojawia, co rozumiem, że nie znajduje. Dla testu robię: find -regextype awk -regex "(?i)projects" hmmm. NIE DZIAŁA, sh.... idę na łatwiznę, google, 'bash find ignore capitals'. find -iname pulpit. Nie ma wyników. testuję na projects. działa. znaczy - nie ma pulpitu. No u mnie nie ma pulpitu, bo zaczynam podejrzewać find działa 'w głąb' standardowo. Exit - Wylogowuję się z szuflandii.
+ - dochodzę do wniosku, że na szuflandii nie ma katalogu Pulpit. sprawdzam na
+   wszelki upadek, a nuż ktoś dla zabawy wrzucił. MC. a nie, wychodzę z MC,
+   wpisuję find Pulpit. nie wiem jaki param dla ignorowania rozmiaru liter,
+   zatem man find. no dobra, nie znalazłem czegos jak ignore capitals. Ale jest
+   regex. zatem find -regextype perl regex `(?i)pulpit` ... nie podoba mu
+   się 'perl', będzie AWK, podobne. po kilku próbach i błędach związanych ze
+   składnią, dochodzę do: find -regextype awk -regex "(?i)pulpit". Co nie
+   zadowala mnie, bo wykonuje, nic się nie pojawia, co rozumiem, że nie
+   znajduje. Dla testu robię: find -regextype awk -regex "(?i)projects" hmmm.
+   NIE DZIAŁA, sh.... idę na łatwiznę, google, 'bash find ignore capitals'.
+   find -iname pulpit. Nie ma wyników. testuję na projects. działa. znaczy -
+   nie ma pulpitu. No u mnie nie ma pulpitu, bo zaczynam podejrzewać find
+   działa 'w głąb' standardowo. Exit - Wylogowuję się z szuflandii.
 
 5. Sprawdź gdzie jesteś.
-- pwd, resultat: 
-Path
+- pwd, resultat: Path
 ----
 C:\Windows\system32
 
 6. Wyświetl zawartość bieżącego katalogu.
- - ls -lA, o, Get-Childitem : A parameter cannot be found that matches parameter name 'lA'. Znaczy argument nie ok. samo ls działa, a man pokazuje, że jest to Get-Childitem. Logiczne. Najwyraźniej w PowerShellu działa to trochę inaczej. Sprawdzę, jak to wygląda w gitBash, to najbliższe bashowi uixowemu co mam. No tu działa tak jak powinno. jestem w c/Users/steam, 
+ - ls -lA, o, Get-Childitem : A parameter cannot be found that matches parameter
+   name 'lA'. Znaczy argument nie ok. samo ls działa, a man pokazuje, że jest
+   to Get-Childitem. Logiczne. Najwyraźniej w PowerShellu działa to trochę
+   inaczej. Sprawdzę, jak to wygląda w gitBash, to najbliższe bashowi uixowemu
+   co mam. No tu działa tak jak powinno. jestem w c/Users/steam, 
 
-7. Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
-- to najpierw man ls, oczywiście tu nie mam man, więc ls --help. hmmm. pewnie chodzi o wylistowanie tego, czego jestem ownerem. A czy jestem? A może tylko mam uprawnienia do... hmmm. Zadziałało ls #home. 
+7. Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z
+odpowiednim parametrem).
+- to najpierw man ls, oczywiście tu nie mam man, więc ls --help. hmmm. pewnie
+  chodzi o wylistowanie tego, czego jestem ownerem. A czy jestem? A może tylko
+  mam uprawnienia do... hmmm. Zadziałało ls #home. 
 
-8. Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
-- obrazy są... w dokumentach. w każdym razie link do nich. tu widzę, że: 'Moje obrazy' -> /c/Users/steam/Pictures. no dobra, zatem stąd to będzie: cd ../Pictures. Co nie działa, bo obrazy mam już na chmurze, One Drive, zatem są w C:\Users\steam\OneDrive\Obrazy. zgrzytam zębem, i wpisuję: cd cd ../OneDrive/Obrazy/. Poszło. 
+8. Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj
+wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w
+twoim katalogu domowym za pomocą ścieżki względnej.
+- obrazy są... w dokumentach. w każdym razie link do nich. tu widzę, że: 'Moje
+  obrazy' -> /c/Users/steam/Pictures. no dobra, zatem stąd to będzie:
+  cd ../Pictures. Co nie działa, bo obrazy mam już na chmurze, One Drive, zatem
+  są w C:\Users\steam\OneDrive\Obrazy. zgrzytam zębem, i wpisuję: cd
+  cd ../OneDrive/Obrazy/. Poszło. 
 
 9. Sprawdź gdzie jesteś.
 - pwd --> /c/Users/steam/OneDrive/Obrazy
 
-10. Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
-W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
- - no nic się nie stało. jestem w tym samym miejscu. eksperymentuję. nic się nie stanie, bo ./ to katalog w którym jestem. więc przechodzę z katalogu w którym jestem do tego w którym jestem, a z niego apiać to tego w którym jestem, i tak dalej.
+10. Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././ W
+opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie
+stało.
+ - no nic się nie stało. jestem w tym samym miejscu. eksperymentuję. nic się nie
+   stanie, bo ./ to katalog w którym jestem. więc przechodzę z katalogu w
+   którym jestem do tego w którym jestem, a z niego apiać to tego w którym
+   jestem, i tak dalej.
 
-Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
-Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
-- nic się nie zmieni, bo to ten sam katalog.
-Co ta ścieżka oznacza/sobą reprezentuje? 
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka? Czy
+dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się
+zmieni?
+- nic się nie zmieni, bo to ten sam katalog. Co ta ścieżka oznacza/sobą
+  reprezentuje? 
 - ten sam katalog.
-- różnicę dopiero czyni cd ../../../../../../, i teraz znajduję się w roocie windowsa, powyżej katalogu C:/
+- różnicę dopiero czyni cd ../../../../../../, i teraz znajduję się w roocie
+  windowsa, powyżej katalogu C:/
 
 11. Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
 - cd c/Users/steam/ i nie, nie powoduje to u mnie żadnych głębszych przemyśleń.
 
-12. Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
-- no w windzie nie ma takiej opcji. Nie chce mi się instalować linucha w virtualboxie, bo mam zamiar dołożyć którąś dystrybucję w bardzo bliskiej przyszłości jako drugi system do tego lapka, więc zamiast tego wejdę na serwerek na AWSie. Odpaliłęm jakieś t2micro, wchodzę kluczem: ssh -i c:\... ... .ppk nie działa. wracam do PowerShell, tam choco install awscli. Tworzę nowy klucz, ściągam, podmieniam w instancji. W zasadzie to ją usuwam, tworzę nową. Wchodzę do instancji ssh -i klucz ec2-user@instancja, jestem. mc - nie ma. muszę pociągnąć. yum search midnight. nie to. yum search mc. jest mc.x86_64 : User-friendly text console file manager and visual shell. to wrzucę od razu. yum install mc. a, su! zatem sudo yum install mc. poszłóo....... ale co ja miałem zrobić? A! cd /root. permition denied. No bo jestem jako user, nie root. 
+12. Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz,
+zastanów się co się stało. Poszukaj w Internecie.
+- no w windzie nie ma takiej opcji. Nie chce mi się instalować linucha w
+  virtualboxie, bo mam zamiar dołożyć którąś dystrybucję w bardzo bliskiej
+  przyszłości jako drugi system do tego lapka, więc zamiast tego wejdę na
+  serwerek na AWSie. Odpaliłęm jakieś t2micro, wchodzę kluczem: ssh -i
+  c:\... ... .ppk nie działa. wracam do PowerShell, tam choco install awscli.
+  Tworzę nowy klucz, ściągam, podmieniam w instancji. W zasadzie to ją usuwam,
+  tworzę nową. Wchodzę do instancji ssh -i klucz ec2-user@instancja, jestem.
+  mc - nie ma. muszę pociągnąć. yum search midnight. nie to. yum search mc.
+  jest mc.x86_64 : User-friendly text console file manager and visual shell. to
+  wrzucę od razu. yum install mc. a, su! zatem sudo yum install mc.
+  poszłóo....... ale co ja miałem zrobić? A! cd /root. permition denied. No bo
+  jestem jako user, nie root. 
 
-13. Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na szuflandii.
-Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
-Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
-- no tu na tej maszynie i AWS Linux nie działa jak powinno. Generalnie powinna to być zmiana powłoki. przepraszam, nie powłoki, tylko wirtualnej konsoli, a alt+F7 powinno wrócić do X-a.
+13. Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym
+komputerze. Nie można go zrobić zdalnie na szuflandii. Zobacz, co się stanie,
+jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3 Sprawdź w Internecie co się
+dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje
+z F1-F6. To de facto to samo.
+- no tu na tej maszynie i AWS Linux nie działa jak powinno. Generalnie powinna
+  to być zmiana powłoki. przepraszam, nie powłoki, tylko wirtualnej konsoli, a
+  alt+F7 powinno wrócić do X-a.
 
-Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
-14. A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach). 
-- alt+F7 powinno wrócić do konsoli X servera. Tak w internetach piszą, bo u mnie nie działa. Chyba muszę tego linuch już zainstalować......
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej. 14.
+A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych
+linuxach). 
+- alt+F7 powinno wrócić do konsoli X servera. Tak w internetach piszą, bo u mnie
+  nie działa. Chyba muszę tego linuch już zainstalować......

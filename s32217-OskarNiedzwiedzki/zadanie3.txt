@@ -1,0 +1,70 @@
+Rozgrzeweczka:
+- ls -a
+  -[Wypisało 16 plików/katalogów]
+
+- ls -a | grep l [Nie miałem plików na D]
+  -[Wypisało 7 plików mających literkę l w sobie]
+
+- ls -a | grep l > lista_plikow_z_lierka_l.txt
+  - Plik się utworzył, zawiera wszystkie pliki ktore zawierają w swojej nazwie literkę l
+  - Potok [|] przekazuje standardowy strumień wyjścia 
+  - > przekazuje standardowy strumień wyjścia do pliku do nadpisania
+
+- ls -a | grep l | tee lista_plikow_z_literka_l_2.txt
+ - plik się utworzył, nie zawiera on jedynie samego siebie
+ - tee czyta ze standardowego wejścia i zapisuje na standardowe wyjście oraz do pliku
+
+Zadanie 1:
+- ps - wypisuje aktualne procesy
+- ps -a -wypisuje wszystkie procesy, oprócz 2 procesów sesji (bash, ps w moim przypadku)
+- ps x - wypisuje wszystkie procesy aktualnego użytkownika
+- ps axu - wypisuje wszystkie procesy, wraz z ich użytkownikami
+- man ps, potem /tty
+  - ? - proces nie ma przypisanego terminala, czyli pewnie jest procesem działającym po stronie serwera
+
+- ps ax | grep bash
+- ps -u root u [u, żeby ładniej wypisało]
+
+Zadanie 2:
+- nano test.txt
+- wciskam ctrl + z
+- ps x
+- kill 3156568
+  - wysyłanie SIGTERM, ogólnie po wpisaniu jobs i fg 1, pojawił się komunikat "Otrzymano SIGHUP lub SIGTERM"
+    i program się zamknął
+- kill -s SIGKILL 3156568
+ - Normalnie się wyłączył, jednak teraz nie musiałem wpisywać fg 1
+- killall bash
+  - Operacja niedozwolona
+- nie działa dla każdego procesu, np. nie mogę wysyłać sygnałów do procesów roota
+
+Zadanie 3:
+- cat
+ - Ctrl + C [przerwało program]
+- cat > wynik3_1.txt
+- witaj [ctrl + c]
+- w pliku wynik3_1.txt nie ma nic
+
+- cat > wynik3_2.txt
+- witaj [ctrl + d x2]
+- W pliku jest tekst "witaj"
+
+- W pierwszym przypadku przy ctrl + c został wysłany sygnał do zakończenia sygnału, przez co strumień wyjściowy nie miał możliwości zapisania danych
+  W drugim przypadu przy ctrl + d przerwaliśmy strumień wyjściowy, a dane z niego zostały zapisane do pliku
+ [Tutaj chyba odpowiedziałem na wszystkie 3 pytania tak przez przypadek]
+
+Zadanie 4:
+- nano
+- ctrl + z
+- w konsolce bg wyświetla jedynie "[1]+ nano &", tak samo bg 1
+  To znaczy tyle, że nano działa w tle
+- fg 1
+- nano &
+- nano &
+- nano &
+- Opdaliły się 3 edytory nano
+- jobs
+- fg 1
+- Przechodzi mi do 1 edytora nano *coś sobie tam pisze i zapisuje*
+- killall nano - wyłącza wszystkie moje nano, daje komunikat że operacja niedozwolona, ktoś miał włączone nano też na innym koncie
+

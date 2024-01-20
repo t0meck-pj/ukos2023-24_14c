@@ -1,0 +1,265 @@
+Zadanie wykonane na writualnej maszynie Oracle VM Virtual Box 
+
+1. Uruchom terminal
+
+Uruchamiam terminal za pomocą skrótu klawiszowego ctrl+alt+t. Mogę to również zrobić za pomocą ppm -> Open Terminal Here lub Menu -> System -> Terminal 
+
+- nauczyłem się, że można otworzyć terminal na linuxie na kilka sposobów 
+
+-------------------------------
+
+2. Wyświetl zawartość aktualnego katalogu 
+
+ls
+
+- komenda wyświetla zawartość aktualnego katalogu 
+
+-------------------------------
+
+3. Sprawdż gdzie aktualnie się znajdujesz
+
+pwd
+
+- komenda wskazuje katalog (ścieżkę), w którym aktualnie się znajduję 
+
+-------------------------------
+
+4. Przejdź do katalogu pulpit za pomocą ścieżki względnej 
+
+cd Desktop 
+
+- komenda pozwoliła mi przejść do katalogu Desktop 
+
+-------------------------------
+
+5. Sprawdź gdzie aktualnie się znajdujesz 
+
+pwd 
+
+- ponownie komenda pwd, sprawdzilem ze jestem w katalogu Desktop - /home/osboxes/Desktop
+
+-------------------------------
+
+6.  Wyświetl zawartość bieżącego katalogu 
+
+ls -1
+
+- Użyłem komendy ls z argumentem -1 dla lepszej widoczności
+
+-------------------------------
+
+7. Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego.
+
+ls ~ 
+
+- użyłem komendy ls ~, żeby wyświetlić zawartość katalogu domowego nie znajdując się w nim, 
+- mogłem również użyć komendy ls $HOME
+
+-------------------------------
+
+8. Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+
+cd ../Pictures
+
+- użyłem komendy cd ../Pictures, ".." przenoszą mnie do katalogu nadrzędnego dla Desktop, 
+a następnie przechodzę do katalogu "Pictures" 
+
+-------------------------------
+
+9. Sprawdź gdzie jesteś.
+
+pwd 
+
+- komenda pwd wskazuje ścieżkę do katalogu /home/osboxes/Pictures
+
+-------------------------------
+
+10. Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+Co ta ścieżka oznacza/sobą reprezentuje?
+
+- Wpisując ././././././ nic się nie wydarzyło, założyłem więc, że chodzi tu o ścieżkę ../../../../../ 
+- przeniosła mnie ona do katalogu głównego "/".
+- Użyłem komendy ls żeby sprawdzić co znajduje się w tym katalogu. 
+- Są tam inne katalogi, które, jak się dowiedziałem, mają swoje określone funkcje np.:
+- katalog "boot" -	zawiera pliki niezbędne do uruchomienia systemu
+- katalog "etc" - 	pliki konfiguracyjne, ustawienia systemowe
+- katalog "bin" - 	wykonywalne pliki najbardziej podstawowych
+ narzędzi systemowych
+- znajduje się tam również katalog "home", w którym znajdują się pliki
+ określające ustawienia każdego 
+użytkownika, w tym wypadku moje
+- dodanie kilku ../../../../../ w środku ścieżki nic tu nie zmienia, nie ma 
+już nadrzędnego katalogu nad katalogiem "/" 
+
+POPRAWKA:
+
+./././././ jest równoznaczne z ./ ponieważ wielokropki ./ oznaczają aktualny
+ katalog a dodatkowe wielokropki nie mają wpływu na wynik.
+
+
+
+. oznacza aktualny katalog.
+./ to skrócony zapis dla aktualnego katalogu.
+./././././ to po prostu kilka powtórzeń ./, ale rezultat będzie identyczny z pojedynczym ./.
+
+-------------------------------
+
+11.  Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej. 
+
+cd /home/PJWSTK/s30384
+
+- przeniosłem się do katalogu domowego
+
+-------------------------------
+
+12. Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
+
+- wpisując komendę cd /root otrzymałem komunikat: "Permission denied". 
+Po zastanowieniu wydaje mi się, że nie mam uprawnień żeby przejść do tego katalogu.
+- poczytałem w internecie "root" - to konto administratora "root user" albo
+ "superuser", katalog "/" to tak naprawdę katalog root, "/root" znajdujący się w katalogu
+ "/" to katalog domowy superusera i nie mam do niego uprawnień 
+
+-------------------------------
+
+13. Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie 
+mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+
+- wciskając kombinację klawiszy Ctrl+Alt+F3 otworzyło mi "nową" konsolę. 
+Jest to tak zwana wirtualna konsola "TTY". TTY to podsystem w Linuksie, 
+który umożliwia zarządzanie systemem na poziomie jądra systemu. 
+Ctrl+Alt+F7 wraca do GUI - mojego podstawowego terminala i 
+środowiska graficznego wirtualnej maszyny
+
+-------------------------------
+
+14. A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+
+- Ctrl+Alt+F1 - blokuje ekran 
+- Ctrl+Alt+F2 - otwiera kolejną wirtualną konsolę tty2. 
+
+-------------------------------
+
+
+CIĄG DALSZY ZADAŃ Z 30.09 wykonany na Szuflandii
+
+1. Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+mkdir ukos
+cd ukos
+mkdir katalog klamka
+cd katalog
+mkdir katalog2 katalog3
+cd ~
+tree
+
+- nauczyłem się jak używać komendy "cd" do poruszania się między katalogami oraz, 
+że komenda "mkdir" tworzy nowy katalog w katalogu w którym aktuanie się znajduję. 
+- Następnie użyłem komendy  cd ~, aby przenieść się do katalogu domowego,
+ a następnie komendy tree, aby wyświetlić drzewo katalogów w "home", 
+ żeby sprawdzić czy dobrze wykonałem strukturę katalogów
+
+-------------------------------
+
+2. W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+cd ukos/klamka
+touch zajecia2.txt zajecia2.log inny.txt nowy.txt
+cd $HOME
+
+- najpierw przeszedłem do katalogu "klamka" za pomocą komendy "cd". 
+Następnie użyłem komendy "touch" aby stworzyć wymagane pliki. 
+Użyłem parametru $HOME, aby wrócić do katalogu domowego.
+
+-------------------------------
+
+3. Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: 
+ukos/to/jest/dluga/nazwa
+
+mkdir -p ukos/to/jest/dluga/nazwa
+
+- użyłem komendy "mkdir" z paramterem "-p" a następnie podałem ścieżkę ukos/to/jest/dluga/nazwa, 
+żeby stworzyć brakujące katalogi nadrzędne nad katalogiem "nazwa"
+
+-------------------------------
+
+4. Następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+touch ukos/to/jest/dluga/nazwa/dane.txt
+
+- użyłem komendy touch, podając ścieżke gdzie ma zostać utworzony nowy plik,
+ na końcu dodając nazwę tego pliku
+
+-------------------------------
+
+5. Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+rm -r ukos/klamka/*.txt
+
+- użyłem komendy rm do usuwania plików z parametrem "-r" do usuwania zbioru plików
+ następnie podałem ścieżkę do katalogu "klamka", z którego chciałem usunąć wszystkie
+ pliki tekstowe, posłużyłem się do tego *.txt - pozwoliło mi to na usunięcie wszystkich
+ plików z rozszerzeniem txt.
+
+-------------------------------
+
+6. Usuń katalog ukos/katalog/katalog2
+
+rmdir ukos/katalog/katalog2 
+
+- użyłem komendy rmdir do usuwania katalogów, mogłem tutaj użyć komendy rmdir, ponieważ
+ "katalog2" był pusty
+
+-------------------------------
+
+7. Usuń cały katalog klamka za pomocą jednego polecenia
+
+rm -r ukos/klamka
+
+- w katalogu "klamka" znajdował się plik tekstowy, musiałem tutaj więc ponownie użyć polecenia
+ "rm" z parametrem "-r" a następnie podać ścieżkę do "klamka" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	

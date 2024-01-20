@@ -1,0 +1,10 @@
+
+2023-09-30
+Moj kochany pamietniczku, na dzisiejszych zajeciach nauczylem sie:
+poruszac sie miedzy katalogami, oraz tworzyc je i katalogi
+(zalegly komentarz)
+
+2023-10-14
+Moj kochany pamietniczku, na dzisiejszych zajeciach nauczylem sie:
+zmieniac uprawnienia plikow i katalogow, zmieniac domyslne uprawnienia
+nowo utworzonych plikow oraz sledzic na biezoco zmiany konkretnego pliku

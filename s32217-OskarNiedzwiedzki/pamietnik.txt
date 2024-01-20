@@ -1,0 +1,40 @@
+30.09.2023
+
+Drogi pamiętniczku, dzisiaj jest pamiętny dzień.
+Istnieje szansa, że będę korzystał z linuksa. Dzisiaj były podstawy, jak korzystać z systemu plików, jak ogólnie wyglądają komendy w linuksie. 
+A także jak znaleźć sobie dokumentację, przy użyciu polecenia man. Nie wspomnę, że mam dostęp do cudownego serwera szuflandii, 
+dzięki czemu nie muszę kupywać narazie klawiatury, żeby odpalać virtualboxa (muszę zmienić ustawienie w biosie, a mam klawiaturę bezprzewodową).
+Ciekawą rzeczą jest także github, dotychczas korzystałem raczej ze strony githuba, lub desktopa, jednak okazuje się, że git bash to bardzo potężne narzędzie i mimo że jest konsolą, 
+bardziej ułatwia pracę z githubem, niż ją utrudnia, bo komendy są proste i króciutkie i wszystko szybko się wykonuje.
+
+Linuks zapowiada się naprawdę ciekawie i myślę, że będzie to narzędzie z którego będę częściej korzystał, dzięki jego zaletom.
+
+14.10.2023
+
+Drogi pamiętniczku na tych zajęciach nauczyłem się kontrolować dostęp do plików oraz folderów przy użyciu polecenia chmod
+Dowiedziałem w jaki sposób używać tego polecenia (mój ulubiony sposób to chmod [komu] =[rwx] [plik]). Sposób ten jest dla mnie najbardziej wygodny oraz najbardziej czytelny ze wszystkich, 
+najgorszym moim zdaniem jest sposób z użyciem liczb oktalnych, trzeba mieć w głowie kalkulator takich liczb i jeszcze pamiętać, żeby się przypadkiem nie pomylić.
+Wielkim błędem jest też chmod 777 [plik], zazwyczaj nie chcemy żeby każdy miał dostęp do plików i mógł sobie nimi manipulować,
+ktoś może nam psikusa zrobić w postaci kukułczego gniazda i będzie tak zwana lipa, nie mówiąc o potencjalnym uszkodzeniu danych,
+jeśli mamy jakieś wrażliwe dane, to ktoś może je nam nadpisać. Dodałem też na swoją szuflandię ładną stronkę, 
+którą każdy może odwiedzić pod adresem http://szuflandia.pjwstk.edu.pl/~s32217/strona.html. [edit: nie dodalem jeszcze]
+Tak naprawdę to po prostu jest to strona z innego projektu który realizuję, może kiedyś nadam jej ładny wygląd, np. na wykładach z japonistyki.
+
+Streszczając zabezpieczajmy nasze pliki przed nieautoryzowanymi śmieszkami.
+
+28.10.2023
+
+Drogi pamiętniczku w dzisiejszym dniu nauczyłem się jak korzystać ze strumieni danych oraz procesów. Poznałem strumienie danych
+ich typy oraz narzędzia do ich kontroli oraz przekierowywania do innych programów. Nauczyłem się filtrowania danych ze strumieni przy użyciu komendy grep.
+Poznałem także procesy i sposoby ich sprawdzania kontroli. Pomogła mi w tym komenda ps. Przy użyciu jobs i fg byłem w stanie przenieść się do procesów
+działających w tle. Zwieńczeniem dzisiejszych zajęć była komenda kill, która pozwala wysyłać różne sygnały do programów, w tym sygnał SIGKILL,
+który bezzwłocznie wyłączał program.
+
+Mam nadzieję, że dzięki tym wszystkim narzędziom będę mógł jeszcze efektywniej korzystać z linuxa
+
+09.12.2023
+Drogi pamiętniczku. To chyba już koniec. Ostatnim tematem było powtórzenie do kolokwium. Omówione zostały wszystkie dotychczasowe tematy.
+Prawda - piszę to już po zdaniu kolokwium. Ogólnie było łatwe, myślałem że będzie trudniejsze, ba nawet bałem się, że mogę nie podołać. 
+Kolosa by mi się udało zdać nawet bez rąk prawdopodobnie, dla utrudnienia i większych emocji rozważyłbym rozwiązanie tego kolosa z wyłączonym monitorem z nadzieją, że
+trafiłem w odpowiednią odpowiedź. No a tak to niestety było bez emocji, ale najważniejsze, że jest zdane
+

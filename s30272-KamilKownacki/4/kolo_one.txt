@@ -1,0 +1,52 @@
+Przypuśćmy, że nie możesz utworzyć żadnego pliku na swoim koncie uczelnianym np. na szuflandii.
+Co się mogło stać? (wymień co najmniej 3 opcje)
+
+-brak miejsca
+-brak uprawnien
+-quota(ograniczone miejsce)
+-błąd wyjścia/wejścia
+$1
+cd ../..
+cd /tmp/ukos/ala
+#2
+cd /tmp/ukos/kot/ma/ale && mkdir -p jan/kowalski
+mkdir -p ../../../kot/ma/ale/jan/kowalski
+$3
+mv /tmp/ukos/kot/ma/ale/tmp/ukos/ala/i
+mv ../../../kot/ma/ale/tmp/ukos/ala/i
+$4
+kill -9 <PID>
+$5
+find ./ -type f -name "al*"
+w ten sposób wyświetla te w bieżącym katalogu i subkatalogach
+dlatego lepiej jest wykorzystać
+ls -p | grep al | grep -v /
+bo grep -v / odejmuje katalogi od wzorca
+nie umiem w regex :(
+$6a
+żeby każdy mógł tylko wejść do katalogu
+chmod 111 ala
+chmod a=x ala
+chmod a+x ala
+tylko grupa moze wyswietlic co w nim jest
+chmod 050 ala
+chmod a=- ala && chmod g=rx ala
+chmod a-rwx ala && chmod g+rx ala
+wlasciciel ma pelne uprawnienia
+$6b
+chmod a=- zasob
+$7
+ls|dd of=pliki.txt
+find ./ -type f | dd of=lista.txt
+ls *.txt > listaplikow.txt
+$8
+tab
+$9
+program &
+
+program
+bg
+
+
+
+

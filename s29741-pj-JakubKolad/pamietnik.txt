@@ -1,0 +1,32 @@
+2023-09-30
+Na dzisiejszych zajeciach nauczylem sie:
+
+*	jak poruszac się po terminalu linuxowym,
+*	jak sprawdzać działanie poleceń z poziomu terminala.
+
+2023-10-14
+Na dzisiejszych zajeciach nauczylem sie:
+
+*	jakie są rodzaje uprawnień i jakie są różnice w zależności od tego czy
+	mówimy o uprawnieniach do folderu/pliku,
+*	jak zarządza się uprawnieniami,
+*	3 sposoby opisywania uprawnień rwx, binarnie, oktalnie,
+*	co to jest maska trybu pliku i jak działa,
+*	jaka jest różnica między znakami przekierowania >, >>.
+
+2023-10-28
+Na dzisiejszych zajeciach nauczyłem się:
+
+*	man is king, zanim coś zrobisz sprawdź co może się stać,	
+*	jak za pomocą strumieni łączyć polecenia w celu wykonania bardziej
+	złożonych poleceń,
+*	jak przyglądać listę procesów,
+*	komenda kill wysyła sygnały, domyślnie do zakończenia procesów ale są też inne,
+
+2023-11-18
+Na dzisiejszych zajeciach nauczyłem się:
+
+*	przypomniałem sobie dotychczas poznane komendy
+*	przynajmniej wg. obecnego stanu wiedzy, widzę że komendy są w jakimś stopniu
+	zastępowalne, tzn. jeżeli nie mogę skorzystać z polecenia A to cel mogę
+	osiągnąć poleceniem B i C. 

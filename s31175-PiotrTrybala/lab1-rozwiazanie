@@ -1,0 +1,29 @@
+2. ls
+Pusty folder
+3. pwd
+Pojawila sie sciezka do mojego katalogu domowego
+4. $HOME
+Przenioslo mnie do tego samego katalogu
+5.pwd
+Jestem w tym samym miejscu
+6.ls
+Pusty folder
+7. ls $HOME
+Pusty folder
+8. cd ./dwa
+Ide do katalogu "dwa", poniewaz taki mam dostepny
+9. pwd
+10. cd ././././././
+Jestem w tym samym katalogu, dodanie kolejnych "./" nie zmieni lokalizacji,
+do ktorej zostaniemy przeniesieni
+11. cd /home/PJWSTK/s31175
+12. cd /root
+-bash: cd: /root: Brak dostępu
+Jest to folder nalezacy do root-a, musialby udzielic mi dostepu,
+zebym mogl do niego wejsc
+13. Podane skroty otwieraja rownolegle wirtualne konsole, bez zamykania poprzednich,
+co pozwala na multi-tasking, czy np obslugiwanie konsolu przez kilku uzytkownikow,
+nie zamykajac sesji poprzednich
+14. Podany skrot przechodzi do innych wirtualnych konsol lub do sesji GUI systemu,
+w zaleznosci od jego wersji, sesja GUI najczesciej jest pierwsza lub ostatnia
+(pod klawiszem F1 lub F7)

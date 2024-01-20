@@ -1,0 +1,73 @@
+s31175 s32217
+
+1. mkdir -p raz/trzy/{plik,plik2,plik3,plik4} dwa/cztery/{test,test2}
+//Utworzylem katalogi
+touch ../s32217/"kukulcze gniazdo"
+//W folderze kolegi powstał plik
+rmdir 'kukulcze gniazdo'
+//Plik zostal usuniety
+//W przypadku mc wszystko rowniez dziala :)
+
+2. cd raz
+chmod 000 ./
+Zabralo dostep
+chmod 000 ../
+//Nie da rady zmienic folderu nadrzednego,
+//dopoki jestem w zablokowanym folderze, dlatego
+cd ../
+chmod 700 raz
+cd raz
+chmod 000 ../
+chmod 000 ./
+//Teraz jestem zblokowany
+//Mozna wykonac polecenie cd jesli probujesz przejsc do
+//katalogu nadrzednego, ktory nie jest zablokowany
+//Polecenie chmod mozna wykonac jesli nie znajdujemy sie w zablokowanym folderze
+//Jesli nie mamy uprawnien do folderu ABC, ale mamy do XYZ,
+//nie mozemy do niego przeskoczyc
+//Polecenie cd - rowniez nie jest dostepne,
+//jesli sie w ten sposob zablokuje
+
+3. echo tresc > plik
+cat plik
+//Widze "tresc" wewnatrz pliku
+echo wiecej tresci >> plik
+cat plik
+//"wiecej tresci" zostalo dodane w nowej linii do pliku
+tail -f plik
+//w miare aktualizowania pliku, nowa tresc jest na biezaco wyswietlana
+//na ekranie
+
+4. mkdir public_html
+nano public_html/strona.html
+//przepraszam :(
+<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>
+^X
+t
+//Minimalne wymagania aby strona wyswietlala sie poprawnie, to:
+//004 dla strona.html (read dla "innych")
+//001 dla public_html (execute dla "innych")
+//001 dla glownego katalogu uzytkownika (execute dla "innych"
+
+5.
+man umask
+q
+mkdir umask
+cd umask
+umask 555
+touch plik
+ls -l
+umask 234
+touch plik2
+ls -l
+umask 643
+touch plik3
+ls -l
+//umask przeprowadza negacje "swojej liczby", a nastepnie wykunuje logiczne AND
+z nowo dodanymi plikami, takze kazde uprawnienie, ktore jest oznaczone w masce
+jako 1 (oczywiscie w domysle, poniewaz maska nie jest przedstawiona w trybie
+dwojkowym), zostanie odjete od domyslnej wartosci nowo utworzonego pliku

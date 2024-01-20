@@ -1,0 +1,137 @@
+Program ps służy do wyświetlania listy procesów. 
+
+Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+    ps
+
+    ps -a
+
+    ps x
+
+    ps axu
+    INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt
+, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+
+    Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+    Nie wiesz? A gdzie może być wyjaśnienie?
+
+B: Jak wykonasz poniższe 2 zadania?
+
+    Wyświetl wszystkie procesy bash
+
+    Wyświetl wszystkei procesy należące do użytkownika root
+
+Zadanie A:
+
+$Komenda ps wyświetliła tylko procesy mające ten sam identyfikator użytkownika
+co bieżący użytkownik oraz podłączone do tego samego terminala,
+co użytkownik uruchamiający ps
+$Komenda ps -a wyświetla tylko te procesy, których identyfikator sesji,
+nie jest taki sam jak unikalny identyfikator procesu i nie wyświetla procesów
+spoza aktualnego terminala
+Komenda ps x zdejmuję ograniczenie na wyświetlanie procesów tylko tych
+procesów, które są przypisane do jakiegoś terminala
+$Komenda ps axu wyświetla
+a(Procesy wszystkich użytkowników)
+u(Dodaje dodatkowe szczegóły procesów)
+x(Wypisuje procesy które nie należą do żadnego terminala)
+Ja mam znaki zapytania w 5 kolumnie na ubuntu w kolumnie TTY
+oznacza to identyfikator terminala w którym jest uruchomiony proces
+sprawdzamy oznaczenie terminala poleceniem tty
+
+Zadanie B:
+1.używam
+tty | ps -ft
+sprawdzam oznaczenie basha i przesyłam potok do polecenia które wypisze procesy
+powłoki
+terminal wyrzuca wszystkie procesy które pasują do wzorca bash
+2.używam 
+ps -U root
+terminal wyrzuca wszystkie procesy których uruchomione przez użytkownika root
+
+Zadanie:
+
+    Uruchom wybrany przez Ciebie graficzny edytor tekstowy
+ (np. gedit, gvim, Visual Studio Code, atom, itd...)
+
+    Zobacz jaki ma on PID - przyda się do tego komenda ps
+
+    Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+    UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować.
+    		Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+    		Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+
+    Zobacz działanie komendy killall bash
+
+    Zobacz czy kill zadziała dla dowolnego procesu.
+
+$Uruchamiam edytor tekstowy Kate
+W terminalu:
+kate
+uruchomił się edytor tekstowy kate, teraz wracam do terminala i używam
+polecenia
+ps aux | grep kate
+Proces ma identyfikator 3625'
+wysyłam domyślny sygnał term, przez polecenie kill
+kill 3625
+proces zakończył działanie
+W sytuacji gdy nie mógłbym go zamknąć to poczytałem trochę man do kill
+i wydaję mi się, że mógłbym go zamknąć wtedy w sposób:
+pkill <PID>
+który wymusza zamknięcie procesu przez bezpośredni sygnał TERM
+killall wysyla domyslne term do po nazwie procesow
+u mnie nie dziala poprawnie bo reakcja mojego systemu
+na killall bash przypominala init 6 w momencie
+gdy zrobilem gimp &
+killall bash
+kill nie dziala dla kazdego procesu, mozemy go wyslac ale program zablokuje
+
+Zobacz co się stanie:
+
+    Wydaj komendę cat > wynik3_1.txt
+
+    Wpisz tekst witaj bez wciskania klawisza Enter
+
+    Wciśnij CTRL+C
+
+    Zobacz co się znalazło w pliku wynik3_1.txt
+
+
+    Wydaj komendę cat > wynik3_2.txt
+
+    Wpisz tekst witaj bez wciskania klawisza Enter
+
+    Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+    Zobacz co się znalazło w pliku wynik3_2.txt
+
+W opisie rozwiązania zadania umieść:
+
+    jak rozumiesz co się stało?
+
+    czym oba te przykłady się różnią?
+
+    DLACZEGO się różnią?
+
+Po wykonaniu operacji z zadania powyżej plik wynik3_1.txt jest pusty,
+a wynik3_2.txt zawiera witaj, ale bez line feed /n
+rozumiem to w ten sposób, że ctrl+d to koniec przekazu, czyli po zakończeniu
+wprowadzania program zakończył działanie bo skończył się input,
+więc program sciągnął cały dotychczasowy input do pliku ale że nie
+wcisnąłem enter nie utworzył się znak końca linii w pliku.
+Jeżeli chodzi o ctrl+c to z definicji wysyła sigint czyli sygnał przerwany
+albo sygnał zakłócony, który domyślnie zakończy działanie programu, ale
+może przyjmować różny wynik dla różnych procesów. Nic się nie zapisało bo
+nie wcisnąłem enter, i nie było nic na stdout do nadpisania w pliku.
+
+
+
+
+
+
+
+
+
+

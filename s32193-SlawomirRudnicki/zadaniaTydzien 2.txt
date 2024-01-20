@@ -1,0 +1,38 @@
+Zadanie 1
+
+1. utworzylem strukture z katalogow
+2. pozmienialem uprawnienia uzywajac komendy chmod (przyklad: chmod 700 <folder>)
+3. druga osoba stworzyla w mojej strukturze katalog, oraz zabrala mi wszystkie uprawnienia
+4. uzywajac linii komend nie bylem w stanie ani usunac katalogu, ani w niego wejsc, ani zobaczyc co sie w srodku znajduje
+    -bash: cd : folder1 : Permission denied
+5. przy probie wejscia do katalogu uzywajac midnight commandera otrzymalem error: cannot change directory
+
+zadanie 2
+
+1. polecenie cd mozemy wykonac jesli w kategorii others znajduje sie bit x
+2. polecenie chmod zglaszalo 'operation not permitted' w kazdym wypadku
+3. nie mozemy przejsc do katalogu XYZ, jesli nie mamy uprawnienia do wejscia do katalogu ABC, permission denied
+4. mozemy cofnac sie, uzywajac polecenia cd -
+
+zadanie 4
+
+1. minimalne uprawnienia pliku strona.html wymagane do wyswietlenia go:
+	read dla others
+2. public_html wymaga execute dla others 
+3. katalog domowy tak jak wyzej wymaga execute dla others
+
+zadanie 3
+
+(s31700 i s32193)
+1. stworzylismy uzywajac komendy echo "tresc" > komunikator.txt
+plik tekstowy 
+2. uzywajac echo z pojedyncznym > nadpisywalismy cala tresc
+jaka byla w pliku
+3. uzywajac >> dodalismy nowa linijke tekstu do pliku
+4. uzywajac polecenia tail -f komunikator.txt sledzilismy 
+na drugim terminalu jak sie plik zmienial
+
+
+
+
+

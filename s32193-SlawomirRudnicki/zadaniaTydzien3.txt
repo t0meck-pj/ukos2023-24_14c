@@ -1,0 +1,99 @@
+zadanie 0
+
+1. uzylem komendy cd .. aby cofnac sie do katalogu home 
+	s32193@szuflandia22:/home$ pwd
+	/home
+2. komenda ls -l wypisala 6 katalogow
+3. wrocilem  do swojego katalogu z katalogu home
+4. ls -l po raz drugi: 6 folderow 10 plikow
+5. wyszukalem wszystkie pliki oraz foldery zawierajace litere "d" 
+	komenda znalazla 6 nazw zawierajacych ta litere
+6. uzylem komendy ls -a | grep d > dlista.txt zeby utworzyc plik tekstowy z
+wynikiem polecania grep d
+7. uzylem komendy cat dlista.txt aby odczytac co jest w tym pliku zapisane 
+	| przekazuje output jednej operacji do drugiej
+	> przekazuje output operacji do pliku
+8. uzylem komendy ls -a | grep d | tee dlista2.txt
+	otrzymalem plik tekstowy jak w przypadku poprzednim, z ta roznica ze output zostal rowniez
+wyswietlony
+9. komenda ls -a | grep d | dlista3.txt zglasza blad "nie znaleziono polecania"
+program tee przekazuje output ktory otrzymala do wyjscia standardowego (na ekran) oraz do pliku
+
+zadanie 1
+
+1. komenda ps wyswietlila 2 procesy, bash i sama siebie
+ s32193@szuflandia22:~$ ps
+    PID TTY          TIME CMD
+3106562 pts/14   00:00:00 bash
+3119937 pts/14   00:00:00 ps
+
+2. komenda ps -a wyswietlila 1 proces, ps
+komenda ps x wyswietlila cala grupe procesow
+komenda ps -axu wyswietlila duza liste procesow
+	ADNOTACJA: cytujac " t0meck-pj Dec 2, 2023
+	z czy bez minusa? "
+	nie wiem do ktorej komendy to sie odnosi, ale kazda z nich wpisalem dokladnie tak jak
+	zapisalem powyzej
+znak zapytania oznacza proces nie nalezacy do grupy posiadajacej TTY, 
+"x" sciaga restrykcje "must have a tty" -> man ps
+grupa procesow posiadajacych tty to procesy ktore sa powiazane z terminalem na ktorym jest uzyta komenda ps
+wiec procesy z ? sa procesami ktore nie sa powiazane z terminalem na ktorym komenda ps zostala wywolana
+zrodlo -> manual
+
+3. wyswietlilem procesy bash:
+	ps -axu | grep bash
+	POPRAWIENIE:
+	ps -axu | grep -w bash -> powinno znalezc tylko linie w ktorych jest zawarty string "bash" jako calosc, a nie "bash" rowniez jako czesc stringu, 
+	dzieki czemu login taki jak np barabash, nie zostanie zmatchowany
+4. wyswietlilem procesy roota:
+	ps -axu | grep root
+		adnotacja: rowniez pokazuje sie grep root
+	POPRAWIENIE:
+	ps -U root -u root u
+zadanie 3
+
+1. uzylem komendy cat, bez parametrow, moglem wpisywac co program bedzie wyswietlal
+	ctrl-c zabilo program cat
+2. cat > wynik3_1.txt przyjelo znowu tekst wpisany przeze mnie, ale output programu zostal przekazany nie 
+na wyjscie standardowe, a do pliku wynik3_1.txt, ktory zostal rowniez utworzony
+zakonczylem dzialanie cat uzywajac ctrl-d ktore przekazalo programowi ze wiecej danych nie bedzie
+3. po powtorzeniu powyzszego, bez wcisniecia enter, po zabiciu programu uzywajac ctrl-c, otrzymalem pusty plik
+wynik3_1.txt
+4. po wpisaniu cat > wynik.txt oraz wcisnieciu ctrl-d 2x bez wcisniecia enter po wpisaniu tekstu, rowniez 
+otrzymalem pusty plik wynik.txt
+5.
+ctrl-c -> zabilo proces 
+ctrl-d -> przekazalo programowi ze zadne wiecej dane nie bede przekazane (bez wcisniecie enter dane
+nie zostaly przekazane programowi cat), co spowodowalo ze program zakonczyl swoje dzialanie
+
+zadanie 2
+1. uruchomilem firefoxa na linuksie 
+2. uzylem komendu ps xu aby znalezc PID firefoxa
+3. sprawdzilem w manualu kill jak dokladnie powinno wygladac polecenie
+4. uzylem komendy kill -9 <PID-firefoxa> aby zabic proces 
+5. firefox zamknal sie
+6. killall bash nie zglosil zadnego bledu, ale nie zaobserwowalem zadnej zmiany
+	przypuszczenie: nic sie nie stalo poniewaz killall nie moze zabic samego siebie
+7. nie zaobserwowalem procesu ktorego nie moglbym zabic uzywajac komendy kill -9
+	POPRAWIENIE: nie, nie bede w stanie zabic procesu innego uzytkownika
+	polaczylem sie z laptopem z maszyny wirtualnej przez SSH, i odpalilem proces timeout, nie moglem go zabic z laptopa 
+	uzywajac kill -9 <PID-procesu> -> Oparation not permitted
+
+zadanie 4
+1. otworzylem gimpa
+2. uzylem komendy ctrl-z aby wstrzymac proces
+3. program "zamarzl", wszelkie proby interakcji koncza sie informacja od systemu ze program nie odpowiada
+4. nie wiem co mialo sie stac, nic wartego adnotacji sie nie wydarzylo
+	okno gimpa moge nadal "przesuwac" mimo ze sam program nie odpowiada
+	ADNOTACJA: zle sformulowalem odpowiedz, po najechaniu innym oknem na wspomnianego gimpa, rowniez nic sie nie wydarzylo
+5. po wpisaniu komendy bg program ozyl
+6. po wpisaniu komendy fg (po wczesniejszym uzyciu ctrl-z aby zatrzymac znowu gimpa), 
+program ozyl, ale konsola oczekiwala dalszych polecen, dopiero po uzyciu ctrl-c / ctrl-z konsola zaczela przyjmowac kolejne 
+polecenia, przy ctrl-c, gimp sie zamknal, przy ctrl-z znowu przeszedl w wstrzymanie
+7. po wpisaniu geany & gimp & -> odpalily mi sie oba programy (z tekstu zadania wnosze ze powinny pojawic sie zatrzymane,
+co jednak sie nie stalo, oba pojawily sie dzialajace) -> uzylem komendy jobs aby sprawdzic ich status
+8. uzylem fg %[numer jobu] aby zatrzymac oba joby, a potem je wznowilem
+
+
+
+

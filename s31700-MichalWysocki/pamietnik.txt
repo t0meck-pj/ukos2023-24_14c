@@ -6,7 +6,7 @@
  * Nauczyłem się do czego służą poszczególne katalogi w linuxie.
  * Nauczyłem się co oznaczają kolory plików. 
   Podobały mi się te ćwiczenia. Wszystko było prosto wytłumaczone. Na pewno 
-w przyszłości czy to na zajęciach czy to w pracy przyda mi się pozyskana
+w przyszłości czy to na zajęciach czy to w pracy przyda mi się pozyskana 
 wiedza. Na ćwiczeniach było dużo informacji, więc na pewno będę musiał jeszcze 
 to wszystko powtórzyć aby dobrze wszystko zapamiętać. 
 -------------------------------------------------------------------------------
@@ -51,3 +51,6 @@ będę mógł pogratulować samemu sobie.
 2023-12-12
 Tego dnia odbyło się kolokwium. Udało mi się je zaliczyć. Dostałem 4 i jestem
 z tego powodu zadowolony :)
+=======
+wiedza. Na ćwiczeniach było dużo informacji. Na pewno będę musiał jeszcze 
+to wszystko powtórzyć aby dobrze wszystko zapamiętać.

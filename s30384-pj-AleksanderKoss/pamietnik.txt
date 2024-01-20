@@ -1,0 +1,18 @@
+2023-09-30
+Na dzisiejszych zajęciach nauczyłem się podsawowych komend do terminala
+Linuxa takich jak mkdir, touch, rm, cd, pwd
+Nauczyłem się jak poruszać sie między katalogami, oraz jak tworzyć i usuwać pliki
+oraz katalogi oraz wyświetlać ich zawartość. 
+
+2023-10-14
+Na zajęciach nauczyłem się nadawać i odbierać uprawnienia plików i katalogów
+oraz kilka metod na jakie można to zrobić, zmieniać domyślne uprawnienia nowo
+utworzonych plików i katalogów.
+
+2023-10-28 
+Pamiętniku nauczyłem się dzisiaj korzystania z komend ps, grep, kill, cat. 
+nauczylem sie podstaw zarządzania procesami, roznicy między SIGKILL a SIGTERM
+Nauczylem sie pracy z jobami w tle uzywajac bg, fg i jobs
+ctrl+c, ctrl+d w kontekscie przerywania procesów i zamykania strumienia wejściowego
+
+

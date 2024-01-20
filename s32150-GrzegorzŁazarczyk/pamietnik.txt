@@ -1,0 +1,34 @@
+2023.09.30
+-na wstępie zaznaczę, że na zajęciach po raz pierwszy zetknąłem się z Linuxem i jego konsolą, wcześneij jedynie
+coś tam się o nim słyszało. Dowiedziałem się między innymi jak mogę korzystać z pomocy, w celu poznania dokładniej
+możliwości i sposobu działania komend. Poznałem też przydatne skróty, a prowadzący przedstawił nam kilka podstawowych
+metod pozwalających na nawigację w systemie Linux. Dzięki temu mam już, co prawda bardzo ogólny
+zarys tego jak system jest skonstruowany. Pierwsze spotkanie uważam za udane, wydaje mi się to bardzo ciekawe, a co 
+najważniejsze bardzo przydatne.
+     
+2023.10.14
+Na zajęciach omawialiśmy tematykę uprawnień użytkowników do operacji jakie mogą oni wykonywać na plikach i katalogach
+systemu Linux. Użytkowników pod kątem przyznawania uprawnień dzielimy na trzy zbiory:użytkownika, grupę i innych.
+Każdemu z nich mogą zostać nadane inne uprawnienia przez co należąc do jednego zbioru mogę nie mieć możliwości jakiej kolwiek
+interakcji z plikami i katalogami, jeżeli nie mam odpowiednich uprawnień nie mogę na przykład zobaczyć co zawiera 
+dany plik czy katalog, nie mogę nic w nich zapisać, a nawet jak to w przypadku katalogów przejść przez niego nawet jeżeli
+mooim celem jest inny katalog, ale nie mogę przejść przez katalog do którego mam zablokowany dostęp a droga prowadzi właśnie
+przez niego to nie dostanę się do miejsca docelowego. Uprawnienia można nadawać na 3 sposoby notacja ósemkowa, za pomocą
+= i +/-. Metoda z wykorzystaniem liczb oktalnych najbardziej przypadła mi do gustu o ile pozna się jak liczone są wartości
+trzeba pisać mniej w porównaniu do dwóch pozostałych.
+
+2023.10.28
+Na początku zajęć dostaliśmy do rozwiązania zadania związane z wcześniej poruszaną tematyką, dodatkowo prowadzący pozwolił
+wykonywać je innym studentom, co było bardzo fajne po pierwsze dlatego, że pokazało mi że nie tylko ja jeszcze mam 
+pewne trudności z podstawami a dodatkowo pozwoliło mi bardziej zrozumieć sposób w jaki powinienem myśleć o tych zagadnieniach
+dzięki temu że prowadzący używał naprowadzających wskazówek. W ten sposób na pewno wyciągnąłem z zajęć więcej niż gdyby to 
+sam prowadzący wykonywał zadania. Same strumienie wydają się bardzo potężnym narzędziem -pozwalają łączyć ze sobą wiele
+poleceń, poprzez przekazywanie wyjśćia jednego na wejście drugiego. Poza tym mówiliśmy też o procesach, o tym jak 
+sprawdzić procesy danego użytkownika, prowadzący przestrzegł nas też że jeżeli nie jest to konieczne to nie należy
+dawać dostepu do konsoli innym procesom w celu zachowania bezpieczeństwa.
+
+2023.11.18
+Ostatnie zajęcia przed kolokwium. Rozwiązywaliśmy zadania związane z dotychczas przerobionym materiałem. Zobaczyłem
+co jeszcze wymaga powtórzenia, a w czym czuję się w miarę swobodnie. Omówiliśmy proponowane przez studentów rozwiązania
+dzięki czemu wiem między innymi jakich błędów się ustrzegać. Dzięi temu, że podanych było kilka rozwiązań zrozumiałem,
+że jest kilka dobrych metod na rozwiązanie pewnych problemów.   

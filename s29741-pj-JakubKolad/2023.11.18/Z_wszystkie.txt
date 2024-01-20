@@ -1,0 +1,136 @@
+Poniższe ćwiczenia wykonałem na vitrualce z Linux Lite 5.8 postawionej
+wg.tutorialu dostępnego na Teams.
+
+
+
+0.(rozgrzewkowe) Przypuśćmy, że nie możesz utworzyć żadnego pliku na swoim
+koncie uczelnianym np. na szuflandii. Co się mogło stać? (wymień co najmniej 3
+opcje)
+
+Zakładamy, że możesz zalogować się w konsoli i nie masz zaległości w opłatach.
+
+	1. wyczerpanie się miejsca w ramach quoty
+	2. brak miejsca na dysku
+	3. brak uprawnień
+	4. błąd wyjścia/wejścia (np.niemożność odczytu danych spowodowana awarią dysku)
+
+1.Jest dane takie drzewo katalogów:
+.
+├── ala
+│   ├── i
+│   │   └── as
+│   └── ma
+│       └── kota
+└── kot
+    └── ma
+        └── ale
+
+Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos. Jak
+przejść do katalogu ala ale za pomocą:
+
+ścieżki względnej (relatywnej)
+
+	cd ../..
+
+ścieżki bezwzględnej (absolutnej)
+
+	cd /tmp/ukos/ala
+
+2. Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak
+utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej
+komendy?
+
+Podaj rozwiązania używając ścieżek absolutnych i relatywnych.
+
+	ścieżka absolutna mkdir -p  /tmp/ukos/kot/ma/ale/jan/kowalski 
+
+	ścieżka względna mkdir -p ../../../kot/ma/ale/jan/kowalski
+
+
+3. Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak
+przenieść katalog ale do katalogu i używając:
+
+	źródło (ścieżka względna), miejsce docelowe (ścieżka absolutna)
+	mv ../../../kot/ma/ale /tmp/ukos/ala/i
+
+	źródło (ścieżka absolutna), miejsce docelowe (ścieżka względna)
+	mv /tmp/ukos/kot/ma/ale ../../i
+
+
+4. Jak zamknąć program, który nie reaguje na ctrl+c ?
+	
+	kill -9 <pid> kill -SIGKILL <pid> kill -KILL <pid>
+
+	Jest to jedna i ta sama metoda działania ale chciałem pokazać różne warianty
+	przełącznika.
+
+5. Jak wypisać wszystkie pliki w bieżącym katalogu, których nazwa zaczyna się od
+al?
+	
+	ls -p | grep -v / | grep "al*"
+
+	find . -maxdepth 1 -type f -name "al*" | cut -c 3-
+
+6a. Nadaj uprawnienia do katalogu ala tak aby:
+
+	każdy mógł do niego wejść
+
+	tylko grupa mogła wyświetlić co w nim jest
+
+	właściciel ma pełne uprawnienia
+
+HINT: Jakie są uprawnienia początkowe?
+
+	sprawdziłem je za pomocą polecenia ls -l
+	dla pewności zresetowałem maskę uprawnień (po poprzednich testach)
+	uprawnienia dla folderów i plików mam następujące
+	
+	drwxrwxr-x 2 osboxes osboxes 4096 Dec  4 16:57 umaskDef
+	
+	-rw-rw-r-- 1 osboxes osboxes    0 Dec  4 16:57 umaskDef.txt
+
+
+Podpowiedź: powyższe 3 punkty opisu to jedno zadanie. Nie 3 osobne. Przygotuj 3
+		
+	oktalnej/ósemkowej/cyfrowej 
+	chmod 751 ala
+
+	literowej ze znakiem równości
+	chmod u=rwx,g=rx,o=x ala
+
+	literowej z plusami i minusami 
+	chmod u+rwx,g+rx,g-w,o+x,o-rw ala
+
+6b. Jak korzystając z notacji ze znakiem równości odebrać wszystkie uprawnienia
+do danego zasobu? 
+	
+	<podajemy u,g,o>=-
+
+7. Jak utworzyć plik z listą plików w bieżącym katalogu? Podaj rozwiązania
+używające różne techniki. Np nie używając dedykowanego polecenia do listowania
+zawartości katalogów.
+	
+	tree | tee lista_plikow.txt
+	find . * -type d | tee lista_plikow_3.txt - do sprawdzenia
+	ls > list.txt
+
+8.Jak przyspieszyć wpisywanie komend w terminalu? Jaki klawisz pozwala na
+uzupełnianie komend?
+
+	klawisz Tab
+
+9.Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
+
+	1. uruchomienie programu od razu w tle np. gedit & 
+
+	2. 
+		* uruchamiam program normalnie np. gedit
+		* wciskam Ctrl-Z
+		* wpisuję do terminala polecenie bg
+
+	3. 
+		* tmux new-session -s session1
+		* w nowej sesji uruchomienie np. gedit 
+		* Ctrl+B i D czyli powrót do "bazowego" okna 
+		
+

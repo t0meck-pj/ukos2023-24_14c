@@ -14,6 +14,9 @@
 # Odpowiedz "T" lub "Y" (nie wiem jak to będzie wyglądać na polskim windowsie)
 #
 # Wtedy jak to będzie już przełączone to jako zwykły użytkownik będziesz mógł sobie uruchamiać swoje skrypty
+
+Szybkie przemyślenie - czy ustawienie czegoś takiego nie podnosi ryzyka na automatycznie odpalane internetowe skrypty mogące przejąć kotrolę nad komputerem, lub zebrać informacje, jak na memach z losowo odpalającym się okienkiem CMD?
+
 #
 # Zanim zaczniesz czytać i wykonywać dalej instrukcje, które zawarłem poniżej zwróć uwagę na to jak to jest napisane
 # Wszystko to co możesz bez problemu uruchomić ma przed sobą sam znak "#" a po nim NIE MA spacji. Jeśli jest spacja
@@ -27,6 +30,9 @@
 # A żeby zobaczyć przykłady użycia:
 #Get-Help Get-ExecutionPolicy -Examples
 #
+
+Czyli tak samo jak w wypadku Basha - jeżeli czegoś nie wiemy to udajemy się do manuala. Tylko tutaj nazywa się Get-Help
+
 # Komendy w PS (powershellu) mają pewną stałą konwencję nazewniczą. Jest to: Czasownik-NaCzymMaOperować
 # Np. Get-ExecutionPolicy, Set-ExecutionPolicy, Find-Module, Add-User, Create-Item itd...
 # Nazwa zawsze jest zbudowana w ten sam sposób.
@@ -39,6 +45,12 @@
 #Get-Module -ListAvailable
 #
 #
+
+Widzę trzy typy modułów - manifest, script i binary. Po weryfikacji stwierdzam, że:
+Manifest zawiera informacje o autorze modułu i kontroluje niektóre aspekty działania modułu.
+Script to po prostu plik zawierający skrypt z rozszerzeniem psm1 zamiast ps1.
+Binary moduł zawiera klasy i jest zapisany w skompilowanym języku.
+
 #
 # INFO: Poniższa sekcja została przygotowana na Windows 10. Na Win 7 niektóre dane są niedostępne.
 #
@@ -53,6 +65,9 @@
 # Poniższa linia zwróci tylko te moduły, których wersja jest >= 2.0.0.0
 #Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
 #
+
+Czyli pierwsza część polecenia tworzy listę modułów i przekierowuje ją na drugą część, która wyznacza tylko te wiersze, gdzie wersja wynosi powyżej 2.0.0.0. Nie mogę dojść do tego co robi parametr -ge.
+
 # Moduły mogą mieć wiele poleceń (to co jest w kolumnie ExportedCommands wyświetlone po przecinku)
 # A my byśmy chcieli mieć listę wszystkich poleceń w tych modułach po przefiltrowaniu wersji powyżej.
 #
@@ -60,6 +75,10 @@
 # Poniższa linia wyświetli wszystkie polecenia (cmdlet - "Komandlety") w dostępnych modułach, których wersja >= 2.0.0.0
 #Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
 #
+
+Okej, czyli % daje nam pętlę. Czy samo get-command-module nie wystarczy aby zdobyć wszystkie polecenia, potrzebna jest jeszcze pętla?
+Tak, po przeanalizowaniu widzę już, że ta pętla biegnie po liście utworzonej za pomocą polecenia drugiego. Praktyczna rzecz.
+
 # Teraz byśmy chcieli jeszcze wyświetlić wszystkie te, które mają w nazwie "Add-" lub "Get-"
 #Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
 #
@@ -75,6 +94,13 @@
 #
 #
 #
+
+Jasne, czyli mam naaaaaaaprawdę dużo opcji jak przekierowywać z polecenia na polecenie. Może się to okazać dość praktyczne. Aczykolwiek składnia wydaje się zawierać dość dużo znaków, przez co może być odrobinę nieczytelna. Z drugiej strony nie wiem czy wypchana tekstem będzie równie praktyczna... Szybkie kompendium:
+? - Where-Object - czyli windowsowy grep
+% - While-Object - pętla iterująca po wszystkich elementach np. tabelki
+?_ - operując na kolekcjach tak oznaczamy poszczególne elementy tejże kolekcji
+$_ - zmienna tworzona podczas operowania na kolekcjach
+
 #
 #
 #
@@ -125,6 +151,9 @@
 #Complete-BitsTransfer -BitsJob $job
 #
 # Teraz plik jest już dostępny w katalogu docelowym
+
+Czyli przy pomocy powershella możemy, dzięki modułowi, możemy obejrzeć dokładnie proces ściągania. Dzięki temu możemy na przykład sprawdzić w którym momenie pobierania coś idzie nie tak. Można też aktywować taki proces w tle, aby przy okazji robić inne prace. Z tego co widzę w opisie, parametry umożliwiają dodatkowe atrakcje, pokroju omijania proxy lub ,,negocjacji" z serwerem z którego plik będzie pobierany.
+
 #
 #
 #

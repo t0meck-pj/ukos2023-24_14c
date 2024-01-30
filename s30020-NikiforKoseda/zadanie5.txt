@@ -175,9 +175,9 @@ Czyli przy pomocy powershella możemy, dzięki modułowi, możemy obejrzeć dok�
 # z jakiegoś serwisu www. Odfiltrowana i używana jako wartość. Abstrakcja ale zapewne da się coś takiego zrobić
 #
 #
-#
-#
-#
+
+Widzę zatosowanie zarówno dla mierzenia czasu, jak i dla aliasów. Wymyślając na szybko coś własnego dla pomiaru czasu - niektóre serwery czy usługi przyjmują requesty co określoną ilość czasu. Dzięki temu możemy sprawdzać na przykład co 5 minut czy serwer jest dostępny.
+
 #
 #
 # No dobra. Ale PS to nie tylko język do pisania skryptów. To przede wszystkim konsola więc można z niej
@@ -186,9 +186,9 @@ Czyli przy pomocy powershella możemy, dzięki modułowi, możemy obejrzeć dok�
 #
 #
 #
-#
-#
-#
+
+Kolejne potężne źródło mocy - można na podstawie wyniku skryptu wyszukiwania pliku uruchamiać program na przykład do jego odpalania. Istnieje community extention echoargs - umożliwia on wysyłanie parametrów do uruchamianych plików .exe. Dzięki niemu można od razu wysłać plik do programu.
+
 #
 #
 #
@@ -232,10 +232,9 @@ Czyli przy pomocy powershella możemy, dzięki modułowi, możemy obejrzeć dok�
 #    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
 #} | %{& $_.UninstallString}
 #
-#
-#
-#
-#
+
+Czyli kolejna potężna zaleta powershella - proste przeszukiwanie rejestru, i listowanie jego zawartości w formie tekstu, który można dowolnie formatować.
+
 #
 #
 #
@@ -271,9 +270,9 @@ Czyli przy pomocy powershella możemy, dzięki modułowi, możemy obejrzeć dok�
 ### Koniec bloku do odkomentowania
 #
 #
-#
-#
-#
+
+WIdzę potencjalne zastosowanie na niewielki skrypt odinstalowywujący shovelware z urządzenia - wystarczy że zaznaczymy jakich vendorów na swoim komputerze nie chcemy i lecimy z dezinstalacją
+
 #
 #
 #
@@ -300,9 +299,10 @@ Czyli przy pomocy powershella możemy, dzięki modułowi, możemy obejrzeć dok�
 #
 #
 #
-#
-#
-#
+
+Wszelkie jakby to nazwać, narzędzia i materiały z których korzysta powershell są przechowywane na dyskach. DOść ciekawa opcja. Zastanawia mnie czemu zdecydowali się na takie nazewnictwo - nie wystarczył by na przykład plik tekstowy ze zmiennymi lokalnymi? Lub dynamiczny plik z zawartością rejestru? Czemu jest to zapisane w formie dysku?
+Przeszukałem internet - dzięki dyskom uzyskujemy uniwersalność danych. Tym samym zestawem poleceń można przeszukać pliki jak i rejestr. Czyli powodem jest uniwersalność.
+
 #
 #
 #
@@ -370,11 +370,13 @@ function GiveMePopup {
 #
 #
 #
-#
-#
-#
+
+Czyli można wysyłąć notyfikacje. Własnoręcznie napisanymi skryptami. I te notyfikacje mogą potem być przez windowsa domyślnie przysyłąne na przykład na smartwatch. Czyli łącząc to wszystko - jeżeli jestem w pracy, mogę dostać na zegarek informację, że ktoś właśnie zalogował się na mojego kompa. Albo zmodyfikował rejestr. Genialne.
+
 #
 #
 #
 #
 # I co? Fajne co nie? :-D
+
+Oj tak, widzę tu sporo włożonej pasji. I dostrzegam, jako człowiek praktyczny, sporo praktycznych zastosowań.

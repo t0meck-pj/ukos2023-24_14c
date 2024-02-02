@@ -1,0 +1,382 @@
+# Copyright 2015 Tomasz Idzikowski
+# Przedmiot: UKOS
+# Skrypt: Wprowadzenie do podstaw PowerShell-a
+#
+# Żeby uruchomić jakikolwiek skrypt w PowerShell-u to domyślnie musi on być podpisany przez Microsoft
+# Ale można to przełączyć i w rzeczywistości praktycznie każdy tak robi bo inaczej nie da się używać PowerShell-a
+# Także, jak będziesz miał problem z uruchomieniem tego skryptu to uruchom powłokę PowerShell-a z uprawnieniami Admina
+# W pisz poniższe polecenie a następnie je zatwierdź (będzie dodatkowe pytanie o przełączenie)
+#
+# Poniższa linijka została już na stacjach w laboratorium wykonana. Nie należy jej uruchamiać w laboratorium.
+# Bo wymaga to uprawnień administratora.
+#
+# PS C:\Users\user> Set-ExecutionPolicy Bypass
+# Odpowiedz "T" lub "Y" (nie wiem jak to będzie wyglądać na polskim windowsie)
+#
+# Wtedy jak to będzie już przełączone to jako zwykły użytkownik będziesz mógł sobie uruchamiać swoje skrypty
+
+Szybkie przemyślenie - czy ustawienie czegoś takiego nie podnosi ryzyka na automatycznie odpalane internetowe skrypty mogące przejąć kotrolę nad komputerem, lub zebrać informacje, jak na memach z losowo odpalającym się okienkiem CMD?
+
+#
+# Zanim zaczniesz czytać i wykonywać dalej instrukcje, które zawarłem poniżej zwróć uwagę na to jak to jest napisane
+# Wszystko to co możesz bez problemu uruchomić ma przed sobą sam znak "#" a po nim NIE MA spacji. Jeśli jest spacja
+# to jest to komentarz tak jak ten tu. W linii 25 masz coś co można uruchomić.
+#
+#
+#
+# Gdybyś potrzebował pomocy z dowolnym poleceniem by zobaczyć jaką ma składnię to pomoc używa się tak:
+#Get-Help Get-ExecutionPolicy
+#
+# A żeby zobaczyć przykłady użycia:
+#Get-Help Get-ExecutionPolicy -Examples
+#
+
+Czyli tak samo jak w wypadku Basha - jeżeli czegoś nie wiemy to udajemy się do manuala. Tylko tutaj nazywa się Get-Help
+
+# Komendy w PS (powershellu) mają pewną stałą konwencję nazewniczą. Jest to: Czasownik-NaCzymMaOperować
+# Np. Get-ExecutionPolicy, Set-ExecutionPolicy, Find-Module, Add-User, Create-Item itd...
+# Nazwa zawsze jest zbudowana w ten sam sposób.
+# Także aby zobaczyć jaki masz "ExecutionPolicy" robisz "Get-ExecutionPolicy" i dostaniesz informację
+#
+# PS ma wiele modułów, które są domyślnie zainstalowane ale nie uruchomione i trzeba je na żądanie ładować.
+# Ale najpierw trzeba wiedzieć co można załadować
+#
+# Poniższa linia zwróci Tobie wszystkie dostepne w danej chwili moduły. Może się chwilę wykonywać bo najpierw musi zebrać listę.
+#Get-Module -ListAvailable
+#
+#
+
+Widzę trzy typy modułów - manifest, script i binary. Po weryfikacji stwierdzam, że:
+Manifest zawiera informacje o autorze modułu i kontroluje niektóre aspekty działania modułu.
+Script to po prostu plik zawierający skrypt z rozszerzeniem psm1 zamiast ps1.
+Binary moduł zawiera klasy i jest zapisany w skompilowanym języku.
+
+#
+# INFO: Poniższa sekcja została przygotowana na Windows 10. Na Win 7 niektóre dane są niedostępne.
+#
+# To co zwróci powyższe polecenie to lista/kolekcja, którą można przetworzyć.
+# Powiedzmy, że chcemy wyszukać tylko te moduły, których wersja jest większa lub równa 2.0 a wszystkie inne nie.
+# Wtedy korzysta się z "Where-Object" lub jego skrótu "?"
+#
+# Znak "|" to potok (pipeline), który uruchamia kolejne polecenie na danych wyjściowych z poprzedniego polecenia
+# Jeśli podaje się kolekcję/listę/tablicę to poszczególne elementy tej kolecji po znaku | są widoczne jako "$_"
+# To taka specjalna zmienna, która jest automatycznie tworzona przez powershell'a kiedy się operuje na kolekcjach.
+#
+# Poniższa linia zwróci tylko te moduły, których wersja jest >= 2.0.0.0
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+#
+
+Czyli pierwsza część polecenia tworzy listę modułów i przekierowuje ją na drugą część, która wyznacza tylko te wiersze, gdzie wersja wynosi powyżej 2.0.0.0. Nie mogę dojść do tego co robi parametr -ge.
+
+# Moduły mogą mieć wiele poleceń (to co jest w kolumnie ExportedCommands wyświetlone po przecinku)
+# A my byśmy chcieli mieć listę wszystkich poleceń w tych modułach po przefiltrowaniu wersji powyżej.
+#
+# Tak jak "?" jest skrótem na Where-Object, tak "%" jest skrótem na While-Object czyli pętlę
+# Poniższa linia wyświetli wszystkie polecenia (cmdlet - "Komandlety") w dostępnych modułach, których wersja >= 2.0.0.0
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+#
+
+Okej, czyli % daje nam pętlę. Czy samo get-command-module nie wystarczy aby zdobyć wszystkie polecenia, potrzebna jest jeszcze pętla?
+Tak, po przeanalizowaniu widzę już, że ta pętla biegnie po liście utworzonej za pomocą polecenia drugiego. Praktyczna rzecz.
+
+# Teraz byśmy chcieli jeszcze wyświetlić wszystkie te, które mają w nazwie "Add-" lub "Get-"
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+#
+# A teraz byśmy chcieli je wypisać w postaci tabelki graficznej otworzonej w nowym okienku
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+#
+# albo do pliku
+#$nazwaPliku = "mojaNazwaPliku.txt"
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+#
+# albo nic z tym nie robić tylko by się przetworzyło ale nie wypisywało
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+#
+#
+#
+
+Jasne, czyli mam naaaaaaaprawdę dużo opcji jak przekierowywać z polecenia na polecenie. Może się to okazać dość praktyczne. Aczykolwiek składnia wydaje się zawierać dość dużo znaków, przez co może być odrobinę nieczytelna. Z drugiej strony nie wiem czy wypchana tekstem będzie równie praktyczna... Szybkie kompendium:
+? - Where-Object - czyli windowsowy grep
+% - While-Object - pętla iterująca po wszystkich elementach np. tabelki
+?_ - operując na kolekcjach tak oznaczamy poszczególne elementy tejże kolekcji
+$_ - zmienna tworzona podczas operowania na kolekcjach
+
+#
+#
+#
+#
+# Dobrze, to listy już mamy opanowane. To teraz w końcu byśmy chcieli załadować jakiś moduł np. BitsTransfer (do zarządzania przesyłaniem danych w tle)
+#Import-Module BitsTransfer
+#
+# można też użyć aliasu na Import-Module w formie:
+#ipmo BitsTransfer
+#
+# Wylistujmy wszystkie komendy w tym module
+#Get-Command -Module BitsTransfer
+#
+# Ok. To teraz postarajmy się użyć tego cuda do pobrania jakiegoś dużego pliku by było widać proces ściągania.
+# Ściągnijmy obraz maszyny wirtualnej do javy.
+# UWAGA: Sprawdz na poczatku przez normalna przegladarke czy ponizsze adresy dzialaja.
+# UWAGA: Jesli przez przegladarke ten adres nie dziala to prosze znalesc jakis inny duzy plik w Internecie.
+# UWAGA: Alternatywnie prowadzacy moze udostepnic jakis serwer www uruchomiony na czas zajec.
+# INFO: Obrazy używane na zajęciach są dostępne po zalogowaniu pod adresem:
+# INFO: http://szuflandia.pjwstk.edu.pl/pub/
+# INFO: Logowanie przez login i hasło do konta studenckiego
+#
+#
+# UKOS: 18 grudnia 2022
+# INFO: Uzyjemy serwera ktory uruchomie na zajeciach
+# INFO: Login = student    haslo = ukos    (te dane podac ponizej do okna dialogowego Get-Credential zamiast swojego loginu i hasla studenckiego)
+# INFO: Adres: http://IP_KOMPUTERA_PROWADZACEGO:8080/index.html (lub inny plik ktory wskaze)
+# INFO: Prosze ustawic parametr: -Authentication Basic
+#
+# Zapisz sobie swoje dane logowania (w bezpieczny sposób) do zmiennej by nie wpisywać ich za każdym razem
+# INFO: Do następnego zadania proszę wpisać username w formacie: sXXXXX@pjwstk.edu.pl
+#$cred = Get-Credential
+#
+# INFO: Ustaw parametr Destination na lokalizacje gdzie mozna zapisywac tymczasowo duze pliki.
+# INFO: Czyli na dysk 3-4 Users lub analogiczny.
+# Teraz rozpocznij przesyłać plik
+# Takie przesyłanie pliku może trwać długo.
+#Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\ -Credential $cred -Authentication Negotiate
+#
+# Jeśli chcesz to uczynić w sposób asynchroniczny (czyli taki, który nie blokuje konsoli) to można to zrobić tak
+#$job = Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\ -Credential $cred -Authentication Negotiate -Asynchronous -DisplayName "Moj Bits Transfer"
+#
+# By zobaczyć jaki jest stan transferu można użyć takiej komendy.
+#Get-BitsTransfer
+#
+# Zwrócić uwagę należy na stan w kolumnie JobState. Jeśli będzie tam Transferred to aby ukończyć całość i dostać pobierany plik
+# trzeba jeszcze zakończyć job transferu. Robi się to tak
+#Complete-BitsTransfer -BitsJob $job
+#
+# Teraz plik jest już dostępny w katalogu docelowym
+
+Czyli przy pomocy powershella możemy, dzięki modułowi, możemy obejrzeć dokładnie proces ściągania. Dzięki temu możemy na przykład sprawdzić w którym momenie pobierania coś idzie nie tak. Można też aktywować taki proces w tle, aby przy okazji robić inne prace. Z tego co widzę w opisie, parametry umożliwiają dodatkowe atrakcje, pokroju omijania proxy lub ,,negocjacji" z serwerem z którego plik będzie pobierany.
+
+#
+#
+#
+# Skoro wiemy, że niektóre komendy wykonują się długo, to może byśmy chcieli zmierzyć czas wykonania polecenia.
+# Czasem może się to okazać potrzebne.
+#
+# Do mierzenia czasu służy Measure-Command
+#Measure-Command {Get-ChildItem -Path C:\Windows}
+#
+# I tu też widzisz jak się listuje zawartość katalogu. Ale jest to nie wygodne. Może jest na to alias?
+#Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+#
+# i co? Widać znajome skróty? Szczególnie w systemach *nix-owych ;-)
+# No to wylistujmy sobie wszystkie pliki i katalogi z katalogu głównego ale z odstępem czasowym.
+#ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+#
+# Wyobraź sobie, że teraz ze skryptu PS uruchamiasz wyzwalacz na aparacie po określonym czasie, który
+# z kolei jest dynamicznie wyliczany na postawie np. pobranej z internetu wartości naświetlenia
+# z jakiegoś serwisu www. Odfiltrowana i używana jako wartość. Abstrakcja ale zapewne da się coś takiego zrobić
+#
+#
+
+Widzę zatosowanie zarówno dla mierzenia czasu, jak i dla aliasów. Wymyślając na szybko coś własnego dla pomiaru czasu - niektóre serwery czy usługi przyjmują requesty co określoną ilość czasu. Dzięki temu możemy sprawdzać na przykład co 5 minut czy serwer jest dostępny.
+
+#
+#
+# No dobra. Ale PS to nie tylko język do pisania skryptów. To przede wszystkim konsola więc można z niej
+# uruchamiać inne programy. Do tego służy operator wołania "call", który ma postać znaku "&"
+#& C:\Windows\notepad.exe
+#
+#
+#
+
+Kolejne potężne źródło mocy - można na podstawie wyniku skryptu wyszukiwania pliku uruchamiać program na przykład do jego odpalania. Istnieje community extention echoargs - umożliwia on wysyłanie parametrów do uruchamianych plików .exe. Dzięki niemu można od razu wysłać plik do programu.
+
+#
+#
+#
+#
+#
+# Ok. Było listowanie modułów i komend. A teraz wylistujmy zainstalowane aplikacje/programy.
+# Można się do tego dobrać na 2 sposoby.
+# 1. W rejestrze poszukać
+# 2. Odpytać WMI (Windows Management Instrumentation)
+#
+# 1. Rejestr
+# Informacje o zainstalowanych aplikacjach są przechowywane w:
+# HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+# PS potrafi "wejść" do rejestru jak na dysk.
+# Ale skoro o tym mowa to sprawdźmy jakie "dyski" są dostępne w PowerShell-u.
+#Get-PSDrive
+#
+# Widać, że jest ich trochę oraz kilka takich nietypowych. Dwa z nich są odpowiedzialne za rejestr.
+# Resztę na razie pominiemy. Zatem by wejść do rejestru można zrobić tak:
+#
+#cd hklm:\
+#
+# i przeglądać sobie rejestr jak zwykły system plików
+#
+#cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#
+# Wylistować sobie jego zawartość przez ls
+#ls
+#
+# ale to spowoduje wyświetlenie sporej ilości tekstu w brzydkiej postaci. Można to trochę zmienić
+#cd HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#ls | %{
+#    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | Format-Table -AutoSize
+#
+# Zamiast listować na ekran, można by odinstalować korzystając z operatora wołania "&" tak jak wyżej z notatnikiem
+# tylko tutaj będzie to wyglądało tak:
+#(nie uruchamiaj jeśli nie chcesz mieć odinstalowanych wszystkich aplikacji!
+#cd HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#ls | %{
+#    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | %{& $_.UninstallString}
+#
+
+Czyli kolejna potężna zaleta powershella - proste przeszukiwanie rejestru, i listowanie jego zawartości w formie tekstu, który można dowolnie formatować.
+
+#
+#
+#
+# 2. WMI
+# WMI służy do zarządzania systemem i można z niego wiele ciekawych rzeczy wyciągnąć.
+#Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+#
+# Te numery z przodu są brzydkie, bardzo podobne i zajmują dużo miejsca a nie wnoszą nic ciekawego teraz.
+# Wyeliminujmy je:
+#Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+#
+# a jakbyśmy chcieli znaleźć wszystkie pakiety od Microsoftu ?
+#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+#
+# a teraz je odinstalować? (odinstalowywanie zostało osobno dodatkowo zakomentowane)
+#
+### Początek bloku do odkomentowania
+#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+#	$wmiProduct = $_
+#    $answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+#    $answer = $answer.ToLower()
+#    switch($answer) {
+#        "y" {
+#            Write-Host -NoNewline -ForegroundColor Red "Removing: "
+#            Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+#            # odkomentowanie poniższej lini spowoduje błąd braku uprawnień dla Twojego konta
+#            #$wmiProduct.Uninstall() # ta linia uruchamia deinstalację. Odkomentuj jeśli chcesz odinstalować wszystkie pakiety od Microsoftu. (nie polecam)
+#        }
+#        "n" {Write-Host "Ok. Skipping."}
+#        default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+#    }
+#}
+### Koniec bloku do odkomentowania
+#
+#
+
+WIdzę potencjalne zastosowanie na niewielki skrypt odinstalowywujący shovelware z urządzenia - wystarczy że zaznaczymy jakich vendorów na swoim komputerze nie chcemy i lecimy z dezinstalacją
+
+#
+#
+#
+# Dyski w PS
+# Wspomniałem, że PowerShell ma wiele dysków. Możemy je sobie wylistować poniższą komendą:
+#Get-PSDrive
+#
+# Mamy tu dyski z pojedynczymi literkami. To normalne dyski w windowsie.
+# Dyski HKML i HKCU to dyski dające dostęp do rejestru.
+# Poza tym są jeszcze:
+# - Alias - lista wszystkich zdefiniowanych aliasów w bierzącej sesji. Tam są m.in. ls, dir, ?, %
+# - Cert - magazyn certyfikatów TLS/SSL stosowanych do szyfrowania danych. Głównie połączeń sieciowych ale też i emaili czy podpisywania danych by można było sprawdzić czy treść np. dokumentu nie została zmodyfikowana. Swoją drogą skrypty PowerShell-owe też można podpisać cyfrowo
+# - Env - zmienne środowiskowe w bierzącej sesji.
+# - Function - tu są wszystkie zdefiniowane w bierzącej sesji funkcje, które można uruchomić. Podziałamy na funkcjach za chwilkę.
+# - Variable - zmienne utworzone i dostępne w bierzącej sesji. NIE SĄ to zmienne środowiskowe tylko takie zmienne lokalne.
+# - WSMan - dostęp do całego systemu WMI. Czyli to co powyżej było robione poprzez Get-WmiObject można by było spróbować pobrać z tego dysku
+#
+# Poza tymi dyskami są jeszcze inne, które można sobie dodać/dograć np:
+# - GH - GitHub - tak, można po githubie "chodzić" w PowerShell-u
+# - AD - ActiveDirectory - dodaje dysk dający dostęp do ActiveDirectory
+		Dla tych co wiedzą co to jest to otwiera nowe możliwości.
+		Dla tych co nie wiedzą jest kolejnym dyskiem.
+# Takie dyski dodaje się przez załadowanie specjalnych modułów, które takie dyski udostępniają.
+#
+#
+#
+
+Wszelkie jakby to nazwać, narzędzia i materiały z których korzysta powershell są przechowywane na dyskach. DOść ciekawa opcja. Zastanawia mnie czemu zdecydowali się na takie nazewnictwo - nie wystarczył by na przykład plik tekstowy ze zmiennymi lokalnymi? Lub dynamiczny plik z zawartością rejestru? Czemu jest to zapisane w formie dysku?
+Przeszukałem internet - dzięki dyskom uzyskujemy uniwersalność danych. Tym samym zestawem poleceń można przeszukać pliki jak i rejestr. Czyli powodem jest uniwersalność.
+
+#
+#
+#
+#
+# A teraz notyfikacje :-D
+# Część przykładu pobrałem z tej strony:
+# http://www.powertheshell.com/balloontip/
+#
+# Trzeba załadować odpowiednią bibliotekę żeby można było skorzystać z tego cuda
+### Początek bloku do odkomentowania
+#[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+#
+#$icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+#
+#$myNotification = New-Object System.Windows.Forms.NotifyIcon
+#$myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+#$myNotification.BalloonTipIcon = 'Error'
+#$myNotification.BalloonTipText = "Your cat has meowed!" 
+#$myNotification.BalloonTipTitle = "Cat Error"
+#$myNotification.Visible = $True 
+#$myNotification.ShowBalloonTip(10000)
+### Koniec bloku do odkomentowania
+#
+#
+#
+# Ponieważ powyższe wydaje się być trochę mozolne by za każdym razem podawać te same wartości itd...
+# To można zrobić sobie własną funkcję. Uruchomienie jej znajduje się poniżej więc nie trzeba jej komentować
+# bo jak się jej nie wywoła to nic nie zrobi
+#
+function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+#
+# I teraz można to łatwo wywołać w ten sposób
+#
+#GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+#
+# Albo wielokrotnie:
+#For($i = 1; $i -le 10; $i++) {
+#    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+#}
+#
+# Można też wiele wierszy pokazać ale max 4
+#GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+#
+#
+#
+
+Czyli można wysyłąć notyfikacje. Własnoręcznie napisanymi skryptami. I te notyfikacje mogą potem być przez windowsa domyślnie przysyłąne na przykład na smartwatch. Czyli łącząc to wszystko - jeżeli jestem w pracy, mogę dostać na zegarek informację, że ktoś właśnie zalogował się na mojego kompa. Albo zmodyfikował rejestr. Genialne.
+
+#
+#
+#
+#
+# I co? Fajne co nie? :-D
+
+Oj tak, widzę tu sporo włożonej pasji. I dostrzegam, jako człowiek praktyczny, sporo praktycznych zastosowań.

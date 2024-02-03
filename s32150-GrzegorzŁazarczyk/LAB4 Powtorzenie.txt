@@ -9,8 +9,8 @@ Jak przejść do katalogu ala za pomocą:
 Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej komendy?
 Podaj rozwiązania używając ścieżek absolutnych i relatywnych.
 
-mkdir -p ../../../kot/ma/ale/jan/kowalski
-mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
+mkdir -p ../../../kot/ma/ale/jan/kowalski   - absolutna
+mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski   - relatywna
 
 3.Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu 
 i używając:
@@ -25,7 +25,7 @@ mv /tmp/ukos/ala/ma/kota ../../i
 Znajduję nr procesu i wysyłam sygnał kill -SIGKILL
 
 5.Jak wypisać wszystkie pliki (i tylko pliki bez katalogów) w bieżącym katalogu, których nazwa zaczyna się od al?
-ls -
+ls -p | grep -v / | grep "al*"
 
 6a
 Nadaj uprawnienia do katalogu ala tak aby:
@@ -37,7 +37,7 @@ chmod u=rwx,g=rx,o=x ala
 chmod  u+rwx,g+rx,g-w,o+x,o-rw ala
 
 6b.Jak korzystając z notacji ze znakiem równości odebrać wszystkie uprawnienia dla danego zasobu?
-chmod u=-, g=-, o=- ala
+chmod u=-,g=-,o=- ala
 
 7.Jak utworzyć plik z listą plików w bieżącym katalogu?
 tree | tee lista_plikow.txt
@@ -46,4 +46,10 @@ tree | tee lista_plikow.txt
 
 9
 Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
+	1. uruchomienie programu w tle np. gimp & 
+
+	2.uruchamiam program normalnie np. gimp
+	  wciskam Ctrl-Z  - wstrzymanie procesu przez sygnał SIGTSTP
+	  wpisuję do terminala polecenie bg - wznawianie w tle wstrzymanego procesu
+
 

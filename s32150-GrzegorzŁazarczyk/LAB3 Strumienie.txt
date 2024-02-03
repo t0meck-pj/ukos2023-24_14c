@@ -28,23 +28,24 @@ Zapisuje do pliku i na ekran równocześnie
 
 A: Zobacz co się stanie jeśli wpiszemy w terminalu:
 
-1.ps wyświetli listę procesów
+1.ps wyświetla procesy mające to samo EUID co ja, powiązane z bieżącą sesją terminala
 2.ps -a - wyświeli listę procesów poza liderami sesji i procesami nie
-                podłączonymi do żadnego terminala.  liderem sesji jest dowolny proces z PID zgodnym z jego SID
-3.ps x - opcja powoduje wylistowanie wszystkich procesów, których jesteś
-                właścicielem (EUID taki sam jak procesu ps), lub wylistowanie wszystkich
-                procesów, jeśli użyta łącznie z opcją a.
+                podłączonymi do żadnego terminala.  
+3.ps x - procesy nie należące do żadeno terminala
 
-u - w pierwszej kolumnie wyświetlana bd nazwa użytkownika danego procesu
+u - rozszerza dane wyjściowe o dodatkowe informacje, takie jak użycie procesora i pamięci.
 
-4.ps axu - wyświetla wszystkie procesy w sposób zorientowany na użytkownika(pierwza kolumna nazwa użytkownika)
+4.ps axu - wyświetla wszystkie procesy w systemie
+a - procesy wszystkich użytkowników
+u - dodaje dodatkowe szczegóły procesów
+x - wypisuje procesy które nie należą do żadnego terminala
 
 INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
 
-Jak myślisz, co oznacza znak zapytania w kolumnie 2? brak terminala
+Jak myślisz, co oznacza znak zapytania w kolumnie 2? proces nie jest podłączony do terminala
 
 
-Wyświetl wszystkie procesy bash -ps T
+Wyświetl wszystkie procesy bash -ps -C bash   - 
 
 Wyświetl wszystkei procesy należące do użytkownika root - ps -U root -u root u
 ------------------------------------------------------------------------------------------

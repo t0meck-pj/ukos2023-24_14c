@@ -1,0 +1,293 @@
+	PS C:\Users\user> Set-ExecutionPolicy Bypass
+
+- zasady wykonania, funkcja kontrolująca warunki w których program PowerShell łąduje pliki konfiguracji
+ i uruchamia skrypty.
+- na komputerze z systemem Windows można ustawić zasady wykonywania dla komputera lokalnego, bieżącego użytkownika
+ lub dla określonej sesji
+- zasady wykonywania dla określonej sesji są przechowywane tylko w pamięci i są tracone po zamknięciu sesji
+
+Bypass - nic nie jest zablokowane i nie ma ostrzeżeń ani monitów 
+	Get-Location - moja obecna lokacja
+
+	#Get-Help Get-ExecutionPolicy
+	#Get-Help Get-ExecutionPolicy -Examples
+	#Get-Help -ShowWindow - wyświetli pomoc w innym oknie
+	"-" implikuje, że coś jest parameterem danej metody, dany parametr może przyjmować kilka wartosci
+	[] - parametr pozycyjny, nie trzeba podawać nazwy parametru, wystarczy wartosc, parametry pozycyjne 
+		należy podawać w odpowiedniej kolejności
+- dostępne miejsce na dysku
+Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3"
+
+Moduł
+
+Moduł to pakiet zawierający elementy członkowskie, których można używać w programie PowerShell. Elementy członkowskie
+obejmują polecenia cmdlet, dostawców, skrypty, funkcje, zmienne i inne narzędzia i pliki. Po zaimportowaniu modułu 
+można użyć członków modułu w sesji.
+Moduły są ładowane automatycznie przy pierwszym użyciu i, w przeciwieństwie do przystawek, moduły mogą być 
+zwalniane lub ładowane ponownie podczas sesji. Moduły można tworzyć jako skompilowane zestawy .NET napisane 
+w języku C# lub moduły oparte na skryptach napisane w programie PowerShell.
+
+	#Get-Module -ListAvailable
+
+Import-Module - cmdlet, który dodaje jeden lub więcej modułów do bieżącej sesji.
+
+Czym się różni funkcja od cmdlet:
+- Polecenie cmdlet to klasa .NET napisana w języku C# lub innym języku .NET i zawarta w pliku .dll
+- Funkcja jest określana bezpośrednio w PowerShell w skrypcie, module skryptu lub w wierszu poleceń
+
+? - skrót na Where-Object, wybiera obiekty z kolekcji na podstawie ich wartości właściwości
+% - skrót na While-Object
+| - potok, przekazuje wyjście jednej metody na wejście kolejnej
+$_ - poszczególne elementy przekazywanej kolekcji na wejście kolejnej metody przez potok
+
+filtrowanie na podstawie właściwości obiektu
+
+	#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} - zwraca moduły dla wersja jest większa= niż 2.0.0.0
+	#Get-Module -ListAvailable | ? {$_.Version -le "2.0.0.0"} - analogicznie mniejsza= 2.0.0.0
+łączenie Where-object elementów w jeden 
+	#Get-Module -ListAvailable | ? {$_.Version -gt "1.0.0.0" -and  $_.Version -lt "2.0.0.0"}
+
+	#Get-Service |Stop-Service -whatif - whatif pozwala sprawdzićco się stanie po wykonaniu polecenia bez jego wykonywania
+	
+- moduły wersja >=2.0, wypisze dostępne w tych modułach polecenia
+	#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+- pozwoli znalezć komendy które zawierają w nazwie ciąg znaków process
+	#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | 
+	? {$_.Name -like "*process*"} 
+
+	#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} |
+	 ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+
+- sortowanie według wskazanego parametru	
+	#Get-Process | sort handles 
+
+Określone procesy można uzyskać, określając ich nazwy lub identyfikatory (Get-Process -id 0)
+
+- metody, właściwości danego obiektu	
+	#Get-Process -name bits | get-member 
+
+- wyświetlanie tylko wskazanych informacji o obiektach	
+	#Get-Process | select ProcessName,Handles
+
+- wyświetlanie tylko wskazanych informacji o obiektach, posortowane nazwy procesu z->a	
+	#Get-Process | select ProcessName,Handles | sort ProcessName -Descending
+
+- zapisywanie do pliku html
+	#Get-Process | select ProcessName,Handles | sort ProcessName -Descending | convertto-html | out-file strona.html
+
+- wyswietli wynik w nowym oknie
+	#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} |
+ 	? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+
+- wyswietlanie w PS stronnicowo, np. jezeli wynikiem polecenia jest dluga lista, nie będzie konieczne przwijanie
+	#Get-Command | Out-Host -Paging
+
+- zapisywanie wyniku do pliku
+	#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} |
+ 	? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File wynik.txt
+	#Get-Conetent wynik.txt - wyświetli zawartość pliku w PS
+
+- wykona operacje i nic nie wyświetli
+	#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} |
+	 ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+
+Polecenie Out-Null cmdlet zostało zaprojektowane tak, aby natychmiast odrzucić wszystkie odbierane dane wejściowe. 
+Jest to przydatne w przypadku odrzucania niepotrzebnych danych, które otrzymujesz jako efekt uboczny uruchamiania polecenia
+
+	#Import-Module BitsTransfer
+	#ipmo BitsTransfer
+	#Get-Command -Module BitsTransfer
+
+Alias to alternatywna nazwa polecenia cmdlet, funkcji, pliku wykonywalnego, w tym skryptów.
+Program PowerShell zawiera zestaw wbudowanych aliasów. Możesz dodać własne aliasy do bieżącej sesji i do profilu programu PowerShell
+	
+	#Get-Alias - zwraca listę wbudowanych aliasów
+	#New-Alias -Name srvs -value Get-Service   - tworzenie własnego Aliasu
+	#Remove-Alias - usuwanie aliasu
+	#Set-Alias - tworzy nowy lub zmienia dotychczasowy Alias
+
+- pobierz coś z internetu za pomocą tego modułu
+
+	#Start-BitsTransfer -Source "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.4/npp.8.4.4.Installer.x64.exe"
+	-Destination "C:\users\admin\OneDrive\pulpit"
+- tworzenie folderow
+	#New-Item -Path 'C:\temp\New Folder' -ItemType Directory
+
+- wyseitlenie plikow w lokalizacji, modyfikowanych po podanej dacie i o rozmiarze w podanym zakresie
+
+	Get-ChildItem -Path $env:ProgramFiles -Recurse -Include *.exe |
+    	Where-Object -FilterScript {
+        	($_.LastWriteTime -gt '2005-10-01') -and ($_.Length -ge 1mb) -and ($_.Length -le 10mb)
+    	}
+
+- intalator Notepad++ pobrany do wskazanej lokalizacji 
+
+	#$job = Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination 
+	D:\ -Credential $cred -Authentication Negotiate -Asynchronous -DisplayName "Moj Bits Transfer"
+	#Get-BitsTransfer
+	#Complete-BitsTransfer -BitsJob $job - kończenie job tranferu
+
+Zadanie w tle uruchamia asynchronicznie polecenie lub wyrażenie. Może on uruchamiać polecenie cmdlet, funkcję, skrypt lub dowolne inne 
+zadanie oparte na poleceniach.  Jest przeznaczony do uruchamiania poleceń, które zajmują dłuższy czas, ale można 
+go użyć do uruchamiania dowolnego polecenia w tle
+
+& - uruchamia polecenie przed asynchronicznie w podshellu jako zadanie, jest funkcjonalnie równoważny z Start-Job, zwraca Job obiekt
+	
+Measure-Command {Get-ChildItem -Path C:\Windows} - mierzenie czasu wykonywanej komendy
+
+#Get-Alias | ? {$_.Definition -like "Get-ChildItem"} - sprawdzanie czy jest alias na dane polecenie
+
+Alias           dir -> Get-ChildItem
+Alias           gci -> Get-ChildItem
+Alias           ls -> Get-ChildItem
+
+	#ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table - listowanie katalogu, kolejne elementy wyświetlane są w odstępie czasowym
+
+& - call, uruchomi wskazany program
+
+	#& C:\Windows\notepad.exe - uruchomi notatnik
+
+
+1. Listowanie zainstalowanych aplikacji - Rejestr
+# Informacje o zainstalowanych aplikacjach są przechowywane w:
+# HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+Get-PSDrive - dyski dostępne w Powershellu
+
+Name           Used (GB)     Free (GB) Provider      Root                                                                                                     CurrentLocation
+----           ---------     --------- --------      ----                                                                                                     ---------------
+Alias                                  Alias
+C                 228,56        200,89 FileSystem    C:\                                                                                          users\admin\OneDrive\pulpit
+Cert                                   Certificate   \
+D                  92,11         23,30 FileSystem    D:\
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+#Get-PSDrive -PSProvider Registry
+
+HKCU, HKLM - dyski dające dostęp do rejestru
+Rejestr – hierarchiczna baza danych konfiguracyjnych w systemach operacyjnych Windows.
+Są w nim przechowywane informacje o konfiguracji i ustawieniach m.in. użytkowników,
+urządzeń podłączonych do komputera, a także zainstalowanych programów.
+Rejestr w platformie Windows spełnia analogiczną funkcję do katalogu /etc/ w systemach Unix/Linux
+
+Rejestr pełni funkcję centralnej bazy danych, przeznaczonej do przechowywania w ujednolicony 
+sposób wszystkich informacji konfiguracyjnych systemu operacyjnego i aplikacji. Zawiera on kompletny zestaw wpisów dotyczących ustawień
+takich elementów, jak programy obsługi (sterowniki) urządzeń, pamięć czy programy obsługi sieci. Narzędzia systemu operacyjnego 
+pozwalają na dostęp do niego zarówno z komputera, którego dotyczy, jak również poprzez sieć.
+
+#ls | %{
+#    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | Format-Table -AutoSize
+
+#Get-ChildItem -Path C:\Windows -Force  - parametr force pozwoli wyświetlić również ukryte pliki
+
+2. WMI 
+	#Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+
+- wszystkie pakiety mikrosoftu
+	#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+WMI (ang. Windows Management Instrumentation) – zestaw protokołów i rozszerzeń systemu Windows umożliwiających zarządzanie i dostęp do zasobów 
+komputera, takich jak adaptery sieciowe, aktualnie otwarte programy, lista procesów, odczyty z wbudowanych czujników temperatury, odczytów woltomierzy itp.
+
+WMI to platforma do zarządzania i monitorowania systemu operacyjnego oraz innych aplikacji i usług firmy Microsoft na komputerach osobistych, 
+serwerach i innych urządzeniach sieciowych. Służy do wykrywania i monitorowania systemu operacyjnego, usług i aplikacji na komputerze, a także danych 
+rejestru i systemu plików. Służy również do tworzenia i zarządzania skryptami i programami, które automatyzują zarządzanie i administrację komputerem.
+
+
+#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+#	$wmiProduct = $_
+#    $answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+#    $answer = $answer.ToLower()
+#    switch($answer) {
+#        "y" {
+#            Write-Host -NoNewline -ForegroundColor Red "Removing: "
+#            Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+#            # odkomentowanie poniższej lini spowoduje błąd braku uprawnień dla Twojego konta
+#            #$wmiProduct.Uninstall() # ta linia uruchamia deinstalację. Odkomentuj jeśli chcesz odinstalować wszystkie pakiety od Microsoftu. (nie polecam)
+#        }
+#        "n" {Write-Host "Ok. Skipping."}
+#        default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+#    }
+#}
+
+# - Alias - lista wszystkich zdefiniowanych aliasów w bierzącej sesji. Tam są m.in. ls, dir, ?, %
+# - Cert - magazyn certyfikatów TLS/SSL stosowanych do szyfrowania danych. Głównie połączeń sieciowych ale też i
+ emaili czy podpisywania danych by można było sprawdzić czy treść np. dokumentu nie została zmodyfikowana. Swoją drogą skrypty PowerShell-owe też można podpisać cyfrowo
+# - Env - zmienne środowiskowe w bierzącej sesji.
+# - Function - tu są wszystkie zdefiniowane w bierzącej sesji funkcje, które można uruchomić. Podziałamy na funkcjach za chwilkę.
+# - Variable - zmienne utworzone i dostępne w bierzącej sesji. NIE SĄ to zmienne środowiskowe tylko takie zmienne lokalne.
+# - WSMan - dostęp do całego systemu WMI. Czyli to co powyżej było robione poprzez Get-WmiObject można by było spróbować pobrać z tego dysku
+
+
+Notyfikacje:
+#[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+
+
+
+#
+#$icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+#
+#$myNotification = New-Object System.Windows.Forms.NotifyIcon
+#$myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+#$myNotification.BalloonTipIcon = 'Error'
+#$myNotification.BalloonTipText = "Your cat has meowed!" 
+#$myNotification.BalloonTipTitle = "Cat Error"
+#$myNotification.Visible = $True 
+#$myNotification.ShowBalloonTip(10000)
+
+
+Funkcja 
+function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+
+#GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+#
+# Albo wielokrotnie:
+
+Pętla FOR
+for (<Init>; <Condition>; <Repeat>)
+{
+    <Statement list>
+}
+- wypisywanie za pomocą pętli liczb od 1 do 10
+
+for($i=1;$i -le 10;$i++)
+{
+    Write-Host $i
+}
+
+#For($i = 1; $i -le 10; $i++) {
+#    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+#}
+#
+# Można też wiele wierszy pokazać ale max 4
+#GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+#
+

@@ -158,3 +158,4 @@ Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
 linuxach). 
 - alt+F7 powinno wrócić do konsoli X servera. Tak w internetach piszą, bo u mnie
   nie działa. Chyba muszę tego linuch już zainstalować......
+  

@@ -88,8 +88,8 @@ ps axu PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND 1995 1
 pty0      197609 09:55:42 /usr/bin/ps
 
 Jak myślisz, co oznacza znak zapytania w kolumnie 2?
-- że proces nie należy do aktualnego terminala Nie wiesz? A gdzie może być
-  wyjaśnienie?
+- że proces nie należy do aktualnego terminala (nota: już było porzednio :? )
+Nie wiesz? A gdzie może być wyjaśnienie?
 - w intenetach? man? man nie daje wyniku, bo nie ma go w tej konsoli. Chyba
   przejdę na konsolę w serwerze na AWS. zwłaszcza, że ps -C nie działa tu gdzie
   jestem (na git-bashu), i ps -u nie znajduje użytkownika root. A zatem loguję
@@ -156,7 +156,7 @@ Zobacz czy kill zadziała dla dowolnego procesu.
  useradd -D niujuzer. A to nie, chyba -D bez nazwu usera musi być, tak by
  wynikło, że to (D)efault. hmm. Adduser njuju wynik: useradd: Permission
  denied. useradd: cannot lock /etc/passwd; try again later. A! sudo! zatem sudo
- useradd niuju. poszło. no to.... a! się dostać teraz bćdę próbował z zewnątrz.
+ useradd niuju. poszło. no to.... a! się dostać teraz będę próbował z zewnątrz.
  Nie ma to tamto, jako drugi terminal wezmę powershella, żeby było także
  inaczej choc podobnie. Czyli tak w stylu telewizji polskiej. Ale do rzeczy.
  hmmm, z rozpędu skopiowałem komendę z terminala poprzedniego nie zmieniwszy
@@ -165,7 +165,7 @@ Zobacz czy kill zadziała dla dowolnego procesu.
  definiuje się przy ich kreacji, niemniej jestem przekonany że to można zrobić.
  Ale i tak mam dwa połączenia, zatem... zatem to bez sensu bo to ten sam user,
  więc uprawniewnia dla swoich plików mieć będzie. Zaraz... może najprościej
- wbić się na szuflandię i tam wyłączyć procesy jakichś nieznanych mi kolegó
+ wbić się na szuflandię i tam wyłączyć procesy jakichś nieznanych mi kolegów
  bądź koleżanki? No bo otwarcie, nawet basha, w powłoce tej na której działąm
  ja, to i tak ten sam używkownik. Zatem pytanie do eksperta: jak?
 

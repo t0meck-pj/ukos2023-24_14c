@@ -9,7 +9,7 @@ katalogu (co można zaobserwować ?). Wypróbować powyższe operacje:
 
 - w moim katalogu domowym/temp na szuflandii tworzę katalogi ./t/e/m/p .
   Sprawdzam uprawnienia do katalogu m: ls -lA, wynik drwxr-xr-x 3 s32351 domain
-  users 4096 12-02 09:08 m . Zmieniam wprawnienia sobie: chmod u-r m. Wchodzę
+  users 4096 12-02 09:08 m . Zmieniam uprawnienia sobie: chmod u-r m. Wchodzę
   do katalogu, na ls dostaję informację :Brak dostępu. się zgadza. Tworzę
   plik - touch plik.txt. Zmieniam uprawnienia wszystkim, odbieram możliwość
   zapisu i wykonywania chmod a-wx plik.txt. Przechodzę katalog wyżej, stamtąd
@@ -17,11 +17,7 @@ katalogu (co można zaobserwować ?). Wypróbować powyższe operacje:
   s32351@szuflandia22:~/temp/t/e$ ls -lA ./m>>./m/plik.txt
 -bash: ./m/plik.txt: Brak dostępu. nadaję sobie 
 
-uprawnienie
-
-do zapisu : chmod u+w ./m/plik.txt ponawiam próbę zapisu. ls -lA ./m>>./m/plik
-.txt - błąd, nie  mam dostępu do /m, zatem przechodzę katalogu powyżej.
- ls -lA ./e>>./e/m/plik.txt. chcę podejrzeć plik, cat ./e/m/plik.txt,
+uprawnienie do zapisu : chmod u+w ./m/plik.txt ponawiam próbę zapisu. ls -lA ./m>>./m/plik.txt - błąd, nie  mam dostępu do /m, zatem przechodzę katalogu powyżej.ls -lA ./e>>./e/m/plik.txt. chcę podejrzeć plik, cat ./e/m/plik.txt,
  rezultat : razem 4 d-wxr-xr-x 3 s32351 domain users 4096 12-02 09:22 m. 
 
 2. W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić
@@ -105,3 +101,4 @@ wykonywana ?
   otrzymać. N mnie się tak to kojarzy w tym przypadku. Może inaczej: maska
   binarnie; negacja potem w porónaniu z bitami aktualnych uprawnienia do pliku;
   koniunkcji da zmienione uprawnieni tworzonych plików. 
+  

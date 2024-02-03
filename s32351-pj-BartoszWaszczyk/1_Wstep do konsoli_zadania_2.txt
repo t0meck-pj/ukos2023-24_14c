@@ -129,3 +129,4 @@ Connection to ec2-3-125-34-106.eu-central-1.compute.amazonaws.com closed.
  lub -R, dobrze pamiętałem. Zatem będąc w katalogu ukos usuwam: rm -rI ./ukos
  (bo mam ukos w ukosie, a -I jest dla prompta choćby i symbolicznego) - koniec
   POPRAWY*
+  

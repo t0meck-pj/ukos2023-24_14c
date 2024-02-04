@@ -9,8 +9,8 @@ Jak przejść do katalogu ala za pomocą:
 Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej komendy?
 Podaj rozwiązania używając ścieżek absolutnych i relatywnych.
 
-mkdir -p ../../../kot/ma/ale/jan/kowalski   - absolutna
-mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski   - relatywna
+mkdir -p ../../../kot/ma/ale/jan/kowalski   - relatywna
+mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski   - absolutna
 
 3.Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu 
 i używając:
@@ -51,5 +51,7 @@ Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
 	2.uruchamiam program normalnie np. gimp
 	  wciskam Ctrl-Z  - wstrzymanie procesu przez sygnał SIGTSTP
 	  wpisuję do terminala polecenie bg - wznawianie w tle wstrzymanego procesu
+
+
 
 

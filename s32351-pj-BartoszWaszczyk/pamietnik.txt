@@ -1,0 +1,56 @@
+2023-09-30 Hmmm. Cudnie, bardzo lubię ćwiczenia w terminalu. Zawsze kojaerzyło
+mi się i nadal kojarzy z posiadaniem wiedzy tajemnej, któa pozwala na robienie
+cudów. Oczywiście prócz romnantyzmu hakerstwa, praktyczna strona dzisuejszego
+dnia pozwoliła mi ugruntowac wiedzę ze sposobów zmiany katalogu, odczytywania
+informacji o strukturze i zawartości systemu plików. Gdzie i jakie pliki się
+znajdują, za co odpowiada zawartość folderu (oczywicie mówimy o linuchu jak na
+razie), czy na przykłąd jak tworzyć pliki i zapełniać je treścią. Zabawy na
+cli (bashu) etc. A także polecenie man (dotychczas szczytem dla mnie było
+użycie przełącznika -h / --help).
+
+2023-10-14 dziś - uprawnienia. Temat mi znany baaaardzo 'po łebkach' jak dotąd;
+od teraz wiem już jak i co zmieniać, żeby całkowicie się zakopać w katalogu, do
+którego uprawnień żadnych nie mam, tak jak i do nadrzędnych i nadrzędnych tych
+nadrzędnych... Ale poważnie, odkryciem dla mnie jest, że zmieniac moge
+uprawnienia do katalogu bezpośrednio leżącego pod tym, do którego mamy
+uprawnienia zapisu. A dla leżącego jeszcze głębiej nie mogę dokonywac zmian,
+dopóki nie nadam/przywrócę sobie uprawnienia do odczytu, zapisu i wejscia.
+Jeszcze tego w pełni nie testowałem --> todo. Wreszcie rozumiem o co biega w
+zapisie rwx/7/111 (opisowo/oktalnie/w kodzie dwójkowym). Maska --> Defaulty to
+coś co pozwala na ograniczenie powtarzania wpisywania tego samego wielokrotnie,
+więc dla mnie bomba. Ale irytuje mnie podejście: 'dawaj minimum koniecznych
+uprawnień, nigdy więcej niż potrzeba'. Akurat na co dzień pracuję 'po drugiej
+stronie barykady'i rzygam już 'Service NOW' i kolejnym ticketem w którym po
+trzykroć muszę udowadniać po co mi update do ulubionego(i zatwierdzonego!)
+edytora tekstów (Sublime Text akurat w moim przypdku).
+
+2023-10-28
+-sprawdź co może się stać, 'zanim'! Testy, analiza logiki.
+-łączeniu polecenia w celu wykonania bardziej złożonych operacji
+-lista procesów, 'ps' 
+
+2023-11-18 powtórka zmiana katalogu względna ../.., można przeskoczyć, albo
+ustawić punkt wykonywania innego polecenia. Ctrl-C (Delete) --> przerwij
+program, SIGINT. Ctrl-D zamyka strumień wejścia, co dalej zależy od
+implementacji - np. jeżeli logika mówi 'kiedy nie będzie nowych danych przelicz
+wynik i wypisz go na ekranie'. Ctrl-Z (SIGTSTP, wprow. znaku zatrzymania,
+prowadzi do zatrzymania procesu) internety mówią:
+https://infoshareacademy.com/blog/2017/10/16/najbardziej-przydatne-skroty-klawiszowe-ubuntu/
+. 'Kill' wysyła wybranego sygnału. Domyślnie: 15 - TERM. Sygnały:
+https://students.mimuw.edu.pl/SO/LabLinux/PROCESY/PODTEMAT_3/sygnaly.html . ls
+wyświetla zawartość, grep na podstawie wymagań listuje linie. ls al*, ls -lA
+(moje ulubione ;) ). Generalnie: ten sam efekt można uzyskać poprzez
+zastosowanie różnych rozwiązań.
+
+2023-12-02 Nauczyłem się poprawnie forkować repo na gicie i wysyłać do nich
+dane. :) Okazało się, że pobłądziłem na maksa, tworząc własne oddzielne repo;
+miałem utorzyć brancha/forka w już istniejącym repo wykładowcy... Shame.
+
+2023-12-08 i 09 - uzupełniając zadania dla pana Tomasza - zasnąłem i obudziła
+mnie małżonka szanowna o ósmej... Cholera. No nic, wrzucam na gita to co mam.
+
+2023-12-15 - Pytanie - jak w tym całym AWS utworzyć tak na EC2 użytkownika,
+żebym mógł się nim osobno zalogować do terminala? A może to problem linuxa, a
+raczej ich polittyki? Coś mi dzwoni ale gdzie to nie wiem. A dzwoni mi, że mogę
+utworzyć w AWS użytkownika i nadać mu odpowiedznie uprawnienia. Na zewnątyrz
+serwera.

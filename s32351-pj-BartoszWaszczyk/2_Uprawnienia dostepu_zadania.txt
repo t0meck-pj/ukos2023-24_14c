@@ -1,0 +1,104 @@
+1. Utworzyć we własnym katalogu domowym niedużą strukturę podkatalogów i plików
+tekstowych. Przydzielić różne uprawnienia dostępu, następnie spróbować wejść do
+katalogów domowych innych uczestników zajęć i sprawdzić, które z obiektów są
+tam dla nas dostępne (i w jakim sensie). Spróbować utworzyć własny plik w
+cudzym katalogu ("kukułcze jajko") oraz spróbować usunąć cudzy plik we własnym
+katalogu (co można zaobserwować ?). Wypróbować powyższe operacje:
+*w trybie tekstowym;
+*przy użyciu programu Midnight Commander (mc);
+
+- w moim katalogu domowym/temp na szuflandii tworzę katalogi ./t/e/m/p .
+  Sprawdzam uprawnienia do katalogu m: ls -lA, wynik drwxr-xr-x 3 s32351 domain
+  users 4096 12-02 09:08 m . Zmieniam uprawnienia sobie: chmod u-r m. Wchodzę
+  do katalogu, na ls dostaję informację :Brak dostępu. się zgadza. Tworzę
+  plik - touch plik.txt. Zmieniam uprawnienia wszystkim, odbieram możliwość
+  zapisu i wykonywania chmod a-wx plik.txt. Przechodzę katalog wyżej, stamtąd
+  próbuję dopisać wynik polecenia ls do plik.txt :
+  s32351@szuflandia22:~/temp/t/e$ ls -lA ./m>>./m/plik.txt
+-bash: ./m/plik.txt: Brak dostępu. nadaję sobie 
+
+uprawnienie do zapisu : chmod u+w ./m/plik.txt ponawiam próbę zapisu. ls -lA ./m>>./m/plik.txt - błąd, nie  mam dostępu do /m, zatem przechodzę katalogu powyżej.ls -lA ./e>>./e/m/plik.txt. chcę podejrzeć plik, cat ./e/m/plik.txt,
+ rezultat : razem 4 d-wxr-xr-x 3 s32351 domain users 4096 12-02 09:22 m. 
+
+2. W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić
+eksperymenty: usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
+usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
+- ciekawe, dostęp x, lub raczej jego brak blokuje możliwość wykonania chmod dla
+  jakiejkolwiek zawartości (podkatalogów, plików). Ale jeżeli z katalogu
+  nadrzędnego nadamy x, to folder poniższy możemy już 'obsłużyć'
+
+W jakich przypadkach możemy wykonać wtedy polecenie cd?
+- kiedy mamy dostęp x do katalogu.  
+
+W jakich przypadkach możemy wykonać polecenie chmod?
+- w każdej w której możemy znaleźć się w katalogu nadrzędnym i jesteśmy
+  właścicielem. Nie możemy wykonać chmod dla katalogu/pliku poniżej katalogu do
+  którego nie mamy dostęu x
+
+Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy
+uprawnienia wstępu do ABC, ale mamy do XYZ ? 
+- Nie. No w każdym razie kiedu usuwam dostęp x dla nadrzędnego, to nie mam
+  dostępu do podrzędnego, nie mogę przeskoczyć.
+
+Czy możemy także wrócić korzystając z polecnia cd - ? 
+- nie, nie mam dostępu.
+
+3. W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić
+login osób z zespołu) wypróbować możliwość komunikacji przez współdzielony
+plik: na jednym z kont w zespole utworzyć pusty plik i przydzielić odpowiednie
+uprawnienia dostępu (do pliku i do katalogu domowego). Wpisywać i odczytywać
+komunikaty przy użyciu poleceń:
+
+echo treść_komunikatu > plik cat plik
+
+Sprawdzić, jaki skutek powoduje zamiana operatora > na operator >> w poleceniu
+echo. Uruchom także drugi terminal i wykonaj w nim komendę tail -f plik i
+powtórz powyższe ćwiczenie w pierwszym terminalu (komunikacja za pomocą
+pliku).
+
+- w teamie z Sławek Rudnicki. r-x - moje uprawnienia w jego katalogach. Mogę
+  przeglądać zawartość folderów (ls) oraz plików(cat). Nie mam uprawnień do
+  zmiany plików, nazw katalogów, uprawnień. Uprawnienia -wx pozwala na
+  podrzucenie "kukułczego jaja". Podrzucający może mi odebrać do uprawnienia do
+  podrzuconego pliku.
+
+4. Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to
+utworzyć; musi się on nazywać DOKŁADNIE tak jak podano, pisane małymi literami
+z podkreśleniem zamiast spacji pomiędzy słowami). Umieścić w nim plik o nazwie
+strona.html o następującej zawartości:
+
+<HTML><BODY><H1>To jest moja strona domowa</H1></BODY></HTML>
+
+- mkdir public_html cd public_html/ touch echo "<HTML><BODY><H1>To jest moja
+  strona domowa</H1></BODY></HTML>">touch start.html touch: nie można
+  dotknąć '<HTML><BODY><H1>To jest moja strona domowa</H1></BODY></HTML>': Nie
+  ma takiego pliku ani katalogu hmmm, no tak, przecież to nie tak miało być.
+  echo tekst>plik, a ja zrobiłem jakieś coś dziwnego. Zatem.
+  s32351@szuflandia22:~/public_html$ echo "<HTML><BODY><H1>To jest moja strona
+  domowa</H1></BODY></HTML>">start.html s32351@szuflandia22:~/public_html$ cat
+  start.html s32351@szuflandia22:~/public_html$ echo "<HTML><BODY><H1>To jest
+  moja strona domowa</H1></BODY></HTML>">>start.html
+  s32351@szuflandia22:~/public_html$ cat start.html <HTML><BODY><H1>To jest
+  moja strona domowa</H1></BODY></HTML> s32351@szuflandia22:~/public_html$
+  ls -la razem 12 drwxr-xr-x 2 s32351 domain users 4096 12-02 11:54 .
+  drwxr-xr-x 8 s32351 domain users 4096 12-02 11:49 ..
+-rw-r--r-- 1 s32351 domain users    0 12-02 11:51 echo
+-rw-r--r-- 1 s32351 domain users   62 12-02 11:55 start.html
+ s32351@szuflandia22:~/public_html$ rm echo
+
+Zadanie W opisie bash-a (man) przeczytać opis polecenia wewnętrznego umask i
+wypróbować jego działanie sprawdzając, a następnie zmieniając swoją maskę trybu
+pliku i tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik),
+a później sprawdzając uzyskane uprawnienia dostępu do nich (polecenie ls -l).
+Jaka operacja logiczna na bitach domyślnych uprawnień dostępu oraz maski jest
+wykonywana ? 
+- umask, będąc maską, nadaje uprawnienia niejako odwrotnie do chmod, a poza tym
+  jest ustawieniem stałym. Operacja wykonywana to negacja bitów uprawnień, na
+  przykład chmod 700 nadaje pełne uprawnienia użytkownikowi, odbierając je
+  grupie i innym, zaś umask 700 - będzie powodował, że nowe pliki, foldery,
+  etc. będą niedostępne dla usera, zaś w pełni dostępne dla grupy/innych.
+  Maskowanie bitów, no, to maskowanie, zmiana na odwrotne tego co moglibyśmy
+  otrzymać. N mnie się tak to kojarzy w tym przypadku. Może inaczej: maska
+  binarnie; negacja potem w porónaniu z bitami aktualnych uprawnienia do pliku;
+  koniunkcji da zmienione uprawnieni tworzonych plików. 
+  

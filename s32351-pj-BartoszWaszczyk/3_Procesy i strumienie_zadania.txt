@@ -1,0 +1,250 @@
+ZADANIA - 0 (rozgrzewkowe) Przejdź do swojego katalogu domowego Wydaj komendę:
+ls -a Zobacz ile plików wypisało.
+- tyle ile ich mam, znaczy 18 plikó, w tym katalogi, ale katalogi to też pliki,
+  nieprawdaż?
+
+Teraz wydaj komendę: ls -a | grep D HINT: Jeśli nie masz żadnego pliku czy
+katalogu z literką D to wybierz inną literkę, która już będzie w nazwie
+jakiegoś pliku czy katalogu.
+- no tu musiałem skorzystać z hinta, faktycnie, nie mam, wybrałem s, i to małe.
+  s32351@szuflandia22:~$ ls -a | grep S
+- nie mam z dużym S biorę małe s32351@szuflandia22:~$ ls -a | grep s
+.bash_history
+.bash_logout
+.bashrc
+.git-for-windows-updater
+.lesshst Projects ukos141023cw.txt
+ winlibs-x86_64-mcf-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.1-r2.7z
+
+Zobacz ile teraz jest wyników. Co się stało? 
+- to się stało, że grep wyszukał linijki z literką s.
+
+Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu
+wejściowym, które pasują do wzorca. Tu podano wzorzec jako "D".
+- u mnie 's'
+
+A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+- kliknęło mi się enter za wcześnie, więc jest: ls -a|grep s>lista_plik robię
+  cat lista_plikm i działa, pokazując jaki plik sie utworzył z przekierowania
+  strumienia wyjściowego grep z terminala na plik lista_plik.
+
+Zobacz czy utworzył sie jakiś plik? Jaka jest jego treść?
+- taka sama jak wykonanie samego grepa na rezultacie list, czyli:
+  s32351@szuflandia22:~$ cat lista_plik
+.bash_history
+.bash_logout
+.bashrc
+.git-for-windows-updater
+.lesshst lista_plik Projects ukos141023cw.txt
+ winlibs-x86_64-mcf-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.1-r2.7z
+
+Co znaczy | oraz co znaczy > ? pipeline | - połączenie strumienia wyjściowego
+aplikacji a do wejściowego aplikacji b. a 
+> - przekierowanie strumienia wyjściowego aplikacji do tam gdzie chcemy, plik, 
+
+strumień wejściowy danych innej aplikacji, 
+
+inny strumień (wtedy to z '&'') i inne, jakie wymyślimy. 
+
+A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+Zobacz czy plik się utworzył? Jaka jest treść względem poprzedniej próby bez
+programu tee? Co robi program tee?
+- wrzuca w plik ORAZ na terminal jednocześnie. Lubimy tee, widać co się dzieje.
+
+ZADANIA - 1 Program ps służy do wyświetlania listy procesów. Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu: ps
+- wyrzucił listę wszystkich procesów, a jetem w (pwd) Path
+----
+C:\Projects\ukos\ukos2023-24_14c, w dodatku powershell. zmieniam na git-bash:
+
+steam@EdgyBox
+MINGW64 /c/Projects/ukos/ukos2023-24_14c/s32351-pj-BartoszWaszczyk (master) $
+ps PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND 2054 1996
+2054      13852  pty0      197609 09:53:00 /usr/bin/ps 1995       1    1995
+21560  ?         197609 09:10:37 /usr/bin/mintty 1996    1995    1996 15280pty0
+197609 09:10:38 /usr/bin/bash
+
+ps -a steam@EdgyBox
+MINGW64 /c/Projects/ukos/ukos2023-24_14c/s32351-pj-BartoszWaszczyk (master) $
+ps -a PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND 1995 1
+1995      21560  ?         197609 09:10:37 /usr/bin/mintty 1996    1995    1996
+15280  pty0      197609 09:10:38 /usr/bin/bash 2063    1996    2063      28872
+pty0      197609 09:54:01 /usr/bin/ps
+
+ps x steam@EdgyBox
+MINGW64 /c/Projects/ukos/ukos2023-24_14c/s32351-pj-BartoszWaszczyk (master) $
+ps x PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND 1995   1
+1995      21560  ?         197609 09:10:37 /usr/bin/mintty 1996    1995    1996
+15280  pty0      197609 09:10:38 /usr/bin/bash 2072    1996    2072      28392
+pty0      197609 09:54:41 /usr/bin/ps
+
+ps axu steam@EdgyBox
+MINGW64 /c/Projects/ukos/ukos2023-24_14c/s32351-pj-BartoszWaszczyk (master) $
+ps axu PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND 1995 1
+1995      21560  ?         197609 09:10:37 /usr/bin/mintty 1996    1995    1996
+15280  pty0      197609 09:10:38 /usr/bin/bash 2081    1996    2081      33620
+pty0      197609 09:55:42 /usr/bin/ps
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+- że proces nie należy do aktualnego terminala (nota: już było porzednio :? )
+Nie wiesz? A gdzie może być wyjaśnienie?
+- w intenetach? man? man nie daje wyniku, bo nie ma go w tej konsoli. Chyba
+  przejdę na konsolę w serwerze na AWS. zwłaszcza, że ps -C nie działa tu gdzie
+  jestem (na git-bashu), i ps -u nie znajduje użytkownika root. A zatem loguję
+  sie do AWS (ssh -i klucz.pem ec2-user@publiczneipv4, oczywiście po
+  uruchomieniu instancji na AWS). i tu wykonuję:
+
+[ec2-user@ip-172-31-18-48 ~]$ ps (procesy sesji terminala) PID TTY          TIME
+CMD 2600 pts/0    00:00:00 bash 2623 pts/0    00:00:00 ps
+
+   [ec2-user@ip-172-31-18-48 ~]$ ps -a (procesy j.w. prócz bash, czyli zarządcy
+   sesji) PID TTY          TIME CMD 2628 pts/0    00:00:00 ps
+
+[ec2-user@ip-172-31-18-48 ~]$ ps x (procesy innen niż sesyjne) PID TTY      STAT
+TIME COMMAND 2581 ?        Ss     0:00 /usr/lib/systemd/systemd --user 2592 ? S
+0:00 (sd-pam) 2599 ?        S      0:00 sshd: ec2-user@pts/0 2600 pts/0    Ss
+0:00 -bash 2629 pts/0    R+     0:00 ps x
+
+B: Jak wykonasz poniższe 2 zadania?
+
+Wyświetl wszystkie procesy bash
+- ps -eC bash Wyświetl wszystkei procesy należące do użytkownika root	
+- ps -U root -u root u - tu także te pod aliasami, bo można po prostu ps -u
+  root
+
+ZADANIA - 2 INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem
+graficznym.
+
+PID jest to indentyfikator procesu ([P]rocess [ID]entificator). Za jego pomocą
+możesz odwołać się do danego procesu za pomocą różnych mechanizmów systemu.
+Jednym z takich mechanizmów jest wysłanie sygnału (na przykład zakończenia) do
+procesu. Do tego można użyć komendy kill (może brzmi ona dość brutalnie, ale
+cóż, informatyka nie jest dla mięczaków). Komenda ta domyślnie wysyła sygnał
+zakończenia procesu do zadanego procesu.
+
+Zadanie:
+
+Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual
+Studio Code, atom, itd...)
+- vscode & Zobacz jaki ma on PID - przyda się do tego komenda ps
+- ps axu | grep vscode Wydaj komendę kill w taki sposób, aby ten edytor się
+  wyłączył. Zobacz czy to działa.
+- kill 3301 UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo
+  blokować. Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+  Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+- kill -SIGKILL 3301 - zamyka natychmiast, kill (czyli kill -SIG2TERM) dla 3301
+  pozwala na wykonanie ostatnich komend programu, SIGKILL - nie. Zamyka na tych
+  iast i nieodwołalnie.
+
+Zobacz działanie komendy killall bash
+- killall bash - nie zadziałało, prawdopodobnie SIGTERM przechwycony. SIGKILL
+  jako parametr spowodował, że wyrzuciło mnie z sesji, próbuję ponownie się
+  zalogować na serwer... no wszedłem, ale to nowa sesja, bo ps pokazuje że pid
+  się zmienił na 61875.
+
+Zobacz czy kill zadziała dla dowolnego procesu.
+- kill w sensie SIGTERM, czy kill z innym sygnałem? Powinien zadziałać, o ile
+  dany sygnał nie jest przejmowany w procesie.
+
+*POPRAWA - miałem dać kila (jak się ktoś kiedyś interesująco wyraził), procesowi
+ innego użytkownika. hmm, innego użytkownika zasymuluję, ładując się po raz
+ drugi na ten sam AWSowy serwer... ale to muszę usera zrobić tam. O, zaczyna
+ się ciekawie. :D wuj Google mówi: Useradd, i to na sudo. Czy Adduser? czytam
+ man. No dobrze. A! sprawdzam jeszcze adduser. A! to alias, ok zatem.
+ useradd -D niujuzer. A to nie, chyba -D bez nazwu usera musi być, tak by
+ wynikło, że to (D)efault. hmm. Adduser njuju wynik: useradd: Permission
+ denied. useradd: cannot lock /etc/passwd; try again later. A! sudo! zatem sudo
+ useradd niuju. poszło. no to.... a! się dostać teraz będę próbował z zewnątrz.
+ Nie ma to tamto, jako drugi terminal wezmę powershella, żeby było także
+ inaczej choc podobnie. Czyli tak w stylu telewizji polskiej. Ale do rzeczy.
+ hmmm, z rozpędu skopiowałem komendę z terminala poprzedniego nie zmieniwszy
+ usera a i tak weszło, czyli mam dwa połączenia na to samo konto, a teraz...
+ nie da rady, permission denied. No tak, userów na tych maszynach z EC2
+ definiuje się przy ich kreacji, niemniej jestem przekonany że to można zrobić.
+ Ale i tak mam dwa połączenia, zatem... zatem to bez sensu bo to ten sam user,
+ więc uprawniewnia dla swoich plików mieć będzie. Zaraz... może najprościej
+ wbić się na szuflandię i tam wyłączyć procesy jakichś nieznanych mi kolegów
+ bądź koleżanki? No bo otwarcie, nawet basha, w powłoce tej na której działąm
+ ja, to i tak ten sam używkownik. Zatem pytanie do eksperta: jak?
+
+ZADANIA - 3 W terminalu jest kilka przydatnych skrótów klawiszowych. Jednym z
+nich jest CTRL+C lub jak to jest często podawane C-c lub ^C. Niektórzy z
+Państwa już go mieli okazję przetestować. Jest to sposób na wyłączenie
+aktywnego programu w terminalu. Proszę go przetestować w taki sposób, że:
+
+Uruchom komendę cat be parametrów
+- piszę i jednoczenie cat wypisuje mi na ekranie to samo co napisałem po
+  wciśnieciu enter. Wciśnij CTRL+C i zobacz co się stanie
+- wychodzę z cat, wracam do basha.
+
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on
+do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie
+rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie
+wysyła sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo
+przydatne, jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze
+standardowego wejścia (stdin), ale w sposób możliwie bezpieczny.
+
+Zobacz co się stanie: Wydaj komendę cat > wynik3_1.txt Wpisz tekst witaj bez
+wciskania klawisza Enter Wciśnij CTRL+C Zobacz co się znalazło w pliku
+wynik3_1.txt
+- w pliku znalazło sie to co wpisywałęm z klawiszem, ale ta linijka co ją
+  wpisałem i nie wcisnąłem enter, nie została zapisana.
+
+Wydaj komendę cat > wynik3_2.txt Wpisz tekst witaj bez wciskania klawisza Enter
+Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x) Zobacz co się znalazło
+w pliku wynik3_2.txt
+- nic się nie znalazło, bo strumieeń wejściowy do CAT staje się takim po
+  wciśnięciu enter... W opisie rozwiązania zadania umieść: jak rozumiesz co się
+  stało?
+- w pierwszym pzypadku zakończyliśmy cat bez zamykania strumienia, ale mimo to
+  strumień się zamknął, a w drugiom zamknęliśy strumień co spowodowało
+  zmknięcie cat. czym oba te przykłady się różnią?
+- na pewno nie wynikiem/rezultatem. Chyba, że miało się stać coś innego?
+  DLACZEGO się różnią?
+- inny powód, ten sam wynik. 
+
+ZADANIA - 4 INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem
+graficznym. CTRL+Z służy do wstrzymania bieżącego procesu i przeniesienia go do
+tła. To znaczy, że program jest w pamięci, ale nie wykonuje żadnych operacji.
+Jest wstrzymany.
+
+Zobacz co się stanie: Wpisz komendę gimp (lub np. edytor tekstowy gedit) W
+terminalu w którym sie to uruchomiło wciśnij CTRL+Z Spróbuj coś wyklikać w
+gimpie / gedicie
+
+Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno
+gimpa / gedita i potem je odsuń by odsłonić w pełni okno gimpa / gedita
+
+Co się stało? Wstrzymaliśmy program gimp/gedit. Program wstrzymany za pomocą
+kombinacji CTRL+Z jest przenoszony w tło (background). Efekt jest taki, że taki
+program przestaje odpowiadać na cokolwiek a jego okno nie jest przerysowywane i
+robi się mozaika.
+
+Komenda bg służy do wznowienia w tle wstrzymanego programu. Zobacz: Wpisz
+komendę: bg Jak widać gimp/gedit ożył (jeśli nie, to zapytaj prowadzącego)
+Komenda fg służy do wznowienia na pierwszym planie wstrzymanego wcześniej
+procesu. Zobacz co się stanie: Wpisz komendę: fg Jak widać proces wrócił i
+można wcisnąć na przykład CTRL+C aby go zakończyć. W momencie uruchamiania
+programu, możemy od razu nakazać wykonanie go w tle. Służy do tego znak &
+umieszczony na końcu instrukcji.
+
+Zobacz: INFO: Jeśli jakiegoś programu nie ma to zastąp go innym, który znasz.
+
+Wykonaj komendę gimp &
+- gimp & wykonaj komendę gedit &
+- lynx & Wykonaj komendę geany &
+- firefox & Zobacz co się stało (domyślam się, że uruchomiły się 3 programy, a
+  na terminalu ciągle można coś pisać.
+- dokładnie, tak sie stało. programy są wstrzymane.
+
+Kolejna komenda to jobs. Służy ona do wyświetlania listy zadań (jobów; nie mylić
+z procesami) przeniesionych do tła.
+- jobs[ec2-user@ip-172-31-18-48 ~]$ jobs[1]   Stopped                 gimp
+  [2]-  Stopped                 lynx[3]+  Stopped                 firefox
+
+Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni
+program) z tła na pierwszy plan. Skorzystaj z jobs aby dowiedzieć się jakie
+mają numery poszczególne zadania działające w tle. składnia: fg %(numer jobu)
+- fg %3 przywróciło program firefox

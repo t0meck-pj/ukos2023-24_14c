@@ -1,0 +1,161 @@
+1. Uruchom terminal.
+ - jako terminal uruchomiłem sobie PowerShell. wchodzę
+   na szuflandię, ssh s32351@szuflandia.pjwstk.edu.pl
+
+2. Wyświetl zawartość aktualnego katalogu.
+ - Włączyłem midnight commander, skrót mc. Ale, że ćwiczymy CLI, to exit
+   (żeby wyjść z MC) i potem na przykład: ls -lA. Duże A, żeby nie było
+   kropeczek.
+
+3. Sprawdź gdzie aktualnie się znajdujesz.
+ - Sprawdzam, pwd. odpowiedź: /home/PJWSTK/s32351, mój
+   katalog domowy na Szuflandii.
+
+4. Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+ - dochodzę do wniosku, że na szuflandii nie ma katalogu Pulpit. Sprawdzam na
+   wszelki upadek, a nuż ktoś dla zabawy wrzucił. MC. a nie, wychodzę z MC,
+   wpisuję find Pulpit. Nie wiem jaki parametr dla ignorowania rozmiaru liter,
+   zatem man find. Nie znalazłem czegos jak ignore capitals. Ale jest
+   regex. zatem find -regextype perl regex `(?i)pulpit` ... nie podoba mu
+   się 'perl', będzie AWK, podobne. po kilku próbach i błędach związanych ze
+   składnią, dochodzę do: find -regextype awk -regex "(?i)pulpit". Co nie
+   zadowala mnie, bo wykonuje, nic się nie pojawia, co rozumiem, że nie
+   znajduje. Dla testu robię: find -regextype awk -regex "(?i)projects" hmmm.
+   NIE DZIAŁA, zatem idę na łatwiznę, google, 'bash find ignore capitals'.
+   find -iname pulpit. Nie ma wyników. testuję na projects. działa. znaczy -
+   nie ma pulpitu. No u mnie nie ma pulpitu, bo zaczynam podejrzewać find
+   działa 'w głąb' standardowo, bez dodatkowych parametrów. Exit - Wylogowuję się z szuflandii.
+
+5. Sprawdź gdzie jesteś.
+- pwd, rezultat: Path
+----
+C:\Windows\system32
+na szuflandii: 
+s32351@szuflandia22:~$ find -iname pulpit
+s32351@szuflandia22:~$ find -iname desktop,
+ponieważ nie mam u siebie katalogu pulpitu, wchodzę to utworzonego przeze mnie, że się tak wyrażę 'defaultowego' (dla mnie) katalogu projects.  
+s32351@szuflandia22:~$ find -iname projects
+./Projects
+wchodzę za pomoca ścieżki względnej:
+s32351@szuflandia22:~$ cd Projects
+s32351@szuflandia22:~/Projects$
+
+6. Wyświetl zawartość bieżącego katalogu.
+- ls -lA, Get-Childitem : A parameter cannot be found that matches parameter
+   name 'lA'. Znaczy argument nie ok. samo ls działa, a man pokazuje, że jest
+   to Get-Childitem. Logiczne. Najwyraźniej w PowerShellu działa to trochę
+   inaczej. Sprawdzę, jak to wygląda w gitBash, to najbliższe bashowi uixowemu
+   co mam. No tu działa tak jak powinno. jestem w c/Users/steam,
+- na szuflandii: ls -lA, rezultat: 
+drwxr-xr-x 5 s32351 domain users  4096 10-28 13:19 VsCode
+-rwxr--r-- 1 s32351 domain users 17462 10-28 12:47 VsCode.7z
+
+7. Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z
+odpowiednim parametrem).
+- to najpierw man ls, oczywiście tu nie mam man, więc ls --help. hmmm. pewnie
+  chodzi o wylistowanie tego, czego jestem ownerem. A czy jestem? A może tylko
+  mam uprawnienia do... hmmm. Zadziałało ls #home.
+na suflandii: ls #home nie działa, zapewne traktuje #coś jako zmianną (?), a nie, po sprawdzeniu widzę, że zmienne to jeszcze inna składnia, wrócę do tego później.
+Pomyślmy... hmm, jak jestem w domowym katalogu, to mam tyldę (czy to jest tylda? zapytanie do google: tilde. Tak, to tylda) zatem:
+s32351@szuflandia22:~/Projects$ ls ~/
+ file1.a            lista_lista_plik   temp
+ file2.b            lista_plik         ukos141023cw.txt
+ file3.c            Projects           winlibs-x86_64-mcf-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.1-r2.7z
+'Lab 3_23-24.pdf'   public_html
+przy okazji zastanawia mnie co to za tajemniczy plik seven zipem spakowany? Potem sprawdzę.
+
+8. Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj
+wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w
+twoim katalogu domowym za pomocą ścieżki względnej.
+- obrazy są... w dokumentach. w każdym razie link do nich. tu widzę, że: 'Moje
+  obrazy' -> /c/Users/steam/Pictures, zatem stąd to będzie:
+  cd ../Pictures. Co nie działa, bo obrazy mam już na chmurze, One Drive, zatem
+  są w C:\Users\steam\OneDrive\Obrazy. Wpisuję: cd
+  cd ../OneDrive/Obrazy/. Poszło. 
+
+na szuflandii: 
+s32351@szuflandia22:~/Projects$ cd ~/
+s32351@szuflandia22:~$ cd ..
+s32351@szuflandia22:/home/PJWSTK$ cd ..
+s32351@szuflandia22:/home$ cd ..
+co było zupełnie niepotrzebne wystarczyło zrobić:
+cd /
+
+s32351@szuflandia22:/$ find obrazy
+find: ‘obrazy’: Nie ma takiego pliku ani katalogu
+s32351@szuflandia22:/$ find pictures
+find: ‘pictures’: Nie ma takiego pliku ani katalogu
+s32351@szuflandia22:/$
+"wracam do domu" :)
+s32351@szuflandia22:/home$ cd $home
+s32351@szuflandia22:~$ cd Projects/
+s32351@szuflandia22:~/Projects$
+
+9. Sprawdź gdzie jesteś.
+- pwd --> /c/Users/steam/OneDrive/Obrazy
+na szuflandii:
+s32351@szuflandia22:~/Projects$ pwd
+/home/PJWSTK/s32351/Projects
+
+10. Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././ W
+opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie
+stało.
+ - no nic się nie stało. jestem w tym samym miejscu. eksperymentuję. nic się
+   nie stanie, bo ./ to katalog w którym jestem. więc przechodzę z katalogu w
+   którym jestem do tego w którym jestem, a z niego to tego w którym
+   jestem, i tak dalej.
+
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka? Czy
+dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się
+zmieni?
+- nic się nie zmieni, bo to ten sam katalog. 
+Co ta ścieżka oznacza/sobą
+  reprezentuje? 
+- ten sam katalog.
+- różnicę dopiero czyni cd ../../../../../../, i teraz znajduję się w roocie
+  windowsa, powyżej katalogu C:/
+na szuflandii: 
+s32351@szuflandia22:~/Projects$ cd ../../../../../
+s32351@szuflandia22:/$ 
+jestem w najniższym możliwym dla użytkownika katalogu systemu plików.
+
+11. Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+- cd c/Users/steam/, nie powoduje to u mnie żadnych głębszych przemyśleń.
+na szuflandii:
+s32351@szuflandia22:/$ cd /home/PJWSTK/s32351/
+s32351@szuflandia22:~$
+
+12. Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz,
+zastanów się co się stało. Poszukaj w Internecie.
+- W Windowsie nie ma takiej opcji. Zamiast instalować linucha w
+  virtualboxie, mam zamiar dołożyć dystrybucję w bardzo bliskiej
+  przyszłości jako drugi system do tego lapka, więc zamiast tego wejdę na
+  serwerek na AWSie. Odpaliłem t2micro, wchodzę kluczem: ssh -i
+  c:\... ... .ppk nie działa. wracam do PowerShell, tam choco install awscli.
+  Tworzę nowy klucz, ściągam, podmieniam w instancji... Nie da się. w każdym razie prościej jest usunąć i tworzę nową. Wchodzę do instancji ssh -i klucz ec2-user@instancja, jestem.
+  mc - nie ma. muszę pociągnąć. yum search midnight. nie to. yum search mc.
+  jest mc.x86_64 : User-friendly text console file manager and visual shell. to
+  wrzucę od razu. yum install mc. a, su! zatem sudo yum install mc.
+  Ale co ja miałem zrobić? A! cd /root. permition denied. No bo
+  jestem jako user, nie root. 
+- dlaczego tak, a nie na szuflandii? Cóż, chyba z rozpędu, bedąc szczerym. Nie pomyślałem, zdaje się - to się nazywa fiksacja. 
+na szuflandii: również brak dostępu. Jako user nie będący rootem, nie mam dostępu do tego katalogu.
+
+UWAGA: Zadania poniższe wykonam po instalacji ponownej (popsułem i muszę naprawić) linuxa na moim laptopie, UBUNTU 22.04 LTS.
+
+13. Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym
+komputerze. Nie można go zrobić zdalnie na szuflandii. Zobacz, co się stanie,
+jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3 Sprawdź w Internecie co się
+dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje
+z F1-F6. To de facto to samo.
+- no tu na tej maszynie i AWS Linux nie działa jak powinno. Generalnie powinna
+  to być zmiana powłoki. przepraszam, nie powłoki, tylko wirtualnej konsoli, a
+  alt+F7 powinno wrócić do X-a.
+
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej. 
+
+14. A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych
+linuxach). 
+- alt+F7 powinno wrócić do konsoli X servera. Tak w internetach piszą, bo u mnie
+  nie działa. Chyba muszę tego linuch już zainstalować......
+  

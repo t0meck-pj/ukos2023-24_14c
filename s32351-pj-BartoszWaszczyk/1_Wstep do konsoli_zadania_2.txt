@@ -1,0 +1,132 @@
+1. Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w
+swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+ukos
+ |\ katalog
+ |   |\ katalog2
+ |    \ katalog3
+  \ klamka
+
+- w domowym, w tym przypadku /home/ec2-user --> mkdir -p ukos/katalog/katalog2
+  mkdir ukos/katalog/katalog3 mkdir ukos/klamka tree, żeby zobaczyć co jest
+  grane i.... nie ma tree. yum, search, install i mam. tree daje taki obraz:
+
+[ec2-user@ip-172-31-18-48 ~]$ tree /home
+/home
+└── ec2-user
+    └── ukos
+        ├── katalog
+        │   ├── katalog2
+        │   └── katalog3
+        └── klamka
+
+6 directories, 0 files
+[ec2-user@ip-172-31-18-48 ~]$
+
+2. W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt
+nowy.txt
+- touch ukos/klamka/zajęcia2.txt && touch ukos/klamka/zajecia2.log && touch
+  ukos/klamka/inny.txt && touch ukos/klamka/nowy.txt. Znownu tree /home - są
+  pliki.
+
+*POPRAWA - zwrócono moją uwagę na fakt, iż touch może utworzyć na raz kilka
+ plików. Zatem komenda wyglądać powinna w następujący sposób: touch
+ ukos/klamka/zajęcia2.txt ukos/klamka/zajecia2.log ukos/klamka/inny.txt
+ ukos/klamka/nowy.txt - koniec POPRAWY*
+
+3. Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog:
+ukos/to/jest/dluga/nazwa
+- no z parametrem -p a w katalogu ukos... powstanie wtedy drugi ukos/... zgodnie
+  z tym jak zapisane jest to polecenie. (jestem w domowym wciąż) mkdir -p
+  ukos/ukos/to/jest/długa/nazwa. tree /home:
+
+[ec2-user@ip-172-31-18-48 ~]$ tree /home
+/home
+└── ec2-user
+    ├── man
+    └── ukos
+        ├── katalog
+        │   ├── katalog2
+        │   └── katalog3
+        ├── klamka
+        │   ├── inny.txt
+        │   ├── nowy.txt
+        │   ├── zajecia2.log
+        │   └── zajęcia2.txt
+        └── ukos
+            └── to
+                └── jest
+                    └── długa
+                        └── nazwa
+
+4. następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+- touch ukos/ukos/to/jest/długa/nazwa/dane.txt. no utworzyłem, happy.
+
+5. Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+- rm ukos/klamka/*.txt
+
+[ec2-user@ip-172-31-18-48 ~]$ tree /home
+/home
+└── ec2-user
+    ├── man
+    └── ukos
+        ├── katalog
+        │   ├── katalog2
+        │   └── katalog3
+        ├── klamka
+        │   └── zajecia2.log
+        └── ukos
+            └── to
+                └── jest
+                    └── długa
+                        └── nazwa
+                            └── dane.txt
+
+6. Usuń katalog ukos/katalog/katalog2
+- rmdir ukos/katalog/katalog2
+
+7. Usuń cały katalog klamka za pomocą jednego polecenia
+-man rmdir, tak samo jak przy mkdir, przełącznik -p. czyli rmdir... a nie jest
+ inny, ale ten -p też się porzyda, zatem: rmdir -p --ignore-fail-on-non-empty
+ ukos/klamka. poszło. ale zaraz, nie działa. ten ignore fail nie powoduje, że
+ kasuje mimo faila, tylko olewa fail i zostawia zawartość wraz z katalogiem.
+ hmm. no to trzeba zrobić takie cuś: rm ukos/klamka/*.* && rmdir -p
+ ukos/klamka/. i pomimo faktu, że wyrzucił błąd, to jednak usunął! *to nie
+ dobrze, gdyż oparty na rezultacie skrypt poszedłby logiczną ścieżką, jak gdyby
+ katalog/plik nie był usunięty. Ale ja nie będę basha naprawiał, jak na razie w
+ kazdym razie:
+
+[ec2-user@ip-172-31-18-48 ~]$ rmdir -p ukos/klamka/ rmdir: failed to
+remove 'ukos/klamka/': Directory not empty
+
+[ec2-user@ip-172-31-18-48 ~]$ rm ukos/klamka/*.* && rmdir -p ukos/klamka/
+rmdir: failed to remove directory 'ukos': Directory not empty
+
+[ec2-user@ip-172-31-18-48 ~]$ tree /home
+/home
+└── ec2-user
+    ├── man
+    └── ukos
+        ├── katalog
+        │   └── katalog3
+        └── ukos
+            └── to
+                └── jest
+                    └── długa
+                        └── nazwa
+                            └── dane.txt
+
+9 directories, 2 files
+
+[ec2-user@ip-172-31-18-48 ~]$ sudo shutdown Shutdown scheduled for Fri
+2023-12-01 22:21:33 UTC, use 'shutdown -c' to cancel.
+[ec2-user@ip-172-31-18-48 ~]$ Connection to
+ec2-3-125-34-106.eu-central-1.compute.amazonaws.com closed by remote host.
+Connection to ec2-3-125-34-106.eu-central-1.compute.amazonaws.com closed.
+
+*POPRAWA - hmmm, rekurencja... że argument -r? Poczytajmy... man rmdir, man
+ rm '/' w celu wyszukiwania, 'recur', do następnej definicji przez n, jest. -r
+ lub -R, dobrze pamiętałem. Zatem będąc w katalogu ukos usuwam: rm -rI ./ukos
+ (bo mam ukos w ukosie, a -I jest dla prompta choćby i symbolicznego) - koniec
+  POPRAWY*
+  

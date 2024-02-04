@@ -1,0 +1,329 @@
+﻿# Copyright 2015 Tomasz Idzikowski
+# Przedmiot: UKOS
+# Skrypt: Wprowadzenie do podstaw PowerShell-a
+#
+#Get-Help Get-ExecutionPolicy
+
+odnośnie Get-Help Get-ExecutionPolicy
+Funkcja przydatna do nauki. Dodanie parametru -full pozwala też zobaczyć wyczerpujący opis danego cmdleta.
+
+
+
+# A żeby zobaczyć przykłady użycia:
+#Get-Help Get-ExecutionPolicy -Examples
+
+odnośnie Get-Help Get-ExecutionPolicy
+To jest super, że parametrami mogę otwierać wybrany rozdział w opisie 
+
+
+# Poniższa linia zwróci Tobie wszystkie dostepne w danej chwili moduły. Może się chwilę wykonywać bo najpierw musi zebrać listę.
+#Get-Module -ListAvailable
+
+odnośnie Get-Module -ListAvailable
+Jeżeli wiem, że do pracy będę potrzebował konkretnego modułu mogę sprawdzić czy został załadowany do bierzącej sesji.
+
+
+# INFO: Poniższa sekcja została przygotowana na Windows 10. Na Win 7 niektóre dane są niedostępne.
+#
+# To co zwróci powyższe polecenie to lista/kolekcja, którą można przetworzyć.
+# Powiedzmy, że chcemy wyszukać tylko te moduły, których wersja jest większa lub równa 2.0 a wszystkie inne nie.
+# Wtedy korzysta się z "Where-Object" lub jego skrótu "?"
+#
+# Znak "|" to potok (pipeline), który uruchamia kolejne polecenie na danych wyjściowych z poprzedniego polecenia
+# Jeśli podaje się kolekcję/listę/tablicę to poszczególne elementy tej kolecji po znaku | są widoczne jako "$_"
+# To taka specjalna zmienna, która jest automatycznie tworzona przez powershell'a kiedy się operuje na kolekcjach.
+#
+# Poniższa linia zwróci tylko te moduły, których wersja jest >= 2.0.0.0
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+
+odnośnie Get-Module - | ? {$_.Version -ge "2.0.0.0"}
+Dzięki znakom mogę "zawężać" działanie cmdletów do swoich potrzeb. 
+
+
+#
+# Moduły mogą mieć wiele poleceń (to co jest w kolumnie ExportedCommands wyświetlone po przecinku)
+# A my byśmy chcieli mieć listę wszystkich poleceń w tych modułach po przefiltrowaniu wersji powyżej.
+#
+# Tak jak "?" jest skrótem na Where-Object, tak "%" jest skrótem na While-Object czyli pętlę
+# Poniższa linia wyświetli wszystkie polecenia (cmdlet - "Komandlety") w dostępnych modułach, których wersja >= 2.0.0.0
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+
+# Teraz byśmy chcieli jeszcze wyświetlić wszystkie te, które mają w nazwie "Add-" lub "Get-"
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+#
+# A teraz byśmy chcieli je wypisać w postaci tabelki graficznej otworzonej w nowym okienku
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+#
+# albo do pliku
+#$nazwaPliku = "mojaNazwaPliku.txt"
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+#
+# albo nic z tym nie robić tylko by się przetworzyło ale nie wypisywało
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+
+
+Kolejne przykłady filtrowania wyniku zwracanego przez Get-Module. Samodzielnie czytając o PS znalazłem cmdlet Show-Command, dla mnie ciekawe narzędzie do przeglądania/ testowania parametrów dostępnych dla wskazanego cmdletu.
+
+
+
+# Dobrze, to listy już mamy opanowane. To teraz w końcu byśmy chcieli załadować jakiś moduł np. BitsTransfer (do zarządzania przesyłaniem danych w tle)
+#Import-Module BitsTransfer
+#
+# można też użyć aliasu na Import-Module w formie:
+#ipmo BitsTransfer
+#
+# Wylistujmy wszystkie komendy w tym module
+#Get-Command -Module BitsTransfer
+#
+#
+# INFO: Ustaw parametr Destination na lokalizacje gdzie mozna zapisywac tymczasowo duze pliki.
+# INFO: Czyli na dysk 3-4 Users lub analogiczny.
+# Teraz rozpocznij przesyłać plik
+# Takie przesyłanie pliku może trwać długo.
+#Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\ -Credential $cred -Authentication Negotiate
+#
+# Jeśli chcesz to uczynić w sposób asynchroniczny (czyli taki, który nie blokuje konsoli) to można to zrobić tak
+#$job = Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\ -Credential $cred -Authentication Negotiate -Asynchronous -DisplayName "Moj Bits Transfer"
+#
+# By zobaczyć jaki jest stan transferu można użyć takiej komendy.
+#Get-BitsTransfer
+#
+# Zwrócić uwagę należy na stan w kolumnie JobState. Jeśli będzie tam Transferred to aby ukończyć całość i dostać pobierany plik
+# trzeba jeszcze zakończyć job transferu. Robi się to tak
+#Complete-BitsTransfer -BitsJob $job
+#
+# Teraz plik jest już dostępny w katalogu docelowym
+
+
+Oba powyższe scenariusze przetestowałem z instalką Ubuntu. Szczególnie ciekawa wydaje się opcja uruchamiania instalacji ansynchronicznie. Wydaje mi się szczególnie przydatna w pracy adminów, którzy pracując w ps nie muszą tracić czasu na obserwowanie paska instalacji.
+
+
+#
+#
+#
+# Skoro wiemy, że niektóre komendy wykonują się długo, to może byśmy chcieli zmierzyć czas wykonania polecenia.
+# Czasem może się to okazać potrzebne.
+#
+# Do mierzenia czasu służy Measure-Command
+#Measure-Command {Get-ChildItem -Path C:\Windows}
+#
+# I tu też widzisz jak się listuje zawartość katalogu. Ale jest to nie wygodne. Może jest na to alias?
+#Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+#
+# i co? Widać znajome skróty? Szczególnie w systemach *nix-owych ;-)
+# No to wylistujmy sobie wszystkie pliki i katalogi z katalogu głównego ale z odstępem czasowym.
+#ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+#
+#
+# No dobra. Ale PS to nie tylko język do pisania skryptów. To przede wszystkim konsola więc można z niej
+# uruchamiać inne programy. Do tego służy operator wołania "call", który ma postać znaku "&"
+#& C:\Windows\notepad.exe
+#
+# Wylistujmy zainstalowane aplikacje/programy.
+# Można się do tego dobrać na 2 sposoby.
+# 1. W rejestrze poszukać
+# 2. Odpytać WMI (Windows Management Instrumentation)
+#
+# 1. Rejestr
+# Informacje o zainstalowanych aplikacjach są przechowywane w:
+# HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+# PS potrafi "wejść" do rejestru jak na dysk.
+# Ale skoro o tym mowa to sprawdźmy jakie "dyski" są dostępne w PowerShell-u.
+#Get-PSDrive
+#
+# Widać, że jest ich trochę oraz kilka takich nietypowych. Dwa z nich są odpowiedzialne za rejestr.
+# Resztę na razie pominiemy. Zatem by wejść do rejestru można zrobić tak:
+#
+#cd hklm:\
+#
+# i przeglądać sobie rejestr jak zwykły system plików
+#
+#cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#
+# Wylistować sobie jego zawartość przez ls
+#ls
+#
+# ale to spowoduje wyświetlenie sporej ilości tekstu w brzydkiej postaci. Można to trochę zmienić
+#cd HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#ls | %{
+#    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | Format-Table -AutoSize
+#
+
+# 2. WMI
+# WMI służy do zarządzania systemem i można z niego wiele ciekawych rzeczy wyciągnąć.
+#Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+#
+# Te numery z przodu są brzydkie, bardzo podobne i zajmują dużo miejsca a nie wnoszą nic ciekawego teraz.
+# Wyeliminujmy je:
+#Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+#
+# a jakbyśmy chcieli znaleźć wszystkie pakiety od Microsoftu ?
+#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+#
+# a teraz je odinstalować? (odinstalowywanie zostało osobno dodatkowo zakomentowane)
+#
+### Początek bloku do odkomentowania
+#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+#	$wmiProduct = $_
+#    $answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+#    $answer = $answer.ToLower()
+#    switch($answer) {
+#        "y" {
+#            Write-Host -NoNewline -ForegroundColor Red "Removing: "
+#            Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+#            # odkomentowanie poniższej lini spowoduje błąd braku uprawnień dla Twojego konta
+#            #$wmiProduct.Uninstall() # ta linia uruchamia deinstalację. Odkomentuj jeśli chcesz odinstalować wszystkie pakiety od Microsoftu. (nie polecam)
+#        }
+#        "n" {Write-Host "Ok. Skipping."}
+#        default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+#    }
+#}
+### Koniec bloku do odkomentowania
+#
+
+
+Odnośnie rejestru i WMI
+Tu ponownie widzę zastosowanie dla adminów. Nie mam doświadczenia praktyczego na tym polu, jedynie obserwację pracy kolegów. Zakładam, że wykonywanie operacji z poziomu konsoli czy automatyzacja powtarzalych czynności za pomocą skryptów ułatwia i przyśpiesza pracę. Nie wyobrażam sobie wchodzenia na każdy serwer z osobna celem wyklikania danej czynności w interfejsie okienkowym.
+
+
+
+#
+# Dyski w PS
+# Wspomniałem, że PowerShell ma wiele dysków. Możemy je sobie wylistować poniższą komendą:
+#Get-PSDrive
+#
+# Mamy tu dyski z pojedynczymi literkami. To normalne dyski w windowsie.
+# Dyski HKML i HKCU to dyski dające dostęp do rejestru.
+# Poza tym są jeszcze:
+# - Alias - lista wszystkich zdefiniowanych aliasów w bierzącej sesji. Tam są m.in. ls, dir, ?, %
+# - Cert - magazyn certyfikatów TLS/SSL stosowanych do szyfrowania danych. Głównie połączeń sieciowych ale też i emaili czy podpisywania danych by można było sprawdzić czy treść np. dokumentu nie została zmodyfikowana. Swoją drogą skrypty PowerShell-owe też można podpisać cyfrowo
+# - Env - zmienne środowiskowe w bierzącej sesji.
+# - Function - tu są wszystkie zdefiniowane w bierzącej sesji funkcje, które można uruchomić. Podziałamy na funkcjach za chwilkę.
+# - Variable - zmienne utworzone i dostępne w bierzącej sesji. NIE SĄ to zmienne środowiskowe tylko takie zmienne lokalne.
+# - WSMan - dostęp do całego systemu WMI. Czyli to co powyżej było robione poprzez Get-WmiObject można by było spróbować pobrać z tego dysku
+#
+# Poza tymi dyskami są jeszcze inne, które można sobie dodać/dograć np:
+# - GH - GitHub - tak, można po githubie "chodzić" w PowerShell-u
+# - AD - ActiveDirectory - dodaje dysk dający dostęp do ActiveDirectory
+		Dla tych co wiedzą co to jest to otwiera nowe możliwości.
+		Dla tych co nie wiedzą jest kolejnym dyskiem.
+# Takie dyski dodaje się przez załadowanie specjalnych modułów, które takie dyski udostępniają.
+
+
+Z AD mam do czynienia nieco w pracy, wydaje mi się że do pracy na dysku AD mogą być przydatne dane z Aplikacji ADExplorer. Np. jeżeli chcemy zarządzać grupami domenowymi/użytkownikami.
+
+
+# A teraz notyfikacje :-D
+# Część przykładu pobrałem z tej strony:
+# http://www.powertheshell.com/balloontip/
+#
+# Trzeba załadować odpowiednią bibliotekę żeby można było skorzystać z tego cuda
+### Początek bloku do odkomentowania
+#[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+#
+#$icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+#
+#$myNotification = New-Object System.Windows.Forms.NotifyIcon
+#$myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+#$myNotification.BalloonTipIcon = 'Error'
+#$myNotification.BalloonTipText = "Your cat has meowed!" 
+#$myNotification.BalloonTipTitle = "Cat Error"
+#$myNotification.Visible = $True 
+#$myNotification.ShowBalloonTip(10000)
+### Koniec bloku do odkomentowania
+#
+#
+#
+# Ponieważ powyższe wydaje się być trochę mozolne by za każdym razem podawać te same wartości itd...
+# To można zrobić sobie własną funkcję. Uruchomienie jej znajduje się poniżej więc nie trzeba jej komentować
+# bo jak się jej nie wywoła to nic nie zrobi
+#
+function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+#
+# I teraz można to łatwo wywołać w ten sposób
+#
+#GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+#
+# Albo wielokrotnie:
+#For($i = 1; $i -le 10; $i++) {
+#    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+#}
+#
+# Można też wiele wierszy pokazać ale max 4
+#GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+
+
+
+
+
+
+
+W pracy miałem okazję użyć tego czego dowiedziałem się na zajęciach. 
+
+Przypadek był następujący. Miałem katalog "główny" zawierający podkatalogi. Podkatalogi były opisane niepowtarzalnymi sygnaturami. Z 2000 podkatalogów potrzebowałem wyfiltrować 416 podkatalogów o określonych sygnaturach.
+
+Ponieważ nie miałem możliwości wykonania zapytania na bazie danych a możliwości eksploratora Windows są w tym zakresie ograniczone (a przynajmniej nie dokopałem się informacji o rozwiązaniach).Postanowiłem spróbować rozwiązać problem z pomoca PS. Założyłem, że moje rozwiązanie będzie zasilane z pliku txt zawierającego ścieżki do podkatalogów o interesujących mnie sygnaturach. Następnie ścieżki te będą porównywane ze ścieżkami podkatalogów w katalogu pod zmienną "$sourceFolderPath". W przypadku dopasowania podkatalog jest kopiowany do osobnego katalogu pod zmienną "$destinationFolderPath".
+
+Od razu mówię, że z braku czasu, o szkielet rozwiązania poprosiłem Chata GPT. Następnie szkielet ten dopasowałem pod realizację powyższego zadania wcześniej zrozumiawszy jak on działa.
+
+Poniżej załączam ten skrypt, ścieżki zostały wyczyszczone.
+
+# Define the source folder path
+$sourceFolderPath = ""
+
+# Define the destination folder path
+$destinationFolderPath = ""
+
+# Create the destination folder if it doesn't exist
+if (-not (Test-Path -Path $destinationFolderPath -PathType Container)) {
+    New-Item -ItemType Directory -Path $destinationFolderPath | Out-Null
+}
+
+# Read data from id.txt file
+$idData = Get-Content -Path "C:\Users\id.txt"
+
+# Loop through each path in id.txt
+foreach ($idPath in $idData) {
+    # Construct the full path by combining the source folder path and id path
+    $fullPath = $idPath
+
+    # Check if the path exists in the designated folder
+    $matchingFolder = Get-ChildItem -Path $sourceFolderPath -Directory | Where-Object { $_.FullName -eq $fullPath }
+
+    if ($matchingFolder) {
+        # Construct the destination path by combining the destination folder path and id path
+        $destinationPath = $destinationFolderPath
+
+        # Copy and move the folder to the filtered folder
+        Copy-Item -Path $matchingFolder.FullName -Destination $destinationPath -Recurse
+
+        Write-Host "Folder moved and copied: $destinationPath"
+    } else {
+        Write-Host "No match for path: $idPath"
+    }
+}
+

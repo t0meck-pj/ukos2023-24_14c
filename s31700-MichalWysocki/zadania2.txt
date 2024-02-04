@@ -1,0 +1,98 @@
+1. * Za pomocą mkdir stworzyłem foldery, przy pomocy touch plik i edytowałem
+go przy pomocy nano. Struktura wygląda następująco:
+
+├── katalog
+│   ├── podkatalog
+│   │   └── lista.txt
+│   └── tajne
+│       └── ultra_tajne_informacje.txt
+
+Za pomocą chmod 755 ustawiłem, że do katalogu i podkatalogu może wejść
+i wyświetlić zawartość każdy. Do pliku lista, dałem uprawnienia 740, czyli
+osoby spoza grupy nie mogą go odczytać, edytować i wykonać, a osoby z grupy
+mogą go tylko odczytać. Do "tajne" ustawiłem uprawnienia 550, więc właściciel
+i grupa mogą wejść i odczytać pliki, ale nie mogą ich edytować. Do pliku 
+ultra_tajne_informacje.txt ustawiłem uprawnienia 400, czyli tylko właściciel
+może odczczytać plik, ale nie może go edytować.
+* Wszedłem do katalogu użytkownika s29986. W większości inni użytkownicy nie
+mogli nic zapisywać w jego folderach, ale mogli do nich wchodzić i wyświetlać 
+ich zawartość. Tak samo było z plikami. Wszedłem jednak do folderu "jajo-here"
+którego uprawnienia były ustawione na rwx dla każdego. Utworzyłem mu tam plik o
+nazwie kukułcze_jajko za pomocą komendy touch i za pomocą komendy nano 
+edytowałem jego tekst. Następnie za pomocą komendy "chmod u-x kukułcze_jajo"
+oraz "chmod u-w kukułcze_jajo" zabrałem mu możliwość wykonywania i zapisywania
+oraz edytowania pliku. W taki sposób stworzyłem komuś kukułcze jajo.
+* Swoje kukułcze jajko miałem w folderze "jajko" u siebie w katalogu domowym.
+Kiedy próbowałem je usunąć normalnie z poziomu terminala udało się to, ale 
+zostałem zapytany czy usunąć plik zabezpieczony przed zapisem (miał nadane
+uprawnienia przez innego użytkownika przy komendzie chmod 000). Po wciśnięciu 
+przycisku Y udało się. Plik został usunięty. Następnie kolega stworzył mi 
+takie same kukułcze jajko i spróbowałem usunąć je za pomocą Midnight
+Commandera. Tu poszło jeszcze prościej, po prostu zaznaczyłem kukułcze jajko i 
+kliknąłem przycisk usuń. Zostało ono usunięte bez żadnych pytań.
+
+2. We wcześniej utworzonej strukturze podkatalogów
+
+├── katalog
+│   ├── podkatalog
+│   │   └── lista.txt
+│   └── tajne
+│       └── ultra_tajne_informacje.txt
+
+usunąłem wszystkie uprawnienia do katalogu "katalog" za pomocą komendy
+"chmod 000 katalog" (znajduję się w swoim folderze domowym). Następnie, 
+zgodnie z poleceniem zadania chciałem usunąć uprawnienia podkatalogów w
+katalogu "katalog" za pomocą komendy "chmod 000 .katalog/podkatalog", ale 
+spotkałem się z odmową dostępu. W tej sytuacji nie mogę przejść do katalogu
+"katalog", ani nigdzie wyżej. Nie mogę też użyć opcji chmod na żadnym pliku ani
+katalogu w folderze "katalog". Żeby dostać się do podkatalogu, musiałbym mieć
+minimum pozwolenie na wykonanie katalogu "katalog". Tak więc za pomocą
+komendy "chmod u+x katalog" nadałem sobie uprawnienie do przejścia do katalogu.
+Będąc w podkatalogu "podkatalog' mogę zabrać sobie uprawnienia do poprzedniego
+katalogu za pomocą komendy "chmod u-x ..". Po wykonaniu tej komendy, nie mogę
+wrócić do katalogu "katalog" przy użyciu komendy "cd -" ani "cd ..". Mogę za to
+wrócić do katalogu domowego, czyli folderu jeszcze przed katalogiem "katalog"
+za pomocą komendy "cd --".
+
+3. Login osoby z którą robiłem zadanie - s32193-pj.
+W moim folderze domowym stworzyłem folder "zadanie" a w nim plik "komunikator".
+Następnie zgodnie z zadaniem oboje używaliśmy komendy echo treść_komunikatu > 
+plik. W ten sposób po prostu edytowaliśmy zawartość "komunikatora". W momencie
+gdy użyliśmy dwóch znaczków >> zamiast jednego dodawaliśmy nowe linijki tekstu
+zamiast nadpisywania poprzednich. Komenda tail -f "komunikator" otwarta na 
+drugim terminalu na bierząco pokazywała nam jak plik jest edytowany. Coś jakby
+po każdym echo automatycznie uruchamiał się cat.
+
+4. Utworzyłem podkatalog "public_html" w swoim folderze domowym za pomocą
+komendy "mkdir public_html". Nastepnie wszedłem do niego przez "cd public_html"
+i za pomocą komendy "touch strona.html" stworzyłem plik. Edytowałem go za 
+pomocą "nano strona.html" i wkleiłem do niego zawartość z zadania:
+
+<HTML>
+
+<BODY>
+
+<H1>To jest moja strona domowa</H1>
+
+</BODY>
+
+</HTML>
+
+Następnie trochę pobawiłem się chmodem aby zobaczyć jakie uprawnienia muszą
+mieć poszczególne katalogi aby plik "strona.html" dało się zobaczyć przy
+pomocy przeglądarki. Moje wnioski są następujące:
+Mój folder domowy musi mięc uprawnienia minimum 001 (--------x),
+folder public_html również musi mieć uprawnienia minimum 001 (--------x),
+natomiast plik strona.html musi mieć już uprawnienia minimum 004 (------r--).
+
+  Te zadania zdecydowanie pomogły mi utrwalić wiedzę pozyskaną na ostatnich
+zajęciach. Sama komenda chmod nie sprawia mi problemu w używaniu jej,
+aczkolwiek niektóre zadania zaskoczyły mnie, np. w zadaniu 2 jeśli nie mam
+dostępu do wyświetlenia i wykonania katalogu, ale do jego podkatalogu mam 
+dostęp, to i tak nie mogę do niego przejść lub nic z nim zrobić. Myślałem, że
+mimo wszystko będe miał te możliwości. Miałem lekki problem z zadaniem 4,
+ponieważ przy wpisywaniu adresu strony w części /~s31700/ wpisywałem samo
+/s31700/. Dopiero później zauważyłem że jest tam tylda. Nie rozumiem dlaczego
+jest ona tam potrzebna, ale z pewnością kiedyś się dowiem. Poza tym, wykonanie
+zadań nie sprawiło mi problemu, a wiedza z nich wyciągnięta/utrwalona przyda mi
+się w przyszłości.

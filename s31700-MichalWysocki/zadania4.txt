@@ -1,0 +1,18 @@
+1. relatywna - cd ../.. 
+   absolutna - cd /tmp/ukos/ala
+2. absolutna - mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
+   relatywna - mkdir -p ../../../kot/ma/ale/jan/kowalski
+3. względna -> absolutna - mv ../../../kot/ma/ale /tmp/ukos/ala/i
+   absolutna -> względna - mv /tmp/ukos/kot/ma/ale ../../i
+4. Szukam id procesu poprzez ps i zamykam go komendą kill -SIGKILL
+5. Użyję komendy "ls -p | grep "^al" | grep -v /" (skomplikowane, ale działa)
+6a. oktalna - chmod 751 ala
+    literowa ze znakiem równości - chmod u=rwx,g=rx,o=x ala 
+    literowa z plusami i minusaim - chmod u+rwx,g+rx,g-w,o+x,o-rw ala
+6b. za pomocą komendy "chmod a= ala"
+7. 1. "ls | tee lista_plikow.txt"
+   2. "tree | tee lista_plików.txt"
+   3. "echo * | tee lista_plikóww.txt"
+8. Za pomocą klawisza tab
+9. 1. Można uruchomić drugi terminal i w nim dany program
+   2. Można wpisać nazwę programu który chce się uruchomić i na końcu dodać "&"

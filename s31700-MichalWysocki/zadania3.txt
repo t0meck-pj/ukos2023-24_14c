@@ -1,0 +1,66 @@
+Zadania w większości wykonywaliśmy na zajęciach. Nie widzę sensu robienia 1:1
+tego samego, także przejdę od razu do zadania 2. Jeśli jednak będzie potrzeba 
+aby wykonać te zadania, zrobię je.
+
+0. Wszedłem do katalogu domowego i użyłem komendy "ls -a". Wypisało wszystkie 
+pliki oraz katalogi, łącznie z tymi zaczynającymi sie od znaku ".". Następnie
+użyłem komendy "ls -a | grep z". Wypisało mi wszystkie pliki zawierające 
+literkę "z". Następnie użyłem komendy 
+"ls -a | grep z > lista_plikow_z_literka_z.txt". Utworzyło mi plik o nazwie
+"lista_plikow_z_literka_z.txt" a w nim wypisane były wszystkie pliki 
+zawierające literkę "z". "|" to przekierowanie standardowego wyjścia (stdout) 
+programu po lewej stronie tego znaku na standardowe wejście (stdin) programu 
+po prawej stronie tego znaku. ">" to przekierowanie standardowego wyjścia
+(stdout) do pliku (nadpisywanie). Teraz użyłem komendy 
+"ls -a | grep D | tee lista_plikow_z_literka_d_2.txt". Stało się to samo co
+poprzednio. Program "tee" służy do czytania ze standardowego wejścia (stdin) 
+i jednoczesnego zapisywania tych danych zarówno do standardowego wyjścia 
+(stdout).
+
+1. A: Komenda "ps" wypisuje liste procesów. "ps -a" wyświetla informacje o 
+wszystkich aktywnych procesach w całym systemie. "ps x" wyświetla procesy które
+nie mają przypisanego terminalu. Komenda "ps axu" łączy dwa poprzednie 
+parametry i wyświetla je w przyjazny dla użytkownika sposób. 
+   B: Wszystkie procesy basha wyświetlę za pomocą komendy "ps axu | grep root",
+a wszystkie procesy roota wyświetlę za pomoca komendy "ps axu | grep ^root"
+
+2. W większości zrobione na zajęciach, ale jest info żeby zrobić je na 
+maszynie wirtualnej, więc tak zrobiłem
+   1. Uruchomiłem Linuxa na maszynie wirtualnej i pobrałem gedit komendą 
+"sudo apt install gedit". Następnie odpaliłem go komendą gedit i napisałem 
+w nim "Test".
+   2. Komendą ps x wyszukałem jego proces. Jego PID to 31217.
+   3. Użyłem komendy kill 31217. Program normalnie się zamnął. Użyłem 
+      kill SIGKILL 31217 i program zamknął się, ale dodatkowo dostałem output
+      "bash: kill: SIGKILL: arguments must be process or job IDs".
+   4. Użyłem komendy killall bash. Zamknął mi sę terminal.
+   5. Nie, komendą kill mogę wysyłać sygnały tylko dla moich procesów, nie 
+      innych użytkowników.
+
+3. Użyłem komendy "cat" a następnie komendy "ctrl+c". Program "cat: zakończył 
+się. Następnie użyłem komendy "cat > wynik3_1.txt" i wpisałem witaj, a 
+następnie wcisnąłem ctrl+c". W pliku wyjściowym nic się nie znalazło. Następnie
+użyłem komendy "cat > wynik3_2.txt" i wpisałem witaj, po czym wcisnąłem ctrl+d.
+W pliku wyjściowym znalazł się tekst "witaj". Ctrl+d daje znać terminalowi że
+to już koniec danych wejściowych i na tym może zakończyć działanie programu, a
+ctrl+c przerywa działanie danego programu niezależnie od tego w jakim stanie 
+się on znajduje. Dlatego przy ctrl+d wypisało mi "witaj" a przy ctrl+c dostałem
+pusty plik.
+
+4. 1. Uruchomiłem gimpa.
+   2. Nacisnąłem ctrl + z, dostałem output [1]+ Stopped 		gimp.
+   3. Spróbowałem coś poklikać. Nie da się
+   4. Zrobiłem to co w opisie zadania. Zadziałało tak jak powinno.
+   5. Wpisałem komendę bg. Gimp ożył
+   6. Wpisałem komendę fg. Dostałem output gimp i konsola dalej przeszła w tryb
+      obsługi gimpa (jeśli można to tak nazwać?).
+   7. Użyłem 3 komend które były w poleceniu. Dodatkowo poza otwartymi
+      programami od razu dostałem PID i job ID danego programu.
+   8. Użyłem komendy jobs, wyświetliły się dwa uruchomione programy i ich ID.
+   9. Za pomocą fg $1 przywróciłem gedita na 1 plan.
+
+Dowiedziałem się wielu rzeczy na temat procesów i strumieni w linuxie oraz jak
+z nich korzystać. Zadaina które zrobiłem na maszynie wirtualnej pomogły mi 
+zwizualizować sobie jak faktycznie działają komendy których używałem. Wszystko 
+działało tak jak się tego spodziewałem, ale te zadanka i tak pomogą mi utrwalić 
+wiedzę pozyskaną podczas zajęć.

@@ -6,6 +6,51 @@
  * Nauczyłem się do czego służą poszczególne katalogi w linuxie.
  * Nauczyłem się co oznaczają kolory plików. 
   Podobały mi się te ćwiczenia. Wszystko było prosto wytłumaczone. Na pewno 
-w przyszłości czy to na zajęciach czy to w pracy przyda mi się pozyskana
-wiedza. Na ćwiczeniach było dużo informacji. Na pewno będę musiał jeszcze 
+w przyszłości czy to na zajęciach czy to w pracy przyda mi się pozyskana 
+wiedza. Na ćwiczeniach było dużo informacji, więc na pewno będę musiał jeszcze 
 to wszystko powtórzyć aby dobrze wszystko zapamiętać. 
+-------------------------------------------------------------------------------
+2023-10-14
+ * Tego dnia nauczyłem się jak używać git push --force przez to, że poprzednio
+   dodałem pliki do repozytorium poprzez file upload.
+ * Dowiedziałem się, w terminologii Windowsowej jest różnica między prawem
+   a uprawnieniem.
+ * Nauczyłem się jak używać komendy chmod (nadawać/odbierać uprawnienia).
+ * Dowiedziałem się, że nie każdy plik w linuxie musi mieć rozszerzenie,
+   a rozszerzenie nie decyduje o formacie pliku.
+ * Nauczyłem się jak utworzyć komuś kukułcze jajko.
+ * Nauczyłem się usuwać rekurencyjnie pliki oraz katalogi.
+  Poprzednie zajęcia były dla mnie proste, ponieważ używałem już kiedyś linuxa.
+Natomiast te zajęcia z były dla mnie bardziej skomplikowane. Mimo tego,
+zrozumiałem wszystkie zagadnienia i sporo się nauczyłem. Kiedyś nie lubiłem
+linuxa bo wydawał mi się bardzo skomplikowany (i głupi, sądziłem że to taki 
+"stary windows" i nie rozumiałem po co go używać skoro wszystko można już 
+prościej i przyjemniej zrobić na windowsie lub macu), ale z każdymi zajęciami
+staje się on coraz prostszy w obsłudze. 
+-------------------------------------------------------------------------------
+2023-10-28
+ * Nauczyłem się jak używać manuala i jakie to tak na prawde ważne. 
+ * Nauczyłem się jak wyszukiwać pliki po nazwie.
+ * Dowiedziałem się, czym jest | i jak go używać.
+ * Jeszcze raz - nauczyłem się że manual serio jest przydatny.
+ * Nauczyłem się wyświetlać liste procesów.
+ * Nauczyłem się wysyłać sygnały do procesów oraz je zakańczać.
+  Bardzo dużo informacji. Zdecydowanie skokomplikowane, ale i przydatne.
+Manual. Nigdy nie sądziłem że będę tak często używał instrukcji do czegokolwiek,
+ale faktycznie w linuxie się to przydaje. Jestem osobą która preferuje uczenia 
+się praktyki niż czytania masy tekstu, aczkolwiek z manuala będę pewnie często 
+korzystał. 
+-------------------------------------------------------------------------------
+2023-11-18
+Tego dnia powtarzaliśmy najważzniejsze rzeczy nauczone od początku zajęć UKOS.
+Takie odświeżenie materiału zdecydowanie przyda się w nauce do kolokwium. Nawet
+pojawiło się kilka nowych i przydatnych rzeczy. Co mogę więcej powiedzieć? 
+Życzę samemu sobie powodzenia 2 grudnia i mam nadzieje że w następnym wpisie
+będę mógł pogratulować samemu sobie.
+-------------------------------------------------------------------------------
+2023-12-12
+Tego dnia odbyło się kolokwium. Udało mi się je zaliczyć. Dostałem 4 i jestem
+z tego powodu zadowolony :)
+=======
+wiedza. Na ćwiczeniach było dużo informacji. Na pewno będę musiał jeszcze 
+to wszystko powtórzyć aby dobrze wszystko zapamiętać.

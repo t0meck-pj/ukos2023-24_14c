@@ -20,15 +20,12 @@
 # to jest to komentarz tak jak ten tu. W linii 25 masz coś co można uruchomić.
 #
 #
+#
 # Gdybyś potrzebował pomocy z dowolnym poleceniem by zobaczyć jaką ma składnię to pomoc używa się tak:
 #Get-Help Get-ExecutionPolicy
 #
 # A żeby zobaczyć przykłady użycia:
 #Get-Help Get-ExecutionPolicy -Examples
-
-    Ogólnie w powershellu istnieje także man, ale jest to po prostu alias do komendy Get-Help
-    Ogólnie klasyczek, ale istnieje help do Get-Help a nawet przykłady użycia
-
 #
 # Komendy w PS (powershellu) mają pewną stałą konwencję nazewniczą. Jest to: Czasownik-NaCzymMaOperować
 # Np. Get-ExecutionPolicy, Set-ExecutionPolicy, Find-Module, Add-User, Create-Item itd...
@@ -83,10 +80,6 @@
 # - wyświetli graficznie informacje zarejestrowane w logu aplikacyjnym podglądu zdarzeń, które
 # - pochodzą od mechanizmu raportowania błędów windowsa
 # - tyczą się dowolnych awarii
-
-        Rozwiązanie:
-        Get-EventLog "Application" | ? {$_.Source.ToLower() -eq "Windows Error Reporting".ToLower()} | Out-GridView
-
 # 
 # ZADANIE 2: Na podstawie powyższego posortuj wyniki względem czasu zarejestrowania oraz zwróć tylko datę najnowszego z nich.
 #
@@ -109,11 +102,7 @@
 #          Raczej w sktyptach tak się nie robi! Ale warto tu pokazać ideę.
 #
 #
-
-           Rozwiązanie:
-           Get-EventLog -List #Pokazuje mi wszystkie dostępne logi działających aplikacji
-           $(Get-EventLog "Application" | ? {$_.Source.ToLower() -eq "Windows Error Reporting".ToLower()} | sort -Property TimeGenerated -Descending)[0]
-
+#
 #
 #
 # Dobrze, to listy już mamy opanowane. To teraz w końcu byśmy chcieli załadować jakiś moduł np. BitsTransfer (do zarządzania przesyłaniem danych w tle)
@@ -184,12 +173,7 @@
 #
 #
 #
-
-    Nie użyłem BitsTransfer, ale za to ta komenda wykonuje się na tyle długo żeby Measure-Command dał fajny wynik
-    Measure-Command {sleep 10}
-    Widać, że sleep z lekka oszukuje i podsypia trochę dłużej niż 10 sekund, a dokładniej o około 0,009 sekundy, a to dosyć słaby wynik, bo operacje na komputerze wykonują się w nanosekundach
-    W C++ biblioteka chrono pozwala mierzyć czas z dokładnością do nanosekund
-
+#
 #
 #
 #
@@ -276,13 +260,6 @@
 #          Może są jakieś inne pola poza Vendor czy Name, które warto by użyć?
 #Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
 #
-
-        Rozwiązanie:
-         $(Get-WmiObject -Class Win32_Product)[0] | Get-Member #sprawdza dostępne pola i metody
-         #Niestety nie znalazłem żadnego pola, które by uprościło te zadanie, próbowałem RegCompany, ale w moim przypadku było zawsze puste
-         #Spodziewałem się tam nazwy firmy, wtedy byłoby łatwiej
-         Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize #to samo, skopiowane
-
 # a teraz je odinstalować? (odinstalowywanie zostało osobno dodatkowo zakomentowane)
 #
 ### Początek bloku do odkomentowania
@@ -411,6 +388,3 @@ function GiveMePopup {
 #
 #
 # I co? Fajne co nie? :-D
-
-Potwierdzam, bardzo fajne, ale mimo wszystko lepiej chyba takie rzeczy pisać w dobrym edytorze VB, np. Visual Studio, bo żeby pamiętać wszystkie funkcje i ich parametry, to trzeba mieć łeb jak sklep.
-Opcjonalnie można być też masochistą i po kolei w internecie szukać, ale dobry edytor ratuje sytuację zazwyczaj

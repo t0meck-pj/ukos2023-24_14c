@@ -10,26 +10,40 @@ dzięki parametrowi -p mogę tworzyć zagnieżdżone struktury katalogów, tworz
 które nie istnieją przed wykonaniem komendy.
 
 ls -l
-komenda wypisuje w konsoli listę plików i katalogów w moim folderze domowym, domyślnie przypisane uprawnienia
-dla utworzonego przeze mnie katalogu druzyny to rwxrwxr-x, tak więc użytkownik i grupa mają uprawnienia do
+komenda wypisuje w konsoli listę plików i katalogów w moim katalogu domowym, domyślnie przypisane uprawnienia
+dla utworzonego przeze mnie katalogu drużyny to rwxrwxr-x, tak więc użytkownik i grupa mają uprawnienia do
 zapoznania się z zawartością, do zmiany zawartości, uprawnienia do wejścia do katalogu, inni nie mają uprawnienia 
 w - zmiany zawartosci katalogu.
 
 cd druzyny
 chmod u-x PremierLeague/Arsenal 
 
-zabieram uzytkownikowi uprawnienie do wejscia do katalogu Arsenal. Teraz kiedy próbuje dostać się do pliku 
+zabieram uzytkownikowi uprawnienie do wejscia do katalogu Arsenal. Teraz kiedy próbuję dostać się do katalogu
 Arsenal przez polecenie cd Arsenal konsola zwraca informację o odmowie dostępu "bash: cd: Arsenal: Permission denied"
-Kiedy próbuję dostać się do pliku klikając folder wyskakuje okno authentication required, w którym wymagane jest ode
-mnie haslo. Nie wymaga ode mnie hasla do konta, na którym obecnie się znajduję ale do pierwszego założonego konta.
-Zgodnie z tym co znalałem w internecie pierwszy użytkownik ma uprawnienia sudo, należy do grupy adminów.
+Jeżeli nie mam uprawnień do przejścia przez katalog nie mogę tego zrobić, ale jeżeli mogę użyć innego konta, które ma takie uprawnienia 
+to mogę je podać w gui.
+
+SUDO
+- w systemie Linux zawsze istnieje użytkownik root, który jest tak zwanym superużytkownikiem, mającym uprawnienia do odczytywania
+ i zapisywania dowolnych plików, wykonywania programów, których  nie mogą wykonać zwykli użytkownicy
+ - niewłaściwe wykorzystanie uprawnień roota może doprowadzić do uszkodzenia systemu 
+ - uprawnienia można uzyskać logując się do systemu jako root(uprawnienia root aż do wylogowania). Zwykły użytkownik może uzyskać 
+  je dzięki poleceniu sudo lub su
+ - polecenia sudo możemy używać jeżeli znajdujemy się w grupie użytkowników którzy mają do tego uprawnienia etc/sudoers.
+ - su nie posiada takich ograniczeń, podwyższyć uprawnienia może każdy kto zna hasło roota
+- polecenie sudo pozwala wykonać jedno polecenie z uprawnieniami superużytkownika z wykorzystaniem hasła zwykłego użytkownika(albo mogą być nadane ograniczenia czasowe)
+- sudo pozwala używać poleceń do których wykonania wymagany jest dostęp roota z naszego konta, su przełącza nas na konto roota(trzeba znać hasło roota)
+- dzięki sudo administratorzy mogą:
+- poprzez modyfikowanie pliku sudoers nadawać i odbierać wybranym użytkownikom możliwość używania poleceń dozwolonych dla roota
+- można sprawdzić który użytkownik użył danego polecenia(wykonujemy polecenia z własnego konta, nie przełączamy się na konto roota jak w su) 
+- kontrola czasu na jaki nadawane są uprawnienia 
 
 Dowiedziałem się również, że można nadać uprawnienia bezpośrednio przy tworzeniu nowego katalogu:
 
 mkdir -m u=rx Brighton
 
-utworzyłem nowy katalog pozbawiając użytkownika uprawnienia do zmiany jego zawartości. W interfejsie 
-grafinczym objawia się to występującą przy ikonie danego folderu kłódką. Bez problemu mogę teraz dostać się do
+Utworzyłem nowy katalog pozbawiając użytkownika uprawnienia do zmiany jego zawartości. W interfejsie 
+grafinczym objawia się to występującą przy ikonie danego katalogu kłódką. Bez problemu mogę teraz dostać się do
 wnętrza katalogu Brighton, ale kiedy próbuję utworzyć w nim plik poleceniem touch file.txt ponownie konsola zwraca
 odmowę dostępu "touch: cannot touch 'file.txt' Permission denied. 
 
@@ -39,7 +53,7 @@ Nadaje użytkownikowi uprawnienie zmiany zawartości i teraz komenda touch file.
 chmod o=rwx . Wpisując to polecenie znajduję się w moim katalogu domowym, dzięki czemu nadaje innym uprawnienia,
 które pozwolą się im do niego dostać. Przelogowuję się na konto innego użytkownika i teraz bez problemu mogę dostać 
 się do katalogu domowego pierwszego użytkownika( Dla uproszczenia w dalszej części użytkownik 1- użytkownik udostępniający
-pliki i foldery, 2- użytkownik "poruszający się" po katalogach i plikach użytkownika 1.
+pliki i foldery, 2- użytkownik "poruszający się" po katalogach i plikach użytkownika 1).
 
 Użytkownik 2 wykonując polecenie cd Desktop dostaję się z katalogu domowego użytkownika 1 na pulpit gdzie wcześniej
 utworzył on strukturę podkatalogów i plików.
@@ -94,15 +108,15 @@ chmod o=rw Arsenal - w którym obecnie znajduje się drugi użytkownik
 Przełączam się na konto 2 użytkownika.
 ls - nie mogę wyświetlić zawartości (permission denied)
 cd . i cd .. zwracają ten sam komunikat 
-Nie mogę wydostać się z pliku za pomocą ścieżki względnej, w której wykorzystywane są katalogi do których nie mam 
+Nie mogę wydostać się z katalogu za pomocą ścieżki względnej, w której wykorzystywane są katalogi do których nie mam 
 uprawnienia x- do przejścia przez katalog
 
 cd /home/myuser/Desktop -dostałem się na pulpit użytkownika 1
-Przywracam uprawnienia dla Katalogów PremierLeague i Arsenal z konta użytkownika 1
+Przywracam uprawnienia dla katalogów PremierLeague i Arsenal z konta użytkownika 1
 Z konta użytkownika 2 zakładam katalogi mkdir dir1/dir2 
 z tym, że tym razem odbieram innym możliwość wejścia do katalogu dir1. 
 chmod o=rw dir1. Tym razem po zalogowaniu na konto użytkownika 1 nie mogę usunąć katalogu dir1.
-Zgodnie z tym co było mówione na zajęciach nie można usunąć niepustego katalogu. Do tej pory radziłęm
+Zgodnie z tym co było mówione na zajęciach nie można usunąć niepustego katalogu. Do tej pory radziłem
  sobie w takich sytuacjach
 poleceniem rm -r, które rekurencyjnie usuwało zawartość katalogów począwszy od katalogu najbardziej podrzędnego. 
 Ponieważ w tej sytuacji nie mam możliwości wejścia do katalogu dir1(brak x) i usunięcia jego zawartości nie mogę też 
@@ -114,14 +128,14 @@ usunąć samego katalogu dir1.
 
 chmod 000 ..
 chmod 000 . 
-- nie mogę wylistować zawartości katalogu(ls), cd.. po opuszczeniu pliku
+- nie mogę wylistować zawartości katalogu(ls), cd.. po opuszczeniu katalogu
 nie mogę już do niego wrócić za pomocą komendy cd, nie mogę też wyświetlić jego zawartości z katalogu nadrzędnego
 Permission denied
 
 - usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
 - W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
 
-cd .. nie mogę wrócić do katalogu nadrzędnego. Polecenie cd dla danegokatalogu możemy wykonać jedyni jeżeli
+cd .. nie mogę wrócić do katalogu nadrzędnego. Polecenie cd dla danego katalogu możemy wykonać jedynie jeżeli
 mamy przydzielone dla tego katalogu uprawnienie wejścia do niego -x. Więc polecenie cd mogę wykonać podając ścieżkę 
 bezwzględną do katalogu do  którego mam uprawnienie x (i do wszystkich katalogów w ścieżce do niego).
 
@@ -157,11 +171,14 @@ nowe linie ponieważ tail wyświetla ostatnie 10 linijek pliku
 
 4.Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to utworzyć; musi się on nazywać DOKŁADNIE tak jak podano, pisane małymi literami z podkreśleniem zamiast spacji pomiędzy słowami). Umieścić w nim plik o nazwie strona.html o następującej zawartości:
 przełączam się na szuflandię
-dla katalogu domowego uprawnienie do wejścia --x wystarczy
 
-dla katalogu public_html  --x
 
-pliku strona.html  r--
+(ostatnie 3 z 9 bitów)
+dla katalogu domowego uprawnienie do wejścia --x wystarczy  (execute dla innych)
+
+dla katalogu public_html  --x  (execute dla "innych")
+
+pliku strona.html  r-- (read dla "innych")
 
 5.W opisie bash-a (man) przeczytać 
 opis polecenia wewnętrznego umask i wypróbować jego działanie sprawdzając, 
@@ -170,12 +187,23 @@ a następnie zmieniając swoją maskę trybu pliku i tworząc
  uzyskane uprawnienia dostępu do nich (polecenie ls -l). Jaka operacja logiczna na bitach 
 domyślnych uprawnień dostępu oraz maski jest wykonywana ? 
 
+po wpisaniu umask w terminalu otrzymuję wartość 0002 
+
+przed jakąkolwiek zmianą zmianą umask, tworzone przeze mnie plik i katalogi mają następujące uprawnienia
+-rw-rw-r--     - plik
+drwxrwxr-x     - katalog(775)
+
+umask 0000
+-rw-rw-rw-     - plik
+drwxrwxrwx     - katalog   
+
+umask 0777
+----------     - plik
+d---------     - katalog
+
 umask jest odpowiedzialne za ograniczenie praw dostępu. Pozwala nam określić jakkie
-domyślnie chcemy nadawać uprawnienia podczas tworzenianowcyh plików.
-W Linuxie standardowo tworzony plik ma uprawnienia 
-rw-rw-r--. Natomiast katalog rwxrwxrwx. U mnie ma wartość 0002. 
-zmieniam umask 022: rw-r--r--
-zmieniam umask 777: ---------
+domyślnie chcemy nadawać uprawnienia podczas tworzenia nowcyh plików i katalogów.
+ 
 Przyznawane uprawnienia przechodzą logiczną koniunkcję z zanegowaną wartością maski.
 Przykładowo rw-rw-r-- 
 
@@ -190,7 +218,7 @@ odpowiadającym miejscu wstawić jedynkę a tam gdzie uprawnienie ma pozostać 0
 odbieramy więc uprawnienia do zapisu(w) dla usera i grupy
 
 010 010 100 zamieniamy każdą wartość z tych trzech na system ósemkowy i mamy 224 
-Umask 0224 i otrzymujemy rzeczywiście
+Umask 0224 i jeżeli stworzymy nowy katalog, otrzymujemy rzeczywiście
 
 r--r---w-
 

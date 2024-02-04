@@ -4,19 +4,13 @@ Do wykonania zadań wykorzystałem szuflandie oraz ubuntu 23.10
 To są zadania ze wstepu do konsoli cz.2
     Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów
     w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
-
     W katalogu ukos/klamka stwórz pliki
     zajęcia2.txt zajęcia2.log inny.txt nowy.txt
-
     Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący
     katalog: ukos/to/jest/dluga/nazwa
-
     następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
-
     Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
-
     Usuń katalog ukos/katalog/katalog2
-
     Usuń cały katalog klamka za pomocą jednego polecenia
 
 ZADANIE 1
@@ -52,6 +46,8 @@ ZADANIE 3
 *Używam
 cd ..
 bo po poprzednim zadaniu bylem w folderze klamka
+(wydaję mi się, że miałem stworzyć folder będąc w katalogu poprzedzającym,
+dlatego cofnąłem)
 *mkdir -p ukos/to/jest/dluga/nazwa
 
 Wniosek:
@@ -125,7 +121,6 @@ ukos
             └── nazwa
                 └── dane.txt
 
-Mam nadzieję, że nie zgubiłem się w trakcie, pozdrawiam :-)
 
 
 
